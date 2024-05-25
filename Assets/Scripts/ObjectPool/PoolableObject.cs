@@ -1,0 +1,17 @@
+using UnityEngine;
+
+namespace ObjectPool
+{
+	public abstract class PoolableObject<T> : MonoBehaviour, IPoolableObject
+	{
+		protected IObjectPool<T> Pool { get; private set; }
+
+		public virtual void Init(IObjectPool<T> pool)
+		{
+			Pool = pool;
+		}
+
+		public virtual void OnGet() { }
+		public virtual void OnRelease() { }
+	}
+}
