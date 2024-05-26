@@ -4,24 +4,10 @@ namespace Inputs
 {
 	public class GamepadInput : IInput
 	{
-		public float GetAccelerate()
-		{
-			return Gamepad.current.rightStick.ReadValue().y;
-		}
-
-		public bool GetAlternativeFire()
-		{
-			return Gamepad.current.bButton.IsPressed();
-		}
-
-		public bool GetFire()
-		{
-			return Gamepad.current.aButton.IsPressed();
-		}
-
-		public float GetRotation()
-		{
-			return Gamepad.current.leftStick.ReadValue().x;
-		}
+		public float GetAccelerate() => Gamepad.current.rightStick.ReadValue().y;
+		public bool GetAlternativeFire() => Gamepad.current.bButton.IsPressed();
+		public bool GetFire() => Gamepad.current.aButton.IsPressed();
+		public bool GetPause() => Gamepad.current.startButton.wasPressedThisFrame;
+		public float GetRotation() => Gamepad.current.leftStick.ReadValue().x;
 	}
 }

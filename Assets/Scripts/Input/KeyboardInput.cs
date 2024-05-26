@@ -4,20 +4,10 @@ namespace Inputs
 {
 	public class KeyboardInput : IInput
 	{
-		public float GetAccelerate()
-		{
-			return Keyboard.current.wKey.IsPressed() || Keyboard.current.upArrowKey.IsPressed() ? 1 : 0;
-		}
-
-		public bool GetAlternativeFire()
-		{
-			return Keyboard.current.leftAltKey.IsPressed();
-		}
-
-		public bool GetFire()
-		{
-			return Keyboard.current.spaceKey.IsPressed();
-		}
+		public float GetAccelerate() => Keyboard.current.wKey.IsPressed() || Keyboard.current.upArrowKey.IsPressed() ? 1 : 0;
+		public bool GetAlternativeFire() => Keyboard.current.leftAltKey.IsPressed();
+		public bool GetFire() => Keyboard.current.spaceKey.IsPressed();
+		public bool GetPause() => Keyboard.current.escapeKey.wasPressedThisFrame;
 
 		public float GetRotation()
 		{

@@ -6,5 +6,6 @@ namespace Inputs
 		float GetRotation();
 		bool GetFire();
 		bool GetAlternativeFire();
+		bool GetPause();
 	}
 }

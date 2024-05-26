@@ -1,6 +1,5 @@
 using Singleton;
 using System;
-using UnityEngine;
 
 namespace Inputs
 {
@@ -13,16 +12,17 @@ namespace Inputs
 
 		public InputManager()
 		{
-			observer = new GameObject($"[{nameof(InputObserver)}]").AddComponent<InputObserver>();
+			observer = new InputObserver();
 			observer.InputTypeChanged += OnInputTypeChanged;
+			observer.Initialize();
+
 			OnInputTypeChanged(observer.InputType);
-			GameObject.DontDestroyOnLoad(observer);
 		}
 
 		public void Dispose()
 		{
+			observer.Dispose();
 			observer.InputTypeChanged -= OnInputTypeChanged;
-			GameObject.Destroy(observer.gameObject);
 		}
 
 		private void OnInputTypeChanged(InputType inputType)

@@ -6,15 +6,20 @@ using UnityEngine.InputSystem.Controls;
 
 namespace Inputs
 {
-	public class InputObserver : MonoBehaviour
+	public class InputObserver : IDisposable
 	{
 		public event Action<InputType> InputTypeChanged;
 
 		public InputType InputType { get; private set; }
 
-		private void Update()
+		public void Initialize()
 		{
-			UpdateInput();
+			PlayerLoopUtils.RegisterUpdateFunction(UpdateInput);
+		}
+
+		public void Dispose()
+		{
+			PlayerLoopUtils.UnregisterUpdateFunction(UpdateInput);
 		}
 
 		private void UpdateInput()
