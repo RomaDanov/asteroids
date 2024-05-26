@@ -1,4 +1,5 @@
 using Inputs;
+using Messages;
 using StateMachine;
 using UnityEngine;
 
@@ -15,7 +16,11 @@ namespace Contexts.Game.States
 
 		internal override void Enter()
 		{
+			MessageRouter.Instance.Subscribe<GameMessages.UnpauseGameMessage>(OnUnpausedGame);
+
 			Time.timeScale = 0;
+			MessageRouter.Instance.Publish(new GameMessages.GamePausedMessage());
+
 			Debug.Log("Enter: PauseState");
 		}
 
@@ -29,7 +34,15 @@ namespace Contexts.Game.States
 
 		internal override void Exit()
 		{
+			MessageRouter.Instance.Unsubscribe<GameMessages.UnpauseGameMessage>(OnUnpausedGame);
+
 			Time.timeScale = originTimeScale;
+			MessageRouter.Instance.Publish(new GameMessages.GameUnpausedMessage());
+		}
+
+		private void OnUnpausedGame(GameMessages.UnpauseGameMessage message)
+		{
+			Finish<GameMainLoopState>();
 		}
 	}
 }

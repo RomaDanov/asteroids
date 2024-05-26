@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67af1db1f8a632f44bf7312536c5fea6, type: 3}
-  m_Name: EnemiesLibrary
+  m_Name: EnemiesLibraryConfig
   m_EditorClassIdentifier: 
   items:
   - {fileID: 11400000, guid: 0b02787dd1f79264da33fa283d269b2c, type: 2}

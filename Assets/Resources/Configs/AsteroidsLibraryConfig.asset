@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e0336bf99f2de3846b25210363f3d04c, type: 3}
-  m_Name: AsteroidsLibrary
+  m_Name: AsteroidsLibraryConfig
   m_EditorClassIdentifier: 
   items:
   - {fileID: 11400000, guid: 5a07c8939569442489b108a739b19287, type: 2}

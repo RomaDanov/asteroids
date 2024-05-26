@@ -32,6 +32,7 @@ namespace StateMachine
 			IsActive = false;
 			currentState?.Exit();
 			currentState = null;
+			CurrentStateId = string.Empty;
 		}
 
 		public TState AddState<TState>(string id = "") where TState : State, new()

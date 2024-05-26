@@ -2,6 +2,7 @@ using Contexts.Game.States;
 using Inputs;
 using Messages;
 using ObjectPool;
+using ServiceLocator;
 using StateMachine;
 using UnityEngine;
 
@@ -13,7 +14,18 @@ namespace Contexts.Game
 
 		private void Start()
 		{
-			stateMachine = BuildStateMachine();
+			ServicesManager.Instance.Register<ShipsDataProvider>();
+			ServicesManager.Instance.Register<EnemiesDataProvider>();
+			ServicesManager.Instance.Register<AsteroidsDataProvider>();
+			ServicesManager.Instance.InitializeServices();
+
+			stateMachine = new StateMachineBuilder("GameStateMachine")
+				.State<GameEntryState>()
+				.State<GameMainLoopState>()
+				.State<GamePauseState>()
+				.State<GameExitState>()
+				.Build();
+
 			stateMachine.Start<GameEntryState>();
 		}
 
@@ -30,16 +42,8 @@ namespace Contexts.Game
 			InputManager.Instance?.Dispose();
 			MessageRouter.Instance?.Dispose();
 			ObjectPoolService.Instance?.Dispose();
-		}
 
-		private StateMachine.StateMachineBehaviour BuildStateMachine()
-		{
-			return new StateMachineBuilder("GameStateMachine")
-				.State<GameEntryState>()
-				.State<GameMainLoopState>()
-				.State<GamePauseState>()
-				.State<GameExitState>()
-				.Build();
+			ServicesManager.Instance.Dispose();
 		}
 	}
 }
