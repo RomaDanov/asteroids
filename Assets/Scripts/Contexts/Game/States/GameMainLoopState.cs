@@ -1,7 +1,6 @@
 using Inputs;
 using StateMachine;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Contexts.Game.States
 {

@@ -1,12 +1,18 @@
 using Inputs;
 using StateMachine;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Contexts.Game.States
 {
 	public class GamePauseState : State
 	{
+		private float originTimeScale;
+
+		internal override void Awake()
+		{
+			originTimeScale = Time.timeScale;
+		}
+
 		internal override void Enter()
 		{
 			Time.timeScale = 0;
@@ -23,7 +29,7 @@ namespace Contexts.Game.States
 
 		internal override void Exit()
 		{
-			Time.timeScale = 1;
+			Time.timeScale = originTimeScale;
 		}
 	}
 }
