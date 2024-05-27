@@ -1,11 +1,15 @@
 using Configs.Asteriods;
+using DataProviders;
 using System.Linq;
 
-public class AsteroidsDataProvider : DataProvider<AsteroidsLibraryConfig>
+namespace DataProviders
 {
-	public AsteroidConfig GetAsteroidConfig(string id)
+	public class AsteroidsDataProvider : DataProvider<AsteroidsLibraryConfig>
 	{
-		AsteroidConfig config = library.Items.FirstOrDefault(x => x.Id == id);
-		return config;
+		public AsteroidConfig GetAsteroidConfig(string id)
+		{
+			AsteroidConfig config = library.Items.FirstOrDefault(x => x.Id == id);
+			return config;
+		}
 	}
 }

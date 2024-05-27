@@ -7,6 +7,7 @@ namespace StateMachine
 	{
 		private Dictionary<string, State> states = new();
 		private State currentState;
+		private string prevStateId;
 
 		public string Name { get; private set; }
 		public bool IsActive { get; private set; }
@@ -62,6 +63,7 @@ namespace StateMachine
 
 			if (states.TryGetValue(stateId, out State state))
 			{
+				prevStateId = CurrentStateId;
 				currentState = state;
 				CurrentStateId = stateId;
 				currentState.Enter();
@@ -90,6 +92,21 @@ namespace StateMachine
 
 			string nextStateId = states.ElementAt(nextStateIndex).Key;
 			SwitchState(nextStateId);
+		}
+
+		public void SwitchPrevState()
+		{
+			if (!IsActive) return;
+			if (currentState == null) return;
+
+			int prevStateIndex = states.ToList().FindIndex(x => x.Key == prevStateId);
+			if (prevStateIndex == -1)
+			{
+				currentState?.Exit();
+				currentState = null;
+				return;
+			}
+			SwitchState(prevStateId);
 		}
 
 		public void Update()

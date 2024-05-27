@@ -1,4 +1,5 @@
 using Contexts.Game.States;
+using DataProviders;
 using Inputs;
 using Messages;
 using ObjectPool;
@@ -10,23 +11,15 @@ namespace Contexts.Game
 {
 	public class GameEntryPoint : MonoBehaviour
 	{
+		[SerializeField] private Player player;
+
 		private StateMachine.StateMachineBehaviour stateMachine;
 
-		private void Start()
+#region Unity Methods
+		private void Awake()
 		{
-			ServicesManager.Instance.Register<ShipsDataProvider>();
-			ServicesManager.Instance.Register<EnemiesDataProvider>();
-			ServicesManager.Instance.Register<AsteroidsDataProvider>();
-			ServicesManager.Instance.InitializeServices();
-
-			stateMachine = new StateMachineBuilder("GameStateMachine")
-				.State<GameEntryState>()
-				.State<GameMainLoopState>()
-				.State<GamePauseState>()
-				.State<GameExitState>()
-				.Build();
-
-			stateMachine.Start<GameEntryState>();
+			InitializeServices();
+			InitializeStateMachine();
 		}
 
 		private void Update()
@@ -36,14 +29,49 @@ namespace Contexts.Game
 
 		private void OnDestroy()
 		{
-			stateMachine?.Stop();
-			stateMachine?.Dispose();
+			DisposeStateMachine();
+			DisposeService();
+		}
+#endregion
 
+#region Initialize
+		private void InitializeServices()
+		{
+			ServicesManager.Instance.Register<ShipsDataProvider>();
+			ServicesManager.Instance.Register<EnemiesDataProvider>();
+			ServicesManager.Instance.Register<AsteroidsDataProvider>();
+			ServicesManager.Instance.Register<WeaponsDataProvider>();
+			ServicesManager.Instance.InitializeServices();
+		}
+
+		private void InitializeStateMachine()
+		{
+			stateMachine = new StateMachineBuilder("GameStateMachine")
+				.State(new GameEntryState(player))
+				.State<GameMainLoopState>()
+				.State<GamePauseState>()
+				.State<GameExitState>()
+				.Build();
+
+			stateMachine.Start<GameEntryState>();
+		}
+#endregion
+
+#region Dispose
+		private void DisposeService()
+		{
 			InputManager.Instance?.Dispose();
 			MessageRouter.Instance?.Dispose();
 			ObjectPoolService.Instance?.Dispose();
 
 			ServicesManager.Instance.Dispose();
 		}
+
+		private void DisposeStateMachine()
+		{
+			stateMachine?.Stop();
+			stateMachine?.Dispose();
+		}
+#endregion
 	}
 }

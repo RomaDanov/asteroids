@@ -1,11 +1,15 @@
 using Configs.Enemies;
+using DataProviders;
 using System.Linq;
 
-public class EnemiesDataProvider : DataProvider<EnemiesLibraryConfig>
+namespace DataProviders
 {
-	public EnemyConfig GetEnemyConfig(string id)
+	public class EnemiesDataProvider : DataProvider<EnemiesLibraryConfig>
 	{
-		EnemyConfig config = library.Items.FirstOrDefault(x => x.Id == id);
-		return config;
+		public EnemyConfig GetEnemyConfig(string id)
+		{
+			EnemyConfig config = library.Items.FirstOrDefault(x => x.Id == id);
+			return config;
+		}
 	}
 }

@@ -244,6 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 695f066365e5fdf42b28c8bbf5f9e39b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1747990888}
 --- !u!4 &547134546
 Transform:
   m_ObjectHideFlags: 0
@@ -268,8 +269,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 553219301}
+  - component: {fileID: 553219302}
   m_Layer: 0
-  m_Name: ShipDefault
+  m_Name: ShipBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -283,14 +285,26 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 553219300}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 1169782124}
-  m_Father: {fileID: 0}
+  - {fileID: 1098521082}
+  m_Father: {fileID: 1747990889}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &553219302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553219300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b46260f6cee3224bb002dca41d50225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1098521081
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,10 +332,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.34, y: 0.34, z: 0.34}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 1169782124}
+  m_Father: {fileID: 553219301}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1098521083
 SpriteRenderer:
@@ -375,7 +389,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1169782123
+--- !u!1 &1747990886
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -383,34 +397,63 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1169782124}
+  - component: {fileID: 1747990889}
+  - component: {fileID: 1747990888}
+  - component: {fileID: 1747990890}
   m_Layer: 0
-  m_Name: View
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1169782124
+--- !u!114 &1747990888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747990886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da17565d2beab744c9ca82d02376b0d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shipComponent: {fileID: 553219302}
+--- !u!4 &1747990889
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1169782123}
+  m_GameObject: {fileID: 1747990886}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1098521082}
-  m_Father: {fileID: 553219301}
+  - {fileID: 553219301}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1747990890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747990886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08d36b71bf5371d439dd60fc614f92ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controllTransform: {fileID: 1747990889}
+  offset: 1.26
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 547134546}
   - {fileID: 519420032}
-  - {fileID: 553219301}
+  - {fileID: 1747990889}

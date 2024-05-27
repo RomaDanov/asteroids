@@ -2,6 +2,7 @@ using Inputs;
 using Messages;
 using StateMachine;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Contexts.Game.States
 {
@@ -17,6 +18,7 @@ namespace Contexts.Game.States
 		internal override void Enter()
 		{
 			MessageRouter.Instance.Subscribe<GameMessages.UnpauseGameMessage>(OnUnpausedGame);
+			MessageRouter.Instance.Subscribe<GameMessages.ExitGameMessage>(OnExitGame);
 
 			Time.timeScale = 0;
 			MessageRouter.Instance.Publish(new GameMessages.GamePausedMessage());
@@ -28,7 +30,7 @@ namespace Contexts.Game.States
 		{
 			if (InputManager.Instance.Input.GetPause())
 			{
-				Finish<GameMainLoopState>();
+				Return();
 			}
 		}
 
@@ -42,7 +44,12 @@ namespace Contexts.Game.States
 
 		private void OnUnpausedGame(GameMessages.UnpauseGameMessage message)
 		{
-			Finish<GameMainLoopState>();
+			Return();
+		}
+
+		private void OnExitGame(GameMessages.ExitGameMessage message)
+		{
+			Finish<GameExitState>();
 		}
 	}
 }

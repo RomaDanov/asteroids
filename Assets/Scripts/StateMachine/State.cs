@@ -14,6 +14,11 @@ namespace StateMachine
 			stateMachine.SwitchNextState();
 		}
 
+		internal void Return()
+		{
+			stateMachine.SwitchPrevState();
+		}
+
 		internal void Finish(string stateId)
 		{
 			stateMachine.SwitchState(stateId);

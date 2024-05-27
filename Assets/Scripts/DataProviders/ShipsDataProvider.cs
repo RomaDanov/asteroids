@@ -1,11 +1,15 @@
 using Configs.Ships;
+using DataProviders;
 using System.Linq;
 
-public class ShipsDataProvider : DataProvider<ShipsLibraryConfig>
+namespace DataProviders
 {
-	public ShipConfig GetShipConfig(string id)
+	public class ShipsDataProvider : DataProvider<ShipsLibraryConfig>
 	{
-		ShipConfig shipConfig = library.Items.FirstOrDefault(x => x.Id == id);
-		return shipConfig;
+		public ShipConfig GetShipConfig(string id)
+		{
+			ShipConfig shipConfig = library.Items.FirstOrDefault(x => x.Id == id);
+			return shipConfig;
+		}
 	}
 }

@@ -6,4 +6,6 @@ public class GameMessages
 	public struct GamePausedMessage : IMessage { }
 	public struct UnpauseGameMessage : IMessage { }
 	public struct GameUnpausedMessage : IMessage { }
+
+	public struct ExitGameMessage : IMessage { }
 }
