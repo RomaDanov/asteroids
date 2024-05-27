@@ -23,7 +23,7 @@ namespace Contexts.Game.States
 
 		internal override void Enter()
 		{
-			ShipConfig ship = shipsDataProvider.GetShipConfig("SHIP_PLAYER");
+			ShipConfig ship = shipsDataProvider.GetShipConfig("SHIP_BLUE");
 			player.Configure(ship);
 
 			Finish();

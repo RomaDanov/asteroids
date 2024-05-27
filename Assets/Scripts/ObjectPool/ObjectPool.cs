@@ -11,12 +11,10 @@ namespace ObjectPool
 
 		private Queue<T> availables = new Queue<T>();
 
-		public ObjectPool(Transform mainRoot, T prefab)
+		public ObjectPool(string name, Transform mainRoot, T prefab)
 		{
 			this.prefab = prefab;
-
-			var prefabType = typeof(T);
-			CreateRoot(prefabType.Name, mainRoot);
+			CreateRoot(name, mainRoot);
 		}
 
 		public void Init(int prewarmLoad)
@@ -37,6 +35,8 @@ namespace ObjectPool
 
 			available = availables.Dequeue();
 			available.transform.SetParent(insertParent, false);
+			available.transform.localPosition = Vector3.zero;
+			available.transform.localRotation = Quaternion.Euler(0, 0, 0);
 			available.OnGet();
 
 			return available;

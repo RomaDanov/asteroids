@@ -12,13 +12,13 @@ namespace Configs.Ships
 		[SerializeField, Min(0)] private float acceleration;
 		[SerializeField, Min(0)] private float torq;
 		[SerializeField, Min(0)] private float brakingSpeed;
-		[SerializeField] private GameObject prefab;
+		[SerializeField] private ShipController prefab;
 
 		public int MaxHealth => maxHealth;
 		public float MaxSpeed => maxSpeed;
 		public float Acceleration => acceleration;
 		public float Torq => torq;
 		public float BrakingSpeed => brakingSpeed;
-		public GameObject Prefab => prefab;
+		public ShipController Prefab => prefab;
 	}
 }

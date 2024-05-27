@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89fcf6ac2eb6ba4084f64b4b5fdb665, type: 3}
   m_Name: EnemyShip
   m_EditorClassIdentifier: 
-  id: SHIP_ENEMY
+  id: SHIP_RED
   maxHealth: 2
   maxSpeed: 0.1
   acceleration: 0.1
   torq: 0.1
   brakingSpeed: 0
-  prefab: {fileID: 0}
+  prefab: {fileID: 1416179842748480489, guid: 82dce55c71fcc5c43b296671bda332b9, type: 3}

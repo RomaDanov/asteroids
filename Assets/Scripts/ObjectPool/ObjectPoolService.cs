@@ -1,5 +1,4 @@
 using Singleton;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +8,7 @@ namespace ObjectPool
 	{
 		private const string ROOT_NAME = "[Object Pool]";
 
-		private readonly Dictionary<Type, IObjectPool> pools = new();
+		private readonly Dictionary<string, IObjectPool> pools = new();
 
 		private Transform root;
 
@@ -21,21 +20,12 @@ namespace ObjectPool
 			GameObject.DontDestroyOnLoad(rootObject);
 		}
 
-		public IObjectPool<T> GetPool<T>() where T : PoolableObject<T>, new()
-		{
-			var objType = typeof(T);
-			if (!pools.TryGetValue(objType, out var objectPool))
-			{
-				return null;
-			}
-
-			return (IObjectPool<T>)objectPool;
-		}
-
 		public IObjectPool<T> GetOrCreatePool<T>(T obj, int prewarmLoad) where T : PoolableObject<T>, new()
 		{
 			var objType = typeof(T);
-			if (!pools.TryGetValue(objType, out var objectPool))
+			string poolId = $"{objType} - {obj.gameObject.name}";
+
+			if (!pools.TryGetValue(poolId, out var objectPool))
 			{
 				objectPool = CreatePool(obj, prewarmLoad);
 			}
@@ -48,9 +38,11 @@ namespace ObjectPool
 			if (root == null) CreateRoot();
 
 			var objType = typeof(T);
-			var newObjectPool = new ObjectPool<T>(root, obj);
+			string poolId = $"{objType} - {obj.gameObject.name}";
+
+			var newObjectPool = new ObjectPool<T>(poolId, root, obj);
 			newObjectPool.Init(prewarmLoad);
-			pools.Add(objType, newObjectPool);
+			pools.Add(poolId, newObjectPool);
 
 			return newObjectPool;
 		}
