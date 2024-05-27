@@ -22,7 +22,7 @@ public class Ship : MonoBehaviour
 		if (config == null) return;
 
 		Brake();
-		Move(MoveDirection);
+		Move(Mathf.Clamp(MoveDirection, 0, 1));
 		Rotate(RotateDirection);
 	}
 

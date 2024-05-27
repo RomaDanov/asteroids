@@ -4,7 +4,7 @@ namespace Inputs
 {
 	public class GamepadInput : IInput
 	{
-		public float GetAccelerate() => Gamepad.current.rightStick.ReadValue().y;
+		public float GetAccelerate() => Gamepad.current.leftStick.ReadValue().y;
 		public bool GetAlternativeFire() => Gamepad.current.bButton.IsPressed();
 		public bool GetFire() => Gamepad.current.aButton.IsPressed();
 		public bool GetPause() => Gamepad.current.startButton.wasPressedThisFrame;
