@@ -13,3 +13,8 @@ MonoBehaviour:
   m_Name: AsteroidSmall
   m_EditorClassIdentifier: 
   id: ASTEROID_SMALL
+  maxHealth: 1
+  moveSpeedRange: {x: 0, y: 0}
+  rotateSpeedRange: {x: 0, y: 0}
+  prefab: {fileID: 0}
+  destructionFragments: []

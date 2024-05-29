@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class PlayerBoundary : MonoBehaviour
 {
-	[SerializeField] private Transform controllTransform;
-	[SerializeField] private float offset;
+	[SerializeField] private float size;
 
 	private Camera mainCamera;
 
@@ -17,40 +16,39 @@ public class PlayerBoundary : MonoBehaviour
 		Vector3 min = mainCamera.ScreenToWorldPoint(new Vector3(0, 0));
 		Vector3 max = mainCamera.ScreenToWorldPoint(new Vector3(mainCamera.pixelWidth, mainCamera.pixelHeight));
 
-		min.x += offset;
-		min.y += offset;
+		min.x += size;
+		min.y += size;
 
-		max.x -= offset;
-		max.y -= offset;
+		max.x -= size;
+		max.y -= size;
 
-		Vector3 clampedPosition = controllTransform.position;
+		Vector3 clampedPosition = transform.position;
 
-		if (controllTransform.position.x < min.x)
+		if (transform.position.x < min.x)
 		{
 			clampedPosition.x = min.x;
 		}
-		else if (controllTransform.position.x > max.x)
+		else if (transform.position.x > max.x)
 		{
 			clampedPosition.x = max.x;
 		}
 
-		if (controllTransform.position.y < min.y)
+		if (transform.position.y < min.y)
 		{
 			clampedPosition.y = min.y;
 		}
-		else if (controllTransform.position.y > max.y)
+		else if (transform.position.y > max.y)
 		{
 			clampedPosition.y = max.y;
 		}
 
-		controllTransform.position = clampedPosition;
+		transform.position = clampedPosition;
 	}
 
 #if UNITY_EDITOR
 	private void OnDrawGizmos()
 	{
-		if (controllTransform == null) return;
-		Gizmos.DrawWireSphere(controllTransform.position, offset);
+		Gizmos.DrawWireSphere(transform.position, size);
 	}
 #endif
 }

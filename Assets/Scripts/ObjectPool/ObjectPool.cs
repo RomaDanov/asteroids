@@ -45,6 +45,9 @@ namespace ObjectPool
 		public void Release(T obj)
 		{
 			availables.Enqueue(obj);
+
+			if (obj == null) return;
+
 			obj.transform.SetParent(root);
 			obj.OnRelease();
 		}

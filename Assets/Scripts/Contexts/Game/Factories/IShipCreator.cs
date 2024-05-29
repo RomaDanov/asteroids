@@ -3,6 +3,6 @@ using UnityEngine;
 
 public interface IShipCreator
 {
-	ShipController Create(string id, Transform parent, Transform controllTransform);
-	ShipController Create(ShipConfig config, Transform parent, Transform controllTransform);
+	ShipView Create(string id, Transform parent, Transform controllTransform);
+	ShipView Create(ShipConfig config, Transform parent, Transform controllTransform);
 }

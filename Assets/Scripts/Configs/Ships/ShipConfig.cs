@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Configs.Ships
@@ -8,17 +9,25 @@ namespace Configs.Ships
 		[Header("Ship")]
 		[Space]
 		[SerializeField, Min(0)] private int maxHealth;
+		[SerializeField] private ShipView prefab;
+		[SerializeField] private MovementSettings movementSettings;
+
+		public int MaxHealth => maxHealth;
+		public ShipView Prefab => prefab;
+		public MovementSettings MovementSettings => movementSettings;
+	}
+
+	[Serializable]
+	public class MovementSettings
+	{
 		[SerializeField, Min(0)] private float maxSpeed;
 		[SerializeField, Min(0)] private float acceleration;
 		[SerializeField, Min(0)] private float torq;
 		[SerializeField, Min(0)] private float brakingSpeed;
-		[SerializeField] private ShipController prefab;
 
-		public int MaxHealth => maxHealth;
 		public float MaxSpeed => maxSpeed;
 		public float Acceleration => acceleration;
 		public float Torq => torq;
 		public float BrakingSpeed => brakingSpeed;
-		public ShipController Prefab => prefab;
 	}
 }

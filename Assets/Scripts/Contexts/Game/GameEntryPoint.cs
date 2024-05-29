@@ -61,9 +61,6 @@ namespace Contexts.Game
 		private void DisposeService()
 		{
 			InputManager.Instance?.Dispose();
-			MessageRouter.Instance?.Dispose();
-			ObjectPoolService.Instance?.Dispose();
-
 			ServicesManager.Instance.Dispose();
 		}
 

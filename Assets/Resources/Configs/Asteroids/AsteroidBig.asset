@@ -13,3 +13,10 @@ MonoBehaviour:
   m_Name: AsteroidBig
   m_EditorClassIdentifier: 
   id: ASTEROID_BIG
+  maxHealth: 1
+  moveSpeedRange: {x: 0, y: 0}
+  rotateSpeedRange: {x: 0, y: 0}
+  prefab: {fileID: 2191559770087751797, guid: c0399174173ee7a48aa341b7ef2919f3, type: 3}
+  destructionFragments:
+  - {fileID: 11400000, guid: 48b0b07626994c3478d09566908b5f33, type: 2}
+  - {fileID: 11400000, guid: 48b0b07626994c3478d09566908b5f33, type: 2}

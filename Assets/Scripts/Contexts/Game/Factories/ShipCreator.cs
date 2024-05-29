@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class ShipCreator : IShipCreator
 {
-	public ShipController Create(string id, Transform parent, Transform controllTransform = null)
+	public ShipView Create(string id, Transform parent, Transform controllTransform = null)
 	{
 		ShipsDataProvider shipsDataProvider = ServicesManager.Instance.Get<ShipsDataProvider>();
 		ShipConfig config = shipsDataProvider.GetShipConfig(id);
@@ -19,7 +19,7 @@ public class ShipCreator : IShipCreator
 		return Create(config, parent, controllTransform);
 	}
 
-	public ShipController Create(ShipConfig config, Transform parent, Transform controllTransform = null)
+	public ShipView Create(ShipConfig config, Transform parent, Transform controllTransform = null)
 	{
 		if (config == null)
 		{
@@ -27,10 +27,10 @@ public class ShipCreator : IShipCreator
 			return null;
 		}
 
-		ShipController prefabRef = config.Prefab;
+		ShipView prefabRef = config.Prefab;
 		var pool = ObjectPoolService.Instance.GetOrCreatePool(prefabRef, 5);
-		ShipController ship = pool.Get(parent);
-		ship.Configure(config, controllTransform);
+		ShipView ship = pool.Get(parent);
+		ship.Configure(config.Id);
 		return ship;
 	}
 }

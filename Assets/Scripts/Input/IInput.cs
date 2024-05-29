@@ -1,9 +1,10 @@
+using UnityEngine;
+
 namespace Inputs
 {
 	public interface IInput
 	{
-		float GetAccelerate();
-		float GetRotation();
+		Vector2 GetAxis();
 		bool GetFire();
 		bool GetAlternativeFire();
 		bool GetPause();

@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: SHIP_BLUE
   maxHealth: 2
-  maxSpeed: 5
-  acceleration: 0.5
-  torq: 200
-  brakingSpeed: 5
   prefab: {fileID: 1416179842748480489, guid: db2e99de15d80b548b7edaa5de784da5, type: 3}
+  movementSettings:
+    maxSpeed: 5
+    acceleration: 0.5
+    torq: 200
+    brakingSpeed: 5
