@@ -1,4 +1,3 @@
-using Configs.Ships;
 using DataProviders;
 using ServiceLocator;
 using StateMachine;
@@ -7,8 +6,7 @@ namespace Contexts.Game.States
 {
 	public class GameEntryState : State
 	{
-		private ShipsDataProvider shipsDataProvider;
-
+		private CommonDataProvider commonDataProvider;
 		private Player player;
 
 		public GameEntryState(Player player)
@@ -18,14 +16,12 @@ namespace Contexts.Game.States
 
 		internal override void Awake()
 		{
-			shipsDataProvider = ServicesManager.Instance.Get<ShipsDataProvider>();
+			commonDataProvider = ServicesManager.Instance.Get<CommonDataProvider>();
 		}
 
 		internal override void Enter()
 		{
-			ShipConfig ship = shipsDataProvider.GetShipConfig("SHIP_BLUE");
-			player.Configure(ship);
-
+			player.Configure(commonDataProvider.GetDefaultPlayerShip(), commonDataProvider.GetDefaultPlayerWeapons());
 			Finish();
 		}
 	}

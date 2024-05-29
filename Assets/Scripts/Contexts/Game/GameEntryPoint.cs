@@ -37,6 +37,7 @@ namespace Contexts.Game
 #region Initialize
 		private void InitializeServices()
 		{
+			ServicesManager.Instance.Register<CommonDataProvider>();
 			ServicesManager.Instance.Register<ShipsDataProvider>();
 			ServicesManager.Instance.Register<EnemiesDataProvider>();
 			ServicesManager.Instance.Register<AsteroidsDataProvider>();
