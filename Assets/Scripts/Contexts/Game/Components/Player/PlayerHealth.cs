@@ -1,48 +1,51 @@
 using System;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour, IDamageable
+namespace Contexts.Game.Components.Player
 {
-	public event Action<float> DamageTaken;
-	public event Action Died;
-
-	private float maxHealth;
-	private float currentHealth;
-
-	public bool IsAlive => currentHealth > 0;
-
-	public void Configure(float maxHealth)
+	public class PlayerHealth : MonoBehaviour, IDamageable
 	{
-		this.maxHealth = maxHealth;
-		currentHealth = maxHealth;
-	}
+		public event Action<float> DamageTaken;
+		public event Action Died;
 
-	public void TakeDamage(float damage)
-	{
-		if (!IsAlive)
+		private float maxHealth;
+		private float currentHealth;
+
+		public bool IsAlive => currentHealth > 0;
+
+		public void Configure(float maxHealth)
 		{
-			Debug.LogError("Player already dead!");
-			return;
+			this.maxHealth = maxHealth;
+			currentHealth = maxHealth;
 		}
 
-		if (damage <= 0)
+		public void TakeDamage(float damage)
 		{
-			Debug.LogError($"Ñan't deal {damage} damage!");
-			return;
+			if (!IsAlive)
+			{
+				Debug.LogError("Player already dead!");
+				return;
+			}
+
+			if (damage <= 0)
+			{
+				Debug.LogError($"Ñan't deal {damage} damage!");
+				return;
+			}
+
+			currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
+			DamageTaken?.Invoke(damage);
+
+			if (!IsAlive)
+			{
+				Die();
+			}
 		}
 
-		currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
-		DamageTaken?.Invoke(damage);
-
-		if (!IsAlive)
+		public void Die()
 		{
-			Die();
+			Died?.Invoke();
+			Destroy(gameObject);
 		}
-	}
-
-	public void Die()
-	{
-		Died?.Invoke();
-		Destroy(gameObject);
 	}
 }

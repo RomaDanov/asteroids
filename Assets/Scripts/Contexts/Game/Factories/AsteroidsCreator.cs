@@ -1,35 +1,39 @@
 using Configs.Asteriods;
+using Contexts.Game.Components.Asteroid;
 using DataProviders;
 using ObjectPool;
 using ServiceLocator;
 using UnityEngine;
 
-public class AsteroidsCreator : IAsteroidsCreator
+namespace Contexts.Game.Factories
 {
-	public Asteroid Create(string id, Transform parent)
+	public class AsteroidsCreator : IAsteroidsCreator
 	{
-		AsteroidsDataProvider dataProvider = ServicesManager.Instance.Get<AsteroidsDataProvider>();
-		AsteroidConfig config = dataProvider.GetAsteroidConfig(id);
-		if (config == null)
+		public Asteroid Create(string id, Transform parent)
 		{
-			Debug.LogError($"Asteroid with id {id} doesn't exist");
-			return null;
+			AsteroidsDataProvider dataProvider = ServicesManager.Instance.Get<AsteroidsDataProvider>();
+			AsteroidConfig config = dataProvider.GetAsteroidConfig(id);
+			if (config == null)
+			{
+				Debug.LogError($"Asteroid with id {id} doesn't exist");
+				return null;
+			}
+
+			return Create(config, parent);
 		}
 
-		return Create(config, parent);
-	}
-
-	public Asteroid Create(AsteroidConfig config, Transform parent)
-	{
-		if (config == null)
+		public Asteroid Create(AsteroidConfig config, Transform parent)
 		{
-			Debug.LogError($"Asteroid with id {config} doesn't exist");
-			return null;
-		}
+			if (config == null)
+			{
+				Debug.LogError($"Asteroid with id {config} doesn't exist");
+				return null;
+			}
 
-		Asteroid prefabRef = config.Prefab;
-		var pool = ObjectPoolService.Instance.GetOrCreatePool(prefabRef, 5);
-		Asteroid asteroid = pool.Get(parent);
-		return asteroid;
+			Asteroid prefabRef = config.Prefab;
+			var pool = ObjectPoolService.Instance.GetOrCreatePool(prefabRef, 5);
+			Asteroid asteroid = pool.Get(parent);
+			return asteroid;
+		}
 	}
 }

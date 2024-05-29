@@ -1,3 +1,5 @@
+using Contexts.Game.Components.Weapons;
+using System;
 using UnityEngine;
 
 namespace Configs.Weapons
@@ -14,7 +16,8 @@ namespace Configs.Weapons
 		[SerializeField] private int projectileCount;
 		[SerializeField] private int projectileInterval;
 		[SerializeField] private float projectileSpeed;
-		[SerializeField] private GameObject prefab;
+		[SerializeField] private GameObject projectilePrefab;
+		[SerializeField] private Weapon prefab;
 
 		public int Damage => damage;
 		public int ClipCapacity => clipCapacity;
@@ -23,6 +26,7 @@ namespace Configs.Weapons
 		public int ProjectileCount => projectileCount;
 		public int ProjectileInterval => projectileInterval;
 		public float ProjectileSpeed => projectileSpeed;
-		public GameObject Prefab => prefab;
+		public GameObject ProjectilePrefab => projectilePrefab;
+		public Weapon Prefab => prefab;
 	}
 }

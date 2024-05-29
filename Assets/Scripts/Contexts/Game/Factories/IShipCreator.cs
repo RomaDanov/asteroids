@@ -1,8 +1,11 @@
 using Configs.Ships;
 using UnityEngine;
 
-public interface IShipCreator
+namespace Contexts.Game.Factories
 {
-	ShipView Create(string id, Transform parent);
-	ShipView Create(ShipConfig config, Transform parent);
+	public interface IShipCreator
+	{
+		ShipView Create(string id, Transform parent);
+		ShipView Create(ShipConfig config, Transform parent);
+	}
 }

@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: WEAPON_PISTOL
   damage: 1
-  clipCapacity: 0
-  reloadTime: 0
+  clipCapacity: 10
+  reloadTime: 1
   shotInterval: 0.1
   projectileCount: 1
   projectileInterval: 0
   projectileSpeed: 10
-  prefab: {fileID: 0}
+  projectilePrefab: {fileID: 0}
+  prefab: {fileID: 2427590773265081060, guid: 9a80df37d13dece4c857009111e30753, type: 3}

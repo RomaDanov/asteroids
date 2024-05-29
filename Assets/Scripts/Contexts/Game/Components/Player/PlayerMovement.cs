@@ -1,72 +1,76 @@
 using Configs.Ships;
+using Contexts.Game.Components.Movement;
 using Inputs;
 using UnityEngine;
 
-[RequireComponent(typeof(IMovable))]
-public class PlayerMovement : MonoBehaviour
+namespace Contexts.Game.Components.Player
 {
-	private IMovable movable;
-	private MovementSettings movementSettings;
-
-	private Vector3 inputAxis;
-
-	public void Configure(MovementSettings movementSettings)
+	[RequireComponent(typeof(IMovable))]
+	public class PlayerMovement : MonoBehaviour
 	{
-		this.movementSettings = movementSettings;
-	}
+		private IMovable movable;
+		private MovementSettings movementSettings;
 
-	private void Update()
-	{
-		IInput input = InputManager.Instance.Input;
-		if (input == null) return;
+		private Vector3 inputAxis;
 
-		inputAxis = input.GetAxis();
-	}
+		public void Configure(MovementSettings movementSettings)
+		{
+			this.movementSettings = movementSettings;
+		}
 
-	private void FixedUpdate()
-	{
-		Slowdown();
-		Move();
-		Rotate();
-		ClampVelocity();
-	}
+		private void Update()
+		{
+			IInput input = InputManager.Instance.Input;
+			if (input == null) return;
 
-	private void ForceBreak()
-	{
-		movable.ApplyForce(-movable.Velocity);
-	}
+			inputAxis = input.GetAxis();
+		}
 
-	private void Slowdown()
-	{
-		if (inputAxis.y > 0) return;
+		private void FixedUpdate()
+		{
+			Slowdown();
+			Move();
+			Rotate();
+			ClampVelocity();
+		}
 
-		Vector2 brakeForce = -movable.Velocity * movementSettings.BrakeForce * Time.fixedDeltaTime;
-		movable.ApplyForce(brakeForce);
-	}
+		private void ForceBreak()
+		{
+			movable.ApplyForce(-movable.Velocity);
+		}
 
-	private void Move()
-	{
-		float clampedDirection = Mathf.Clamp(inputAxis.y, 0f, 1f);
-		Vector2 moveForce = transform.up * clampedDirection * movementSettings.Acceleration * Time.fixedDeltaTime;
-		movable.ApplyForce(moveForce);
-	}
+		private void Slowdown()
+		{
+			if (inputAxis.y > 0) return;
 
-	private void Rotate()
-	{
-		transform.up = Quaternion.AngleAxis(-inputAxis.x * movementSettings.Torq * Time.fixedDeltaTime, Vector3.forward) * transform.up;
-	}
+			Vector2 brakeForce = -movable.Velocity * movementSettings.BrakeForce * Time.fixedDeltaTime;
+			movable.ApplyForce(brakeForce);
+		}
 
-	private void ClampVelocity()
-	{
-		Vector2 clampedVelocity = Vector2.ClampMagnitude(movable.Velocity, movementSettings.MaxSpeed);
-		movable.Velocity = clampedVelocity;
-	}
+		private void Move()
+		{
+			float clampedDirection = Mathf.Clamp(inputAxis.y, 0f, 1f);
+			Vector2 moveForce = transform.up * clampedDirection * movementSettings.Acceleration * Time.fixedDeltaTime;
+			movable.ApplyForce(moveForce);
+		}
+
+		private void Rotate()
+		{
+			transform.up = Quaternion.AngleAxis(-inputAxis.x * movementSettings.Torq * Time.fixedDeltaTime, Vector3.forward) * transform.up;
+		}
+
+		private void ClampVelocity()
+		{
+			Vector2 clampedVelocity = Vector2.ClampMagnitude(movable.Velocity, movementSettings.MaxSpeed);
+			movable.Velocity = clampedVelocity;
+		}
 
 #if UNITY_EDITOR
-	private void OnValidate()
-	{
-		if (movable != null) return;
-		movable = GetComponent<IMovable>();
-	}
+		private void OnValidate()
+		{
+			if (movable != null) return;
+			movable = GetComponent<IMovable>();
+		}
 #endif
+	}
 }

@@ -1,12 +1,15 @@
 using Configs.Asteriods;
 using ObjectPool;
 
-public class Asteroid : PoolableObject<Asteroid>
+namespace Contexts.Game.Components.Asteroid
 {
-	private AsteroidConfig config;
-
-	public void Configure(AsteroidConfig config)
+	public class Asteroid : PoolableObject<Asteroid>
 	{
-		this.config = config;
+		private AsteroidConfig config;
+
+		public void Configure(AsteroidConfig config)
+		{
+			this.config = config;
+		}
 	}
 }

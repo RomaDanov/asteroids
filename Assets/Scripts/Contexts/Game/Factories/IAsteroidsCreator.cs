@@ -1,8 +1,12 @@
 using Configs.Asteriods;
+using Contexts.Game.Components.Asteroid;
 using UnityEngine;
 
-public interface IAsteroidsCreator
+namespace Contexts.Game.Factories
 {
-	Asteroid Create(string id, Transform parent);
-	Asteroid Create(AsteroidConfig config, Transform parent);
+	public interface IAsteroidsCreator
+	{
+		Asteroid Create(string id, Transform parent);
+		Asteroid Create(AsteroidConfig config, Transform parent);
+	}
 }

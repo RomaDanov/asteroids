@@ -1,26 +1,30 @@
 using Configs.Ships;
 using Configs.Weapons;
+using Contexts.Game.Factories;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+namespace Contexts.Game.Components.Player
 {
-	[SerializeField] private PlayerMovement movement;
-	[SerializeField] private PlayerHealth health;
-	[SerializeField] private PlayerEquipments equipments;
-	[SerializeField] private PlayerAttack attack;
-
-	public void Configure(ShipConfig shipConfig, IReadOnlyCollection<WeaponConfig> weapons)
+	public class Player : MonoBehaviour
 	{
-		ConfigureShip(shipConfig);
-		movement?.Configure(shipConfig.MovementSettings);
-		health?.Configure(shipConfig.MaxHealth);
-		equipments?.Configure(weapons);
-	}
+		[SerializeField] private PlayerMovement movement;
+		[SerializeField] private PlayerHealth health;
+		[SerializeField] private PlayerEquipments equipments;
+		[SerializeField] private PlayerAttack attack;
 
-	private void ConfigureShip(ShipConfig ship)
-	{
-		ShipCreator creator = new ShipCreator();
-		creator.Create(ship, transform);
+		public void Configure(ShipConfig shipConfig, IReadOnlyCollection<WeaponConfig> weapons)
+		{
+			ConfigureShip(shipConfig);
+			movement?.Configure(shipConfig.MovementSettings);
+			health?.Configure(shipConfig.MaxHealth);
+			equipments?.Configure(weapons);
+		}
+
+		private void ConfigureShip(ShipConfig ship)
+		{
+			ShipCreator creator = new ShipCreator();
+			creator.Create(ship, transform);
+		}
 	}
 }

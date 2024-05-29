@@ -1,8 +1,7 @@
+using Contexts.Game.Components.Player;
 using Contexts.Game.States;
 using DataProviders;
 using Inputs;
-using Messages;
-using ObjectPool;
 using ServiceLocator;
 using StateMachine;
 using UnityEngine;
@@ -15,7 +14,7 @@ namespace Contexts.Game
 
 		private StateMachine.StateMachineBehaviour stateMachine;
 
-#region Unity Methods
+		#region Unity Methods
 		private void Awake()
 		{
 			InitializeServices();
@@ -32,9 +31,9 @@ namespace Contexts.Game
 			DisposeStateMachine();
 			DisposeService();
 		}
-#endregion
+		#endregion
 
-#region Initialize
+		#region Initialize
 		private void InitializeServices()
 		{
 			ServicesManager.Instance.Register<CommonDataProvider>();
@@ -56,9 +55,9 @@ namespace Contexts.Game
 
 			stateMachine.Start<GameEntryState>();
 		}
-#endregion
+		#endregion
 
-#region Dispose
+		#region Dispose
 		private void DisposeService()
 		{
 			InputManager.Instance?.Dispose();
@@ -70,6 +69,6 @@ namespace Contexts.Game
 			stateMachine?.Stop();
 			stateMachine?.Dispose();
 		}
-#endregion
+		#endregion
 	}
 }

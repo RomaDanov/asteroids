@@ -4,7 +4,7 @@ namespace ObjectPool
 {
 	public abstract class PoolableObject<T> : MonoBehaviour, IPoolableObject
 	{
-		protected IObjectPool<T> Pool { get; private set; }
+		public IObjectPool<T> Pool { get; private set; }
 
 		public virtual void Init(IObjectPool<T> pool)
 		{
