@@ -2,14 +2,13 @@ using Configs.Ships;
 using Inputs;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour, IMovable
+[RequireComponent(typeof(IMovable))]
+public class PlayerMovement : MonoBehaviour
 {
+	private IMovable movable;
 	private MovementSettings movementSettings;
 
 	private Vector3 inputAxis;
-	private float acceleration;
-
-	public float Velocity { get; private set; }
 
 	public void Configure(MovementSettings movementSettings)
 	{
@@ -27,39 +26,47 @@ public class PlayerMovement : MonoBehaviour, IMovable
 	private void FixedUpdate()
 	{
 		Slowdown();
-		Move(inputAxis.y);
-		Rotate(inputAxis.x);
+		Move();
+		Rotate();
+		ClampVelocity();
 	}
 
 	private void ForceBreak()
 	{
-		acceleration = 0;
-		Velocity = 0;
+		movable.ApplyForce(-movable.Velocity);
 	}
 
 	private void Slowdown()
 	{
-		if (Velocity > 0)
-		{
-			Velocity -= movementSettings.BrakingSpeed * Time.fixedDeltaTime;
-			if (Velocity < 0)
-			{
-				Velocity = 0;
-			}
-		}
+		if (inputAxis.y > 0) return;
+
+		Vector2 brakeForce = -movable.Velocity * movementSettings.BrakeForce * Time.fixedDeltaTime;
+		movable.ApplyForce(brakeForce);
 	}
 
-	private void Move(float direction)
+	private void Move()
 	{
-		acceleration += direction * movementSettings.Acceleration;
-		Velocity += acceleration;
-		Velocity = Velocity < movementSettings.MaxSpeed ? Velocity : movementSettings.MaxSpeed;
-		transform.position += transform.up * Velocity * Time.fixedDeltaTime;
-		acceleration *= 0;
+		float clampedDirection = Mathf.Clamp(inputAxis.y, 0f, 1f);
+		Vector2 moveForce = transform.up * clampedDirection * movementSettings.Acceleration * Time.fixedDeltaTime;
+		movable.ApplyForce(moveForce);
 	}
 
-	private void Rotate(float direction)
+	private void Rotate()
 	{
-		transform.up = Quaternion.AngleAxis(-direction * movementSettings.Torq * Time.fixedDeltaTime, Vector3.forward) * transform.up;
+		transform.up = Quaternion.AngleAxis(-inputAxis.x * movementSettings.Torq * Time.fixedDeltaTime, Vector3.forward) * transform.up;
 	}
+
+	private void ClampVelocity()
+	{
+		Vector2 clampedVelocity = Vector2.ClampMagnitude(movable.Velocity, movementSettings.MaxSpeed);
+		movable.Velocity = clampedVelocity;
+	}
+
+#if UNITY_EDITOR
+	private void OnValidate()
+	{
+		if (movable != null) return;
+		movable = GetComponent<IMovable>();
+	}
+#endif
 }

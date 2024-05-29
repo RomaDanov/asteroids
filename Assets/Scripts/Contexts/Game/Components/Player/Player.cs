@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
 	private void ConfigureShip(ShipConfig ship)
 	{
 		ShipCreator creator = new ShipCreator();
-		this.ship = creator.Create(ship, transform, transform);
+		this.ship = creator.Create(ship, transform);
 	}
 
 	private void Update()

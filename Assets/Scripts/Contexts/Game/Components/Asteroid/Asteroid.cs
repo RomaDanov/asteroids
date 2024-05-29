@@ -1,13 +1,12 @@
 using Configs.Asteriods;
 using ObjectPool;
-using UnityEngine;
 
 public class Asteroid : PoolableObject<Asteroid>
 {
-	[SerializeField] private AsteroidMovement movement;
+	private AsteroidConfig config;
 
 	public void Configure(AsteroidConfig config)
 	{
-		movement.Configure(config.MoveSpeedRange, config.RotateSpeedRange);
+		this.config = config;
 	}
 }
