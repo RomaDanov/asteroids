@@ -1,3 +1,5 @@
+using Contexts.Game.Components.Asteroid;
+using Contexts.Game.Components.Movement;
 using Contexts.Game.Components.Player;
 using Contexts.Game.Factories;
 using Contexts.Game.States;
@@ -21,8 +23,14 @@ namespace Contexts.Game
 			InitializeServices();
 			InitializeStateMachine();
 
+			//TEST
 			AsteroidsCreator creator = new AsteroidsCreator();
-			creator.Create("ASTEROID_BIG");
+			Asteroid asteroid = creator.Create("ASTEROID_BIG");
+			Vector3 pos = asteroid.transform.position;
+			pos.x += 3;
+			pos.y += 3;
+			asteroid.transform.position = pos;
+			//
 		}
 
 		private void Update()
