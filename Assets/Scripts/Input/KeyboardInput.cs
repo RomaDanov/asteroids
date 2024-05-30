@@ -29,7 +29,7 @@ namespace Inputs
 			return axis;
 		}
 
-		public bool GetAlternativeFire() => Keyboard.current.leftAltKey.IsPressed();
+		public bool GetAlternativeFire() => Keyboard.current.leftShiftKey.IsPressed();
 		public bool GetFire() => Keyboard.current.spaceKey.IsPressed();
 		public bool GetPause() => Keyboard.current.escapeKey.wasPressedThisFrame;
 	}

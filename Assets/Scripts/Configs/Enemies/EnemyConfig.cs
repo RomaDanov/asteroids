@@ -7,8 +7,8 @@ namespace Configs.Enemies
 	[CreateAssetMenu(fileName = "EnemyConfig", menuName = "Configs/Enemies/Config")]
 	public class EnemyConfig : Config
 	{
-		[Header("Enemy")]
 		[Space]
+		[Header("Enemy")]
 		[SerializeField] private ShipConfig shipConfig;
 		[SerializeField] private WeaponConfig weaponConfig;
 		[SerializeField] private GameObject prefab;

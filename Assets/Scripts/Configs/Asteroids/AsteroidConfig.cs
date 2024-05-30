@@ -7,6 +7,7 @@ namespace Configs.Asteriods
 	[CreateAssetMenu(fileName = "AsteroidConfig", menuName = "Configs/Asteroids/Config")]
 	public class AsteroidConfig : Config
 	{
+		[Space]
 		[Header("Asteroid")]
 		[SerializeField] private float maxHealth;
 		[SerializeField] private Vector2 moveSpeedRange;

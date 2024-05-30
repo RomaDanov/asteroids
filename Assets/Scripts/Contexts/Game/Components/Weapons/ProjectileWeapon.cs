@@ -1,21 +1,28 @@
 using Configs.Weapons;
+using Contexts.Game.Factories;
+using System.Collections;
 using UnityEngine;
 
 namespace Contexts.Game.Components.Weapons
 {
-	public class WeaponProjectile : Weapon
+	public class ProjectileWeapon : Weapon
 	{
-		private WeaponConfig config;
+		[SerializeField] private Transform[] projectilePivots;
 
+		private ProjectileWeaponConfig config;
+
+		private IProjectileCreator projectileCreator;
 		private int currentAmmoCount;
 		private float currentReloadTime;
 		private float currentShotIntervalTime;
+		private Coroutine attackProccesingCoroutine;
 
 		public bool IsReloading => currentReloadTime > 0;
 
 		public override void Configure(WeaponConfig config)
 		{
-			this.config = config;
+			projectileCreator = new ProjectileCreator();
+			this.config = config as ProjectileWeaponConfig;
 		}
 
 		private void Update()
@@ -52,11 +59,9 @@ namespace Contexts.Game.Components.Weapons
 		{
 			if (IsReloading) return false;
 			if (currentShotIntervalTime > 0) return false;
+			if (attackProccesingCoroutine != null) return false;
 
-			for (int i = 0; i < config.ProjectileCount; i++)
-			{
-				Debug.Log("SHOOT!");
-			}
+			attackProccesingCoroutine = StartCoroutine(SpawnProjectilesCoroutine());
 
 			currentAmmoCount--;
 			StartAttackInterval();
@@ -64,9 +69,26 @@ namespace Contexts.Game.Components.Weapons
 			return true;
 		}
 
+		private IEnumerator SpawnProjectilesCoroutine()
+		{
+			yield return null;
+			for (int i = 0; i < config.ProjectileStats.Count; i++)
+			{
+				Transform pivot = GetPivot(i);
+				projectileCreator.Create(config, pivot.position, pivot.up);
+				yield return new WaitForSeconds(config.ProjectileStats.Interval);
+			}
+			attackProccesingCoroutine = null;
+		}
+
+		private Transform GetPivot(int i)
+		{
+			return i >= 0 && i < projectilePivots.Length ? projectilePivots[i] : projectilePivots[0];
+		}
+
 		private void StartReloading()
 		{
-			currentReloadTime = config.ReloadTime;
+			currentReloadTime = config.WeaponStats.ReloadTime;
 		}
 
 		private void StopReloading()
@@ -76,12 +98,12 @@ namespace Contexts.Game.Components.Weapons
 
 		private void RestoreClip()
 		{
-			currentAmmoCount = config.ClipCapacity;
+			currentAmmoCount = config.WeaponStats.ClipCapacity;
 		}
 
 		private void StartAttackInterval()
 		{
-			currentShotIntervalTime = config.ShotInterval;
+			currentShotIntervalTime = config.WeaponStats.ShotInterval;
 		}
 
 		private void StopAttackInterval()

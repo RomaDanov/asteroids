@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultPlayerShip: {fileID: 11400000, guid: 1846848782965ea4797892d726dffcde, type: 2}
   defaultPlayerWeapons:
-  - {fileID: 11400000, guid: eab95b838b4528e4f90b74387985a8da, type: 2}
+  - {fileID: 11400000, guid: 262313d1967b3c64ebbe34a5bb3a2145, type: 2}
+  - {fileID: 11400000, guid: 148736717c432dc44be5b15b3d3b5c84, type: 2}

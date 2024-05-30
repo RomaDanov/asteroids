@@ -8,6 +8,7 @@ namespace Contexts.Game.Components.Player
 {
 	public class Player : MonoBehaviour
 	{
+		[SerializeField] private Transform shipRoot;
 		[SerializeField] private PlayerMovement movement;
 		[SerializeField] private PlayerHealth health;
 		[SerializeField] private PlayerEquipments equipments;
@@ -24,7 +25,7 @@ namespace Contexts.Game.Components.Player
 		private void ConfigureShip(ShipConfig ship)
 		{
 			ShipCreator creator = new ShipCreator();
-			creator.Create(ship, transform);
+			creator.Create(ship, shipRoot);
 		}
 	}
 }
