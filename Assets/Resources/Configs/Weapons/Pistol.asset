@@ -23,4 +23,4 @@ MonoBehaviour:
     count: 1
     interval: 0
     speed: 10
-  projectilePrefab: {fileID: 5759905797363099190, guid: 120d14145f21aeb4481dcb918f0feace, type: 3}
+  projectilePrefab: {fileID: 6441199460363662660, guid: aee279ee10cb5854b9515da4cddbc67d, type: 3}

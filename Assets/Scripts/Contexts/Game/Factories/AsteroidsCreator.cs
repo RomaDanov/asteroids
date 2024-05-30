@@ -9,7 +9,7 @@ namespace Contexts.Game.Factories
 {
 	public class AsteroidsCreator : IAsteroidsCreator
 	{
-		public Asteroid Create(string id, Transform parent)
+		public Asteroid Create(string id)
 		{
 			AsteroidsDataProvider dataProvider = ServicesManager.Instance.Get<AsteroidsDataProvider>();
 			AsteroidConfig config = dataProvider.GetAsteroidConfig(id);
@@ -19,10 +19,10 @@ namespace Contexts.Game.Factories
 				return null;
 			}
 
-			return Create(config, parent);
+			return Create(config);
 		}
 
-		public Asteroid Create(AsteroidConfig config, Transform parent)
+		public Asteroid Create(AsteroidConfig config)
 		{
 			if (config == null)
 			{
@@ -32,7 +32,8 @@ namespace Contexts.Game.Factories
 
 			Asteroid prefabRef = config.Prefab;
 			var pool = ObjectPoolService.Instance.GetOrCreatePool(prefabRef, 5);
-			Asteroid asteroid = pool.Get(parent);
+			Asteroid asteroid = pool.Get();
+			asteroid.Configure(config);
 			return asteroid;
 		}
 	}

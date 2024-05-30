@@ -10,14 +10,14 @@ namespace Configs.Asteriods
 		[Space]
 		[Header("Asteroid")]
 		[SerializeField] private float maxHealth;
-		[SerializeField] private Vector2 moveSpeedRange;
-		[SerializeField] private Vector2 rotateSpeedRange;
+		[SerializeField] private float moveSpeed;
+		[SerializeField] private float rotateSpeed;
 		[SerializeField] private Asteroid prefab;
 		[SerializeField] private AsteroidConfig[] destructionFragments;
 
 		public float MaxHealth => maxHealth;
-		public Vector2 MoveSpeedRange => moveSpeedRange;
-		public Vector2 RotateSpeedRange => rotateSpeedRange;
+		public float MoveSpeed => moveSpeed;
+		public float RotateSpeed => rotateSpeed;
 		public Asteroid Prefab => prefab;
 		public IReadOnlyCollection<AsteroidConfig> DestructionFragments => destructionFragments;
 	}

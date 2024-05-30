@@ -3,10 +3,12 @@ using UnityEngine;
 
 namespace Contexts.Game.Components.Player
 {
-	public class PlayerHealth : MonoBehaviour, IDamageable
+	public class Health : MonoBehaviour, IDamageable
 	{
 		public event Action<float> DamageTaken;
 		public event Action Died;
+
+		[SerializeField] private GameObject dyingFX;
 
 		private float maxHealth;
 		private float currentHealth;
@@ -23,7 +25,7 @@ namespace Contexts.Game.Components.Player
 		{
 			if (!IsAlive)
 			{
-				Debug.LogError("Player already dead!");
+				Debug.LogError("Object already dead!");
 				return;
 			}
 
@@ -44,8 +46,13 @@ namespace Contexts.Game.Components.Player
 
 		public void Die()
 		{
+			SpawnDyingFX();
 			Died?.Invoke();
-			Destroy(gameObject);
+		}
+
+		private void SpawnDyingFX()
+		{
+			//TODO:
 		}
 	}
 }

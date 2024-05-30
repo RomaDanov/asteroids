@@ -1,4 +1,5 @@
 using Contexts.Game.Components.Player;
+using Contexts.Game.Factories;
 using Contexts.Game.States;
 using DataProviders;
 using Inputs;
@@ -19,6 +20,9 @@ namespace Contexts.Game
 		{
 			InitializeServices();
 			InitializeStateMachine();
+
+			AsteroidsCreator creator = new AsteroidsCreator();
+			creator.Create("ASTEROID_BIG");
 		}
 
 		private void Update()

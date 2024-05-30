@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace ObjectPool
 {
@@ -38,6 +40,11 @@ namespace ObjectPool
 			available.transform.localPosition = Vector3.zero;
 			available.transform.localRotation = Quaternion.Euler(0, 0, 0);
 			available.OnGet();
+
+			if (insertParent == null)
+			{
+				SceneManager.MoveGameObjectToScene(available.gameObject, SceneManager.GetActiveScene());
+			}
 
 			return available;
 		}

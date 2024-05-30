@@ -1,3 +1,4 @@
+using Contexts.Game.Components.Weapons.Projectile;
 using UnityEngine;
 
 namespace Configs.Weapons

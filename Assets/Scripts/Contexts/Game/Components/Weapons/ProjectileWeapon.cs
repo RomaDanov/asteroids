@@ -10,6 +10,7 @@ namespace Contexts.Game.Components.Weapons
 		[SerializeField] private Transform[] projectilePivots;
 
 		private ProjectileWeaponConfig config;
+		private LayerMask targetLayers;
 
 		private IProjectileCreator projectileCreator;
 		private int currentAmmoCount;
@@ -19,10 +20,11 @@ namespace Contexts.Game.Components.Weapons
 
 		public bool IsReloading => currentReloadTime > 0;
 
-		public override void Configure(WeaponConfig config)
+		public override void Configure(WeaponConfig config, LayerMask targetLayers)
 		{
 			projectileCreator = new ProjectileCreator();
 			this.config = config as ProjectileWeaponConfig;
+			this.targetLayers = targetLayers;
 		}
 
 		private void Update()
@@ -75,7 +77,8 @@ namespace Contexts.Game.Components.Weapons
 			for (int i = 0; i < config.ProjectileStats.Count; i++)
 			{
 				Transform pivot = GetPivot(i);
-				projectileCreator.Create(config, pivot.position, pivot.up);
+				DamageInfo damageInfo = new DamageInfo(config.WeaponStats.Damage, 0, targetLayers);
+				projectileCreator.Create(config, damageInfo, pivot.position, pivot.up);
 				yield return new WaitForSeconds(config.ProjectileStats.Interval);
 			}
 			attackProccesingCoroutine = null;

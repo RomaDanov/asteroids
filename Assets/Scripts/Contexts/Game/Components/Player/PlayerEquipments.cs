@@ -11,12 +11,12 @@ namespace Contexts.Game.Components.Player
 
 		private Dictionary<int, Weapon> weapons = new();
 
-		public void Configure(IReadOnlyCollection<WeaponConfig> weapons)
+		public void Configure(IReadOnlyCollection<WeaponConfig> weapons, LayerMask targets)
 		{
 			ClearWeapons();
 			for (int i = 0; i < weapons.Count; i++)
 			{
-				Weapon weapon = CreateWeapon(weapons.ElementAt(i));
+				Weapon weapon = CreateWeapon(weapons.ElementAt(i), targets);
 				this.weapons.Add(i, weapon);
 			}
 		}
@@ -30,10 +30,10 @@ namespace Contexts.Game.Components.Player
 			return weapon;
 		}
 
-		private Weapon CreateWeapon(WeaponConfig config)
+		private Weapon CreateWeapon(WeaponConfig config, LayerMask targetLayers)
 		{
 			Weapon weapon = Instantiate(config.Prefab, weaponsRoot);
-			weapon.Configure(config);
+			weapon.Configure(config, targetLayers);
 			return weapon;
 		}
 

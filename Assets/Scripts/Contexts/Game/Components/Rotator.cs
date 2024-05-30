@@ -1,10 +1,15 @@
 using UnityEngine;
 
-namespace Contexts.Game.Components.Movement
+namespace Contexts.Game.Components
 {
 	public class Rotator : MonoBehaviour
 	{
 		[SerializeField] private float rotationSpeed;
+
+		public void Configure(float rotationSpeed)
+		{
+			this.rotationSpeed = rotationSpeed;
+		}
 
 		private void Update()
 		{
@@ -13,7 +18,7 @@ namespace Contexts.Game.Components.Movement
 
 		private void Rotate(float speed)
 		{
-			transform.up = Quaternion.AngleAxis(speed, Vector3.forward) * transform.up;
+			transform.up = Quaternion.AngleAxis(speed, Vector3.forward) * transform.up * 360f;
 		}
 	}
 }

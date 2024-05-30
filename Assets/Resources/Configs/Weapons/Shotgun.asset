@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 529caa285867b8f428df716dda8489f4, type: 3}
   m_Name: Shotgun
   m_EditorClassIdentifier: 
-  id: WEAPON_PISTOL
+  id: WEAPON_SHOTGUN
   weaponStats:
     damage: 1
     clipCapacity: 1
@@ -23,4 +23,4 @@ MonoBehaviour:
     count: 3
     interval: 0
     speed: 10
-  projectilePrefab: {fileID: 5759905797363099190, guid: 07426f19b54623a4484d18d6417c070d, type: 3}
+  projectilePrefab: {fileID: 6441199460363662660, guid: 07426f19b54623a4484d18d6417c070d, type: 3}

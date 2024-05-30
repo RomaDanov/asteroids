@@ -1,5 +1,6 @@
-using Configs.Ships;
 using Configs.Weapons;
+using Contexts.Game.Components.Weapons;
+using Contexts.Game.Components.Weapons.Projectile;
 using DataProviders;
 using ObjectPool;
 using ServiceLocator;
@@ -9,7 +10,7 @@ namespace Contexts.Game.Factories
 {
 	public class ProjectileCreator : IProjectileCreator
 	{
-		public Projectile Create(string weaponId, Vector3 startedPosition, Vector2 pushDirection)
+		public Projectile Create(string weaponId, DamageInfo damageInfo, Vector3 startedPosition, Vector2 pushDirection)
 		{
 			WeaponsDataProvider weaponsDataProvider = ServicesManager.Instance.Get<WeaponsDataProvider>();
 			WeaponConfig config = weaponsDataProvider.GetWeaponConfig(weaponId);
@@ -25,10 +26,10 @@ namespace Contexts.Game.Factories
 				return null;
 			}
 
-			return Create(config as ProjectileWeaponConfig, startedPosition, pushDirection);
+			return Create(config as ProjectileWeaponConfig, damageInfo, startedPosition, pushDirection);
 		}
 
-		public Projectile Create(ProjectileWeaponConfig config, Vector3 startedPosition, Vector2 pushDirection)
+		public Projectile Create(ProjectileWeaponConfig config, DamageInfo damageInfo, Vector3 startedPosition, Vector2 pushDirection)
 		{
 			if (config == null)
 			{
@@ -42,7 +43,7 @@ namespace Contexts.Game.Factories
 
 			Projectile projectile = pool.Get();
 			projectile.transform.position = startedPosition;
-			projectile.Configure(config.ProjectileStats, pushDirection);
+			projectile.Configure(config.ProjectileStats, damageInfo, pushDirection);
 
 			return projectile;
 		}

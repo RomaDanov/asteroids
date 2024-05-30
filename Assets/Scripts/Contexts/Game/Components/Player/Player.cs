@@ -9,17 +9,19 @@ namespace Contexts.Game.Components.Player
 	public class Player : MonoBehaviour
 	{
 		[SerializeField] private Transform shipRoot;
+		[SerializeField] private LayerMask targets;
+		[Space]
+		[Header("Components")]
 		[SerializeField] private PlayerMovement movement;
-		[SerializeField] private PlayerHealth health;
+		[SerializeField] private Health health;
 		[SerializeField] private PlayerEquipments equipments;
-		[SerializeField] private PlayerAttack attack;
 
 		public void Configure(ShipConfig shipConfig, IReadOnlyCollection<WeaponConfig> weapons)
 		{
 			ConfigureShip(shipConfig);
 			movement?.Configure(shipConfig.MovementSettings);
 			health?.Configure(shipConfig.MaxHealth);
-			equipments?.Configure(weapons);
+			equipments?.Configure(weapons, targets);
 		}
 
 		private void ConfigureShip(ShipConfig ship)

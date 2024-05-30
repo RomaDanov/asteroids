@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: ENEMY_RED
   shipConfig: {fileID: 11400000, guid: c53697f9a30a88b4d8d230f843c4a9f7, type: 2}
-  weaponConfig: {fileID: 11400000, guid: a33c9ef77aa04ed49a39fbb25a8a1f3d, type: 2}
+  weaponConfig: {fileID: 11400000, guid: eab95b838b4528e4f90b74387985a8da, type: 2}
   prefab: {fileID: 0}
