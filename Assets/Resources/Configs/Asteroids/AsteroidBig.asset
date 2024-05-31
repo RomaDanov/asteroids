@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: ASTEROID_BIG
   maxHealth: 1
-  moveSpeed: 0
+  moveSpeed: 1
   rotateSpeed: 40
   prefab: {fileID: 2191559770087751797, guid: c0399174173ee7a48aa341b7ef2919f3, type: 3}
   destructionFragments:

@@ -7,12 +7,10 @@ namespace Contexts.Game.Components.Weapons
 	[RequireComponent(typeof(IMovable))]
 	public class ProjectileMovement : MonoBehaviour
 	{
-		private IMovable movable;
+		[SerializeField] private TransformMovement movable;
 
 		public void Configure(ProjectileStats stats, Vector2 pushDirection)
 		{
-			if (movable == null) movable = GetComponent<IMovable>();
-
 			LookAt(pushDirection);
 			Push(transform.up * stats.Speed);
 		}
@@ -31,13 +29,5 @@ namespace Contexts.Game.Components.Weapons
 		{
 			movable.Velocity = force;
 		}
-
-#if UNITY_EDITOR
-		private void OnValidate()
-		{
-			if (movable != null) return;
-			movable = GetComponent<IMovable>();
-		}
-#endif
 	}
 }

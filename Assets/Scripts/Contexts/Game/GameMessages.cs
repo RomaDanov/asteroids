@@ -8,4 +8,14 @@ public class GameMessages
 	public struct GameUnpausedMessage : IMessage { }
 
 	public struct ExitGameMessage : IMessage { }
+
+	public struct AsteroidDestroyedMessage : IMessage 
+	{
+		public string Id;
+
+		public AsteroidDestroyedMessage(string id)
+		{
+			Id = id;
+		}
+	}
 }

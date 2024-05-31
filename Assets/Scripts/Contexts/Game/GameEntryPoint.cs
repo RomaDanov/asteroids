@@ -5,9 +5,12 @@ using Contexts.Game.Factories;
 using Contexts.Game.States;
 using DataProviders;
 using Inputs;
+using Messages;
 using ServiceLocator;
 using StateMachine;
+using System.Security.Cryptography;
 using UnityEngine;
+using static GameMessages;
 
 namespace Contexts.Game
 {
@@ -24,12 +27,8 @@ namespace Contexts.Game
 			InitializeStateMachine();
 
 			//TEST
-			AsteroidsCreator creator = new AsteroidsCreator();
-			Asteroid asteroid = creator.Create("ASTEROID_BIG");
-			Vector3 pos = asteroid.transform.position;
-			pos.x += 3;
-			pos.y += 3;
-			asteroid.transform.position = pos;
+			MessageRouter.Instance.Subscribe<AsteroidDestroyedMessage>(OnAsteroidDestroyed);
+			OnAsteroidDestroyed(new AsteroidDestroyedMessage("ASTEROID_BIG"));
 			//
 		}
 
@@ -40,6 +39,10 @@ namespace Contexts.Game
 
 		private void OnDestroy()
 		{
+			//TEST
+			MessageRouter.Instance.Unsubscribe<AsteroidDestroyedMessage>(OnAsteroidDestroyed);
+			//
+
 			DisposeStateMachine();
 			DisposeService();
 		}
@@ -82,5 +85,15 @@ namespace Contexts.Game
 			stateMachine?.Dispose();
 		}
 		#endregion
+
+		//TEST
+		private void OnAsteroidDestroyed(AsteroidDestroyedMessage message)
+		{
+			if (message.Id != "ASTEROID_BIG") return;
+
+			AsteroidsCreator creator = new AsteroidsCreator();
+			Asteroid asteroid = creator.Create("ASTEROID_BIG", new Vector3(Random.Range(-3f, 3f), Random.Range(-3f, 3f), 0));
+		}
+		//
 	}
 }

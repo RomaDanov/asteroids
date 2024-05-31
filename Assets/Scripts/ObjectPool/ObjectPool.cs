@@ -37,8 +37,8 @@ namespace ObjectPool
 
 			available = availables.Dequeue();
 			available.transform.SetParent(insertParent, false);
-			available.transform.localPosition = Vector3.zero;
-			available.transform.localRotation = Quaternion.Euler(0, 0, 0);
+			ResetTransform(available);
+
 			available.OnGet();
 
 			if (insertParent == null)
@@ -56,6 +56,8 @@ namespace ObjectPool
 			if (obj == null) return;
 
 			obj.transform.SetParent(root);
+			ResetTransform(obj);
+
 			obj.OnRelease();
 		}
 
@@ -72,6 +74,12 @@ namespace ObjectPool
 			var newObject = UnityEngine.Object.Instantiate(prefab, root);
 			newObject.Init(this);
 			availables.Enqueue(newObject);
+		}
+
+		private void ResetTransform(T obj)
+		{
+			obj.transform.localPosition = Vector3.zero;
+			obj.transform.localRotation = Quaternion.Euler(0, 0, 0);
 		}
 
 		public void Dispose()

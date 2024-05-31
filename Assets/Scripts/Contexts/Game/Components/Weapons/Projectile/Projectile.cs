@@ -1,15 +1,15 @@
 using Configs.Weapons;
+using Contexts.Game.Components.Zone;
 using ObjectPool;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Contexts.Game.Components.Weapons.Projectile
 {
-	public class Projectile : PoolableObject<Projectile>
+	public class Projectile : PoolableObject<Projectile>, IDeadzoneVisitor
 	{
 		[SerializeField] private ProjectileDamageApplier damageApplier;
 		[SerializeField] private ProjectileMovement movement;
-		[SerializeField] private Destroyer destroyer;
 
 		public virtual void Configure(ProjectileStats stats, DamageInfo damageInfo, Vector2 pushDirection)
 		{
@@ -20,23 +20,27 @@ namespace Contexts.Game.Components.Weapons.Projectile
 		private void OnEnable()
 		{
 			damageApplier.Damaged += OnDamaged;
-			destroyer.Destroyed += OnDestroyed;
 		}
 
 		private void OnDisable()
 		{
 			damageApplier.Damaged -= OnDamaged;
-			destroyer.Destroyed -= OnDestroyed;
+		}
+
+		private void Release()
+		{
+			movement.ForceStop();
+			Pool.Release(this);
 		}
 
 		private void OnDamaged(List<IDamageable> targets)
 		{
-			Pool.Release(this);
+			Release();
 		}
 
-		private void OnDestroyed()
+		public void Visit()
 		{
-			Pool.Release(this);
+			Release();
 		}
 	}
 }

@@ -1,27 +1,22 @@
-using Contexts.Game.Components;
 using Contexts.Game.Components.Weapons;
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class ProjectileDamageApplier : MonoBehaviour
 {
 	public event Action<List<IDamageable>> Damaged;
 
 	[SerializeField] private float defaultRangeSize;
-	[SerializeField] private Destroyer destroyer;
 
 	private DamageInfo damageInfo;
 
 	public void Configure(DamageInfo damageInfo)
 	{
 		this.damageInfo = damageInfo;
-		destroyer.Destroyed += OnDestroyer;
 	}
 
-	private void Update()
+	private void FixedUpdate()
 	{
 		if (IsTargetCollision(damageInfo.TargetLayers, defaultRangeSize, out var targets))
 		{
@@ -36,11 +31,6 @@ public class ProjectileDamageApplier : MonoBehaviour
 		}
 	}
 
-	private void OnDisable()
-	{
-		destroyer.Destroyed -= OnDestroyer;
-	}
-
 	private bool IsTargetCollision(LayerMask targetLayers, float size, out List<IDamageable> targets)
 	{
 		bool success = false;
@@ -51,11 +41,6 @@ public class ProjectileDamageApplier : MonoBehaviour
 			for (int i = 0; i < hitInfo.Length; i++)
 			{
 				IDamageable target = hitInfo[i].gameObject.GetComponent<IDamageable>();
-				if (target == null)
-				{
-					target = hitInfo[i].transform.parent.GetComponent<IDamageable>();
-				}
-
 				if (target == null) continue;
 				if (targets.Contains(target)) continue;
 
@@ -71,6 +56,8 @@ public class ProjectileDamageApplier : MonoBehaviour
 		for (int i = 0; i < targets.Count; i++)
 		{
 			IDamageable target = targets[i];
+			if (target == null) continue;
+
 			target.TakeDamage(damageInfo.Damage);
 		}
 		Damaged?.Invoke(targets);
@@ -82,12 +69,6 @@ public class ProjectileDamageApplier : MonoBehaviour
 		{
 			ApplyDamage(targets);
 		}
-	}
-
-	private void OnDestroyer()
-	{
-		destroyer.Destroyed -= OnDestroyer;
-		TryApplyRangeDamage();
 	}
 
 #if UNITY_EDITOR

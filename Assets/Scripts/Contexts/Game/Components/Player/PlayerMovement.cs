@@ -8,7 +8,7 @@ namespace Contexts.Game.Components.Player
 	[RequireComponent(typeof(IMovable))]
 	public class PlayerMovement : MonoBehaviour
 	{
-		private IMovable movable;
+		[SerializeField] private TransformMovement movable;
 		private MovementSettings movementSettings;
 
 		private Vector3 inputAxis;
@@ -64,13 +64,5 @@ namespace Contexts.Game.Components.Player
 			Vector2 clampedVelocity = Vector2.ClampMagnitude(movable.Velocity, movementSettings.MaxSpeed);
 			movable.Velocity = clampedVelocity;
 		}
-
-#if UNITY_EDITOR
-		private void OnValidate()
-		{
-			if (movable != null) return;
-			movable = GetComponent<IMovable>();
-		}
-#endif
 	}
 }

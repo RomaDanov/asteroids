@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 156287112452194710}
   - component: {fileID: 1219135135798020262}
   - component: {fileID: 392592145855776435}
-  - component: {fileID: 2752564305610613700}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -109,6 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b83e26036d45edd41bbac22fb5205c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dyingFX: {fileID: 0}
 --- !u!114 &1219135135798020262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,19 +135,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipments: {fileID: 1219135135798020262}
---- !u!114 &2752564305610613700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 124615983339657026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 773706cef0c2a894a8460d873f44c3bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: {fileID: 156287112452194710}
 --- !u!1 &5373399667046052363
 GameObject:
   m_ObjectHideFlags: 0
