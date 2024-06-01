@@ -14,11 +14,13 @@ namespace Configs.Asteriods
 		[SerializeField] private float rotateSpeed;
 		[SerializeField] private Asteroid prefab;
 		[SerializeField] private AsteroidConfig[] destructionFragments;
+		[SerializeField] private int fragmentsCount;
 
 		public float MaxHealth => maxHealth;
 		public float MoveSpeed => moveSpeed;
 		public float RotateSpeed => rotateSpeed;
 		public Asteroid Prefab => prefab;
 		public IReadOnlyCollection<AsteroidConfig> DestructionFragments => destructionFragments;
+		public int FragmentsCount => fragmentsCount;
 	}
 }

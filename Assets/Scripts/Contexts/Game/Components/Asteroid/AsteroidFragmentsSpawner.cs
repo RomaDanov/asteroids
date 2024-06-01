@@ -10,22 +10,24 @@ namespace Contexts.Game.Components.Asteroid
 	public class AsteroidFragmentsSpawner : MonoBehaviour
 	{
 		private IReadOnlyCollection<AsteroidConfig> destructionFragments;
+		private int maxCount;
 
-		public void Configure(IReadOnlyCollection<AsteroidConfig> destructionFragments)
+		public void Configure(IReadOnlyCollection<AsteroidConfig> destructionFragments, int maxCount)
 		{
 			this.destructionFragments = destructionFragments;
+			this.maxCount = maxCount;
 		}
 
 		public bool TrySpawnFragments()
 		{
-			bool success = false;
+			if (destructionFragments.Count == 0 || maxCount <= 0) return false;
 
 			AsteroidsCreator creator = new AsteroidsCreator();
-			for (int i = 0; i < destructionFragments.Count; i++)
+			for (int i = 0; i < maxCount; i++)
 			{
-				AsteroidConfig newConfig = destructionFragments.ElementAt(i);
+				AsteroidConfig newConfig = destructionFragments.ElementAt(Random.Range(0, destructionFragments.Count));
 
-				Vector2 insideUnitCircle = new Vector2(Random.Range(-1, 2), Random.Range(-1, 2)) * 0.5f;
+				Vector2 insideUnitCircle = new Vector2(Random.Range(-1, 2), Random.Range(-1, 2)) * 0.3f;
 				Vector2 position = (Vector2)transform.position + insideUnitCircle;
 				Asteroid newAsteroid = creator.Create(newConfig, position);
 
@@ -35,14 +37,10 @@ namespace Contexts.Game.Components.Asteroid
 				direction.x = Random.Range(-1f, 1f);
 				direction.y = Random.Range(-1f, 1f);
 
-				float speed = Random.Range(-newConfig.MoveSpeed, newConfig.MoveSpeed);
-
-				Vector2 force = direction * speed;
+				Vector2 force = direction * newConfig.MoveSpeed;
 				newMovable.ApplyForce(force);
-				success = true;
 			}
-
-			return success;
+			return true;
 		}
 	}
 }

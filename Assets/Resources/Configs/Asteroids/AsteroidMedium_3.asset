@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f882f441ad9eaa948be61f0285f05060, type: 3}
+  m_Name: AsteroidMedium_3
+  m_EditorClassIdentifier: 
+  id: ASTEROID_MEDIUM
+  maxHealth: 1
+  moveSpeed: 3
+  rotateSpeed: 50
+  prefab: {fileID: 505473066319199825, guid: 9075ee5432c64c242bc130ff7602a040, type: 3}
+  destructionFragments:
+  - {fileID: 11400000, guid: 4a035de1efde942448ca42899b69c98d, type: 2}
+  - {fileID: 11400000, guid: 28cb1c15f58dd95439b182204420c6e2, type: 2}
+  - {fileID: 11400000, guid: 416027da6f99a794b9c5cfc75954e2e2, type: 2}
+  - {fileID: 11400000, guid: 73a4d84d865a9304a9f2e9f959210dc4, type: 2}
+  fragmentsCount: 0

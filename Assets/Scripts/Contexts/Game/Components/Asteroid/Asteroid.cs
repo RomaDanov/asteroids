@@ -24,7 +24,7 @@ namespace Contexts.Game.Components.Asteroid
 			this.config = config;
 
 			rotator.Configure(Random.Range(-config.RotateSpeed, config.RotateSpeed));
-			fragmentSpawner.Configure(config.DestructionFragments);
+			fragmentSpawner.Configure(config.DestructionFragments, config.FragmentsCount);
 			health.Configure(config.MaxHealth);
 		}
 

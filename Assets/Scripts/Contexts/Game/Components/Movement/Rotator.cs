@@ -18,7 +18,7 @@ namespace Contexts.Game.Components
 
 		private void Rotate(float speed)
 		{
-			transform.up = Quaternion.AngleAxis(speed, Vector3.forward) * transform.up * 360f;
+			transform.rotation = Quaternion.AngleAxis(speed, Vector3.forward) * transform.rotation;
 		}
 	}
 }

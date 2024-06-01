@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f882f441ad9eaa948be61f0285f05060, type: 3}
-  m_Name: AsteroidSmall
+  m_Name: AsteroidSmall_1
   m_EditorClassIdentifier: 
   id: ASTEROID_SMALL
   maxHealth: 1
   moveSpeed: 3
   rotateSpeed: 60
-  prefab: {fileID: 2191559770087751797, guid: d9c9ec4467096704aaab7497ffd39d46, type: 3}
+  prefab: {fileID: 505473066319199825, guid: 2f58c369cadf4914faf3d6c459163a66, type: 3}
   destructionFragments: []
+  fragmentsCount: 0

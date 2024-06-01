@@ -1,4 +1,7 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -70,14 +73,19 @@ namespace Contexts.Game.Components.Fence
 			Vector2 topLeftPoint = position + new Vector2(boundary.Min.x, boundary.Max.y);
 			Vector2 topRightPoint = position + new Vector2(boundary.Max.x, boundary.Max.y);
 			Vector2 bottomRightPoint = position + new Vector2(boundary.Max.x, boundary.Min.y);
-			Vector2 bototmLeftPoint = position + new Vector2(boundary.Min.x, boundary.Min.y);
+			Vector2 bottomLeftPoint = position + new Vector2(boundary.Min.x, boundary.Min.y);
 
 			Gizmos.color = color;
 
-			Gizmos.DrawRay(topLeftPoint, Vector2.right * boundary.Width);
-			Gizmos.DrawRay(topRightPoint, Vector2.down * boundary.Height);
-			Gizmos.DrawRay(bottomRightPoint, Vector2.left * boundary.Width);
-			Gizmos.DrawRay(bototmLeftPoint, Vector2.up * boundary.Height);
+			Vector3[] path = new Vector3[4]
+			{
+				topLeftPoint,
+				topRightPoint,
+				bottomRightPoint,
+				bottomLeftPoint
+			};
+			ReadOnlySpan<Vector3> readOnlySpan = new ReadOnlySpan<Vector3>(path);
+			Gizmos.DrawLineStrip(readOnlySpan, true);
 
 			Handles.Label(new Vector2(topLeftPoint.x + boundary.Width / 2, topLeftPoint.y + 0.5f), $"{boundary.Width}");
 			Handles.Label(new Vector2(topRightPoint.x + 0.2f, topLeftPoint.y - boundary.Height / 2), $"{boundary.Height}");
@@ -85,7 +93,7 @@ namespace Contexts.Game.Components.Fence
 			DrawPoint(topLeftPoint, 0.2f, Color.white);
 			DrawPoint(topRightPoint, 0.2f, Color.white);
 			DrawPoint(bottomRightPoint, 0.2f, Color.white);
-			DrawPoint(bototmLeftPoint, 0.2f, Color.white);
+			DrawPoint(bottomLeftPoint, 0.2f, Color.white);
 		}
 
 		private void DrawPoint(Vector2 position, float size, Color color)

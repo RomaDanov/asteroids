@@ -56,7 +56,7 @@ namespace Contexts.Game.Components.Player
 
 		private void Rotate()
 		{
-			transform.up = Quaternion.AngleAxis(-inputAxis.x * movementSettings.Torq * Time.fixedDeltaTime, Vector3.forward) * transform.up;
+			transform.rotation = Quaternion.AngleAxis(-inputAxis.x * movementSettings.Torq * Time.fixedDeltaTime, Vector3.forward) * transform.rotation;
 		}
 
 		private void ClampVelocity()

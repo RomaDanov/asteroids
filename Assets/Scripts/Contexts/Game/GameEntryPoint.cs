@@ -26,30 +26,15 @@ namespace Contexts.Game
 		{
 			InitializeServices();
 			InitializeStateMachine();
-
-			//TEST
-			MessageRouter.Instance.Subscribe<AsteroidDestroyedMessage>(OnAsteroidDestroyed);
-			//
 		}
 
 		private void Update()
 		{
-			//TEST
-			if (Keyboard.current.oKey.wasPressedThisFrame)
-			{
-				OnAsteroidDestroyed(new AsteroidDestroyedMessage("ASTEROID_BIG"));
-			}
-			//
-
 			stateMachine?.Update();
 		}
 
 		private void OnDestroy()
 		{
-			//TEST
-			MessageRouter.Instance.Unsubscribe<AsteroidDestroyedMessage>(OnAsteroidDestroyed);
-			//
-
 			DisposeStateMachine();
 			DisposeService();
 		}
@@ -92,15 +77,5 @@ namespace Contexts.Game
 			stateMachine?.Dispose();
 		}
 		#endregion
-
-		//TEST
-		private void OnAsteroidDestroyed(AsteroidDestroyedMessage message)
-		{
-			if (message.Id != "ASTEROID_BIG") return;
-
-			AsteroidsCreator creator = new AsteroidsCreator();
-			Asteroid asteroid = creator.Create("ASTEROID_BIG", new Vector3(Random.Range(-3f, 3f), Random.Range(-3f, 3f), 0));
-		}
-		//
 	}
 }

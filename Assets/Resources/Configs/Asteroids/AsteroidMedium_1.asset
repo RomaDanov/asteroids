@@ -10,11 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f882f441ad9eaa948be61f0285f05060, type: 3}
-  m_Name: AsteroidMedium
+  m_Name: AsteroidMedium_1
   m_EditorClassIdentifier: 
   id: ASTEROID_MEDIUM
   maxHealth: 1
   moveSpeed: 3
   rotateSpeed: 50
-  prefab: {fileID: 2191559770087751797, guid: 629830ed306962a429f41d9ace585981, type: 3}
-  destructionFragments: []
+  prefab: {fileID: 505473066319199825, guid: dec4ad1d93b935e41919e03773dd00eb, type: 3}
+  destructionFragments:
+  - {fileID: 11400000, guid: 5a07c8939569442489b108a739b19287, type: 2}
+  - {fileID: 11400000, guid: 52dc6f10f1042b6418939828859bf768, type: 2}
+  - {fileID: 11400000, guid: 841a7cd787bcdb34bb027a795e5a3a27, type: 2}
+  - {fileID: 11400000, guid: 57d789680dfa89f42a9e041b355c145c, type: 2}
+  fragmentsCount: 0

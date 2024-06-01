@@ -22,7 +22,27 @@ namespace Contexts.Game.Factories
 			return Create(config, worldPosition);
 		}
 
+		public Asteroid Create(string id, Transform parent)
+		{
+			AsteroidsDataProvider dataProvider = ServicesManager.Instance.Get<AsteroidsDataProvider>();
+			AsteroidConfig config = dataProvider.GetAsteroidConfig(id);
+			if (config == null)
+			{
+				Debug.LogError($"Asteroid with id {id} doesn't exist");
+				return null;
+			}
+
+			return Create(config, parent);
+		}
+
 		public Asteroid Create(AsteroidConfig config, Vector3 worldPosition)
+		{
+			Asteroid asteroid = Create(config, null);
+			asteroid.transform.position = worldPosition;
+			return asteroid;
+		}
+
+		public Asteroid Create(AsteroidConfig config, Transform parent)
 		{
 			if (config == null)
 			{
@@ -32,8 +52,7 @@ namespace Contexts.Game.Factories
 
 			Asteroid prefabRef = config.Prefab;
 			var pool = ObjectPoolService.Instance.GetOrCreatePool(prefabRef, 5);
-			Asteroid asteroid = pool.Get();
-			asteroid.transform.position = worldPosition;
+			Asteroid asteroid = pool.Get(parent);
 			asteroid.Configure(config);
 			return asteroid;
 		}
