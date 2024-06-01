@@ -153,7 +153,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   checkingInterval: 0.01
-  color: {r: 0, g: 0, b: 0, a: 0}
+  color: {r: 0.3764706, g: 1, b: 0, a: 1}
   size: 0.71
 --- !u!60 &672710036263331388
 PolygonCollider2D:
