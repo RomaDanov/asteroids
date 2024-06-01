@@ -79,6 +79,9 @@ namespace Contexts.Game.Components.Zone
 			Gizmos.DrawRay(bottomRightPoint, Vector2.left * boundary.Width);
 			Gizmos.DrawRay(bototmLeftPoint, Vector2.up * boundary.Height);
 
+			Handles.Label(new Vector2(topLeftPoint.x + boundary.Width / 2, topLeftPoint.y + 0.5f), $"{boundary.Width}");
+			Handles.Label(new Vector2(topRightPoint.x + 0.2f, topLeftPoint.y - boundary.Height / 2), $"{boundary.Height}");
+
 			DrawPoint(topLeftPoint, 0.2f, Color.white);
 			DrawPoint(topRightPoint, 0.2f, Color.white);
 			DrawPoint(bottomRightPoint, 0.2f, Color.white);

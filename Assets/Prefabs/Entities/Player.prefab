@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 156287112452194710}
   - component: {fileID: 1219135135798020262}
   - component: {fileID: 392592145855776435}
+  - component: {fileID: 3296087251780321765}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -59,6 +60,7 @@ MonoBehaviour:
   movement: {fileID: 7870828200062010634}
   health: {fileID: 156287112452194710}
   equipments: {fileID: 1219135135798020262}
+  collisionHandler: {fileID: 3296087251780321765}
 --- !u!114 &3163917168040559485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,6 +86,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d5024426e3e270459cb31ac8518c7f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movable: {fileID: 53360105563808634}
 --- !u!114 &53360105563808634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,6 +138,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipments: {fileID: 1219135135798020262}
+--- !u!114 &3296087251780321765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124615983339657026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d890300342001e4d8de8d8e58a12c4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 192
+  size: 0.19
 --- !u!1 &5373399667046052363
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ using ServiceLocator;
 using StateMachine;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using static GameMessages;
 
 namespace Contexts.Game
@@ -28,12 +29,18 @@ namespace Contexts.Game
 
 			//TEST
 			MessageRouter.Instance.Subscribe<AsteroidDestroyedMessage>(OnAsteroidDestroyed);
-			OnAsteroidDestroyed(new AsteroidDestroyedMessage("ASTEROID_BIG"));
 			//
 		}
 
 		private void Update()
 		{
+			//TEST
+			if (Keyboard.current.oKey.wasPressedThisFrame)
+			{
+				OnAsteroidDestroyed(new AsteroidDestroyedMessage("ASTEROID_BIG"));
+			}
+			//
+
 			stateMachine?.Update();
 		}
 

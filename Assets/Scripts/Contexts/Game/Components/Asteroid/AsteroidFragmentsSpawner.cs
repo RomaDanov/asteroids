@@ -25,7 +25,9 @@ namespace Contexts.Game.Components.Asteroid
 			{
 				AsteroidConfig newConfig = destructionFragments.ElementAt(i);
 
-				Asteroid newAsteroid = creator.Create(newConfig, transform.position);
+				Vector2 insideUnitCircle = new Vector2(Random.Range(-1, 2), Random.Range(-1, 2)) * 0.5f;
+				Vector2 position = (Vector2)transform.position + insideUnitCircle;
+				Asteroid newAsteroid = creator.Create(newConfig, position);
 
 				IMovable newMovable = newAsteroid.GetComponent<IMovable>();
 

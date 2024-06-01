@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 286780369860817496}
   - component: {fileID: 5048397055008345455}
   - component: {fileID: 564828631808826801}
+  - component: {fileID: 6790950475160900585}
+  - component: {fileID: 2759683366281626862}
   - component: {fileID: 672710036263331388}
   m_Layer: 7
   m_Name: AsteroidBig
@@ -121,6 +123,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 315cf55e3b3ccfd4b96dbb065f663f73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6790950475160900585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2809073134475460918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a367ddbc1ce6aef4295a1138fa511f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movable: {fileID: 564828631808826801}
+  collisionHandler: {fileID: 2759683366281626862}
+--- !u!114 &2759683366281626862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2809073134475460918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d890300342001e4d8de8d8e58a12c4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  size: 0.72
+  checkingInterval: 0.01
 --- !u!60 &672710036263331388
 PolygonCollider2D:
   m_ObjectHideFlags: 0

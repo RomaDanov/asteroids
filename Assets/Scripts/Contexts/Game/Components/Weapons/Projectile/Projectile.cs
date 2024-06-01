@@ -10,21 +10,23 @@ namespace Contexts.Game.Components.Weapons.Projectile
 	{
 		[SerializeField] private ProjectileDamageApplier damageApplier;
 		[SerializeField] private ProjectileMovement movement;
+		[SerializeField] private CollisionHandler collisionHandler;
 
 		public virtual void Configure(ProjectileStats stats, DamageInfo damageInfo, Vector2 pushDirection)
 		{
 			movement?.Configure(stats, pushDirection);
 			damageApplier?.Configure(damageInfo);
+			collisionHandler?.Configure(damageInfo.TargetLayers);
 		}
 
 		private void OnEnable()
 		{
-			damageApplier.Damaged += OnDamaged;
+			damageApplier.DamageApplied += OnDamaged;
 		}
 
 		private void OnDisable()
 		{
-			damageApplier.Damaged -= OnDamaged;
+			damageApplier.DamageApplied -= OnDamaged;
 		}
 
 		private void Release()

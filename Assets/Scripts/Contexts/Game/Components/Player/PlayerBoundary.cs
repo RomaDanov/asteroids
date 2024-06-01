@@ -50,6 +50,7 @@ namespace Contexts.Game.Components.Player
 #if UNITY_EDITOR
 		private void OnDrawGizmos()
 		{
+			if (!enabled) return;
 			Gizmos.DrawWireSphere(transform.position, size);
 		}
 #endif

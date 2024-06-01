@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class ProjectileDamageApplier : MonoBehaviour
 {
-	public event Action<List<IDamageable>> Damaged;
+	public event Action<List<IDamageable>> DamageApplied;
 
-	[SerializeField] private float defaultRangeSize;
+	[SerializeField] private CollisionHandler collisionHandler;
 
 	private DamageInfo damageInfo;
 
@@ -16,18 +16,38 @@ public class ProjectileDamageApplier : MonoBehaviour
 		this.damageInfo = damageInfo;
 	}
 
-	private void FixedUpdate()
+	private void OnEnable()
 	{
-		if (IsTargetCollision(damageInfo.TargetLayers, defaultRangeSize, out var targets))
+		collisionHandler.CollisionStart += OnCollisionStart;
+	}
+
+	private void OnDisable()
+	{
+		collisionHandler.CollisionStart -= OnCollisionStart;
+	}
+
+	private void OnCollisionStart(RaycastHit2D other)
+	{
+		if (other.transform.gameObject == null) return;
+
+		IDamageable target = other.transform.GetComponent<IDamageable>();
+		if (target == null) return;
+
+		List<IDamageable> damaged = new();
+		if (damageInfo.Range <= 0)
 		{
-			if (damageInfo.Range <= 0)
-			{
-				ApplyDamage(targets);
-			}
-			else
-			{
-				TryApplyRangeDamage();
-			}
+			ApplyDamage(target);
+			damaged.Add(target);
+		}
+		else
+		{
+			List<IDamageable> targets = TryApplyRangeDamage();
+			damaged.AddRange(targets);
+		}
+
+		if (damaged.Count > 0)
+		{
+			DamageApplied?.Invoke(damaged);
 		}
 	}
 
@@ -51,30 +71,23 @@ public class ProjectileDamageApplier : MonoBehaviour
 		return success;
 	}
 
-	private void ApplyDamage(List<IDamageable> targets)
+	private void ApplyDamage(IDamageable target)
 	{
-		for (int i = 0; i < targets.Count; i++)
-		{
-			IDamageable target = targets[i];
-			if (target == null) continue;
-
-			target.TakeDamage(damageInfo.Damage);
-		}
-		Damaged?.Invoke(targets);
+		target.TakeDamage(damageInfo.Damage);
 	}
 
-	private void TryApplyRangeDamage()
+	private List<IDamageable> TryApplyRangeDamage()
 	{
 		if (IsTargetCollision(damageInfo.TargetLayers, damageInfo.Range, out var targets))
 		{
-			ApplyDamage(targets);
-		}
-	}
+			for (int i = 0; i < targets.Count; i++)
+			{
+				IDamageable target = targets[i];
 
-#if UNITY_EDITOR
-	private void OnDrawGizmos()
-	{
-		Gizmos.DrawWireSphere(transform.position, defaultRangeSize);
+				ApplyDamage(target);
+			}
+			return targets;
+		}
+		return new();
 	}
-#endif
 }
