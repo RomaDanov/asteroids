@@ -1,8 +1,9 @@
+using Contexts.Game.Components.Fence;
 using System.Collections.Generic;
 
-namespace Contexts.Game.Components.Zone
+namespace Contexts.Game.Components.Fence
 {
-	public class Deadzone : Zone<IDeadzoneVisitor>
+	public class Deadzone : Fence<IDeadzoneVisitor>
 	{
 		protected override void VisitObjects(List<IDeadzoneVisitor> visitors)
 		{

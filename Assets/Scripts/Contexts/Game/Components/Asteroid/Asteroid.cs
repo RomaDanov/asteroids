@@ -1,6 +1,6 @@
 using Configs.Asteriods;
 using Contexts.Game.Components.Player;
-using Contexts.Game.Components.Zone;
+using Contexts.Game.Components.Fence;
 using Messages;
 using ObjectPool;
 using UnityEngine;

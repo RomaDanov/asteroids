@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 4663338490745809854}
   - component: {fileID: 553698610274369106}
   - component: {fileID: 531666314948341637}
+  - component: {fileID: 3966833913689096960}
   - component: {fileID: 911947352718081886}
-  - component: {fileID: 2601812479115200826}
   m_Layer: 0
   m_Name: BaseProjectile
   m_TagString: Untagged
@@ -53,7 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageApplier: {fileID: 553698610274369106}
   movement: {fileID: 4663338490745809854}
-  collisionHandler: {fileID: 2601812479115200826}
+  collisionHandler: {fileID: 3966833913689096960}
 --- !u!114 &4663338490745809854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2c02a01c21105a4e9916463115eaaed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collisionHandler: {fileID: 2601812479115200826}
+  collisionHandler: {fileID: 3966833913689096960}
 --- !u!114 &531666314948341637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,6 +92,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 315cf55e3b3ccfd4b96dbb065f663f73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3966833913689096960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5448159360461574580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4650b586d55c2884fbfa364119355677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  checkingInterval: 0
+  color: {r: 0.36520195, g: 1, b: 0, a: 1}
+  size: 0.07
 --- !u!58 &911947352718081886
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -127,23 +145,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.3
---- !u!114 &2601812479115200826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5448159360461574580}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d890300342001e4d8de8d8e58a12c4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 0
-  size: 0.09
-  checkingInterval: 0.01
 --- !u!1 &7245710440515935792
 GameObject:
   m_ObjectHideFlags: 0

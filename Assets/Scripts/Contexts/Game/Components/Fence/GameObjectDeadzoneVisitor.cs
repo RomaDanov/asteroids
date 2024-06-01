@@ -1,4 +1,4 @@
-using Contexts.Game.Components.Zone;
+using Contexts.Game.Components.Fence;
 using UnityEngine;
 
 public class GameObjectDeadzoneVisitor : MonoBehaviour, IDeadzoneVisitor

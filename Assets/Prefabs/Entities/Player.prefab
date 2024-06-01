@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 6904067294966776287}
   - component: {fileID: 3163917168040559485}
   - component: {fileID: 7870828200062010634}
-  - component: {fileID: 53360105563808634}
-  - component: {fileID: 156287112452194710}
-  - component: {fileID: 1219135135798020262}
   - component: {fileID: 392592145855776435}
-  - component: {fileID: 3296087251780321765}
+  - component: {fileID: 1219135135798020262}
+  - component: {fileID: 156287112452194710}
+  - component: {fileID: 53360105563808634}
+  - component: {fileID: 2056192445164564232}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -60,7 +60,7 @@ MonoBehaviour:
   movement: {fileID: 7870828200062010634}
   health: {fileID: 156287112452194710}
   equipments: {fileID: 1219135135798020262}
-  collisionHandler: {fileID: 3296087251780321765}
+  collisionHandler: {fileID: 2056192445164564232}
 --- !u!114 &3163917168040559485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,44 +87,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movable: {fileID: 53360105563808634}
---- !u!114 &53360105563808634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 124615983339657026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 315cf55e3b3ccfd4b96dbb065f663f73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &156287112452194710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 124615983339657026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b83e26036d45edd41bbac22fb5205c15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dyingFX: {fileID: 0}
---- !u!114 &1219135135798020262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 124615983339657026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c54cf32c3fc4e84faf7c8fc28c0088e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponsRoot: {fileID: 376391051258382752}
 --- !u!114 &392592145855776435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipments: {fileID: 1219135135798020262}
---- !u!114 &3296087251780321765
+--- !u!114 &1219135135798020262
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,13 +109,52 @@ MonoBehaviour:
   m_GameObject: {fileID: 124615983339657026}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d890300342001e4d8de8d8e58a12c4e, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c54cf32c3fc4e84faf7c8fc28c0088e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponsRoot: {fileID: 376391051258382752}
+--- !u!114 &156287112452194710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124615983339657026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b83e26036d45edd41bbac22fb5205c15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dyingFX: {fileID: 0}
+--- !u!114 &53360105563808634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124615983339657026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 315cf55e3b3ccfd4b96dbb065f663f73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2056192445164564232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124615983339657026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4650b586d55c2884fbfa364119355677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   layerMask:
     serializedVersion: 2
     m_Bits: 192
-  size: 0.19
+  checkingInterval: 0.01
+  size: 0.2
 --- !u!1 &5373399667046052363
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace Contexts.Game.Components.Zone
+namespace Contexts.Game.Components.Fence
 {
-	public abstract class Zone<T> : MonoBehaviour where T : IZoneVisitor
+	public abstract class Fence<T> : MonoBehaviour where T : IFenceVisitor
 	{
 		[SerializeField] protected Boundary boundary;
 		[SerializeField] protected LayerMask targetLayers;
