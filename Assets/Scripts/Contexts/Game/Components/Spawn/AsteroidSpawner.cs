@@ -7,6 +7,8 @@ namespace Contexts.Game.Components.Spawn
 {
 	public class AsteroidSpawner : Spawner
 	{
+		[Space]
+		[Header("Asteroid")]
 		[SerializeField] private float forceAngle;
 
 		public override GameObject Spawn()
@@ -17,17 +19,28 @@ namespace Contexts.Game.Components.Spawn
 			Asteroid.Asteroid asteroid = creator.Create(asteroidConfig, transform);
 			IMovable asteroidMovable = asteroid.GetComponent<IMovable>();
 
-			Vector2 force = transform.up * asteroidConfig.MoveSpeed;
+			Vector2 position = GetPoint(Random.Range(-forceAngle, forceAngle));
+			Vector2 force = position * asteroidConfig.MoveSpeed;
 			asteroidMovable.ApplyForce(force);
 
 			return asteroid.gameObject;
+		}
+
+		private Vector2 GetPoint(float angle)
+		{
+			Quaternion randomAngle = Quaternion.Euler(0, angle, 0);
+			randomAngle = transform.rotation * randomAngle;
+			Vector2 position = transform.up - randomAngle * Vector3.forward;
+			return position;
 		}
 
 #if UNITY_EDITOR
 		private void OnDrawGizmos()
 		{
 			if (!enabled) return;
-			//TODO:
+
+			Gizmos.DrawLine(transform.position, transform.position + (Vector3)GetPoint(-forceAngle));
+			Gizmos.DrawLine(transform.position, transform.position + (Vector3)GetPoint(forceAngle));
 		}
 #endif
 	}

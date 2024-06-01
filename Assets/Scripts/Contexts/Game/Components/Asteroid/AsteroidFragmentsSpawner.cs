@@ -33,11 +33,7 @@ namespace Contexts.Game.Components.Asteroid
 
 				IMovable newMovable = newAsteroid.GetComponent<IMovable>();
 
-				Vector2 direction = Vector2.zero;
-				direction.x = Random.Range(-1f, 1f);
-				direction.y = Random.Range(-1f, 1f);
-
-				Vector2 force = direction * newConfig.MoveSpeed;
+				Vector2 force = Random.insideUnitCircle * newConfig.MoveSpeed;
 				newMovable.ApplyForce(force);
 			}
 			return true;

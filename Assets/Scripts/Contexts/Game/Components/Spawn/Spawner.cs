@@ -6,6 +6,7 @@ namespace Contexts.Game.Components.Spawn
 {
 	public abstract class Spawner : MonoBehaviour
 	{
+		[Header("Base")]
 		[SerializeField] protected Config config;
 		[SerializeField] private int prewarmCount;
 		[SerializeField] private int maxCount;

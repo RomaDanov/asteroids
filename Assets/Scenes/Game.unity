@@ -325,9 +325,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 060108d4ab8d2164c95a51f641f2d9d7, type: 2}
   prewarmCount: 0
-  maxCount: 1
-  interval: 1
-  forceAngle: 0
+  maxCount: 2
+  interval: 3
+  forceAngle: 45
 --- !u!4 &664052437
 Transform:
   m_ObjectHideFlags: 0
@@ -451,9 +451,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 060108d4ab8d2164c95a51f641f2d9d7, type: 2}
   prewarmCount: 0
-  maxCount: 1
-  interval: 1
-  forceAngle: 0
+  maxCount: 2
+  interval: 3
+  forceAngle: 45
 --- !u!1 &1206616815
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,9 +598,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 060108d4ab8d2164c95a51f641f2d9d7, type: 2}
   prewarmCount: 0
-  maxCount: 1
-  interval: 1
-  forceAngle: 0
+  maxCount: 2
+  interval: 3
+  forceAngle: 45
 --- !u!1 &1519777312
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,9 +647,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 060108d4ab8d2164c95a51f641f2d9d7, type: 2}
   prewarmCount: 0
-  maxCount: 1
-  interval: 1
-  forceAngle: 0
+  maxCount: 2
+  interval: 3
+  forceAngle: 45
 --- !u!1 &1712424195
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,12 +680,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundary:
-    Min: {x: -10, y: -8}
-    Max: {x: 10, y: 8}
+    Min: {x: -8.5, y: -6.8}
+    Max: {x: 8.5, y: 6.8}
   targetLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  color: {r: 1, g: 0, b: 0, a: 1}
+  color: {r: 1, g: 0, b: 0.13606548, a: 1}
 --- !u!4 &1712424197
 Transform:
   m_ObjectHideFlags: 0
