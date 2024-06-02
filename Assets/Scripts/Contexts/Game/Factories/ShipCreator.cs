@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Contexts.Game.Factories
 {
-	public class ShipCreator : IShipCreator
+	public class ShipCreator
 	{
 		public ShipView Create(string id, Transform parent)
 		{

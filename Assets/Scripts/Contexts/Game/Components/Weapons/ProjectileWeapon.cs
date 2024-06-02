@@ -12,7 +12,7 @@ namespace Contexts.Game.Components.Weapons
 		private ProjectileWeaponConfig config;
 		private LayerMask targetLayers;
 
-		private IProjectileCreator projectileCreator;
+		private ProjectileCreator projectileCreator;
 		private int currentAmmoCount;
 		private float currentReloadTime;
 		private float currentShotIntervalTime;

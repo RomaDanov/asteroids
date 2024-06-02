@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Contexts.Game.Factories
 {
-	public class AsteroidsCreator : IAsteroidsCreator
+	public class AsteroidsCreator
 	{
 		public Asteroid Create(string id, Vector3 worldPosition)
 		{

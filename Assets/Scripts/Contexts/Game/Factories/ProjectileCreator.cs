@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Contexts.Game.Factories
 {
-	public class ProjectileCreator : IProjectileCreator
+	public class ProjectileCreator
 	{
 		public Projectile Create(string weaponId, DamageInfo damageInfo, Vector3 startedPosition, Vector2 pushDirection)
 		{

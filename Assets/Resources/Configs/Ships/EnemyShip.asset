@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: EnemyShip
   m_EditorClassIdentifier: 
   id: SHIP_RED
-  maxHealth: 2
+  maxHealth: 1
   prefab: {fileID: 1416179842748480489, guid: 82dce55c71fcc5c43b296671bda332b9, type: 3}
   movementSettings:
     maxSpeed: 2.5
     acceleration: 10
     torq: 150
-    brakeForce: 1
+    brakeForce: 4

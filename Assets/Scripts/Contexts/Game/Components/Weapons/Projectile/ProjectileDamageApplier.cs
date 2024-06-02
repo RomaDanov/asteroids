@@ -32,6 +32,11 @@ public class ProjectileDamageApplier : MonoBehaviour
 		if (other.transform.gameObject == null) return;
 
 		IDamageable target = other.transform.GetComponent<IDamageable>();
+		if (target == null)
+		{
+			target = other.transform.GetComponentInParent<IDamageable>();
+		}
+
 		if (target == null) return;
 
 		List<IDamageable> damaged = new();

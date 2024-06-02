@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 529caa285867b8f428df716dda8489f4, type: 3}
   m_Name: BluePistol
   m_EditorClassIdentifier: 
-  id: WEAPON_PISTOL
+  id: WEAPON_PISTOL_BLUE
   weaponStats:
     damage: 1
     clipCapacity: 1

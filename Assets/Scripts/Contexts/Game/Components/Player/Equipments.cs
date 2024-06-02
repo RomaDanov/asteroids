@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Contexts.Game.Components.Player
+namespace Contexts.Game.Components
 {
-	public class PlayerEquipments : MonoBehaviour
+	public class Equipments : MonoBehaviour
 	{
 		[SerializeField] private Transform weaponsRoot;
 

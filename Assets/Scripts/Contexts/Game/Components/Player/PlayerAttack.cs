@@ -5,7 +5,7 @@ namespace Contexts.Game.Components.Player
 {
 	public class PlayerAttack : MonoBehaviour
 	{
-		[SerializeField] private PlayerEquipments equipments;
+		[SerializeField] private Equipments equipments;
 
 		public void Update()
 		{
