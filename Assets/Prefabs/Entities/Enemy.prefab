@@ -78,7 +78,10 @@ GameObject:
   - component: {fileID: 2813913501550772719}
   - component: {fileID: 2200112141793043030}
   - component: {fileID: 6548315022245996571}
+  - component: {fileID: -7136661536837621048}
   - component: {fileID: -2509206005035877031}
+  - component: {fileID: 8936637720233460590}
+  - component: {fileID: -3090498813167562350}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
@@ -123,6 +126,7 @@ MonoBehaviour:
   shipInstaller: {fileID: 7487011897258267940}
   health: {fileID: 2813913501550772719}
   equipments: {fileID: 2200112141793043030}
+  collisionHandler: {fileID: -7136661536837621048}
 --- !u!114 &5417704053074813493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,6 +204,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 315cf55e3b3ccfd4b96dbb065f663f73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-7136661536837621048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6432526654748532903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4650b586d55c2884fbfa364119355677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  checkingInterval: 0.01
+  color: {r: 1, g: 0.18057802, b: 0, a: 1}
+  size: 0.2
 --- !u!58 &-2509206005035877031
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -234,4 +256,36 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.21
+--- !u!114 &8936637720233460590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6432526654748532903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a367ddbc1ce6aef4295a1138fa511f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movable: {fileID: 6548315022245996571}
+  collisionHandler: {fileID: -3090498813167562350}
+--- !u!114 &-3090498813167562350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6432526654748532903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4650b586d55c2884fbfa364119355677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  checkingInterval: 0.01
+  color: {r: 0.51476586, g: 1, b: 0, a: 1}
+  size: 0.2

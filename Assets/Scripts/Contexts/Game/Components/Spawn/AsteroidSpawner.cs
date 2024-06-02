@@ -14,9 +14,10 @@ namespace Contexts.Game.Components.Spawn
 		public override GameObject Spawn()
 		{
 			AsteroidsCreator creator = new AsteroidsCreator();
-			AsteroidConfig asteroidConfig = config as AsteroidConfig;
+			AsteroidConfig asteroidConfig = GetRandomConfig() as AsteroidConfig;
 
 			Asteroid.Asteroid asteroid = creator.Create(asteroidConfig, transform);
+			asteroid.transform.position = GetRandomSpawnPosition();
 			IMovable asteroidMovable = asteroid.GetComponent<IMovable>();
 
 			Vector2 position = GetPoint(Random.Range(-forceAngle, forceAngle));

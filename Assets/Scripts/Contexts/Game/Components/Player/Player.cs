@@ -39,11 +39,17 @@ namespace Contexts.Game.Components.Player
 
 		private void OnDied()
 		{
+			shipInstaller.Uninstall();
 			Destroy(gameObject);
 		}
 
 		private void OnCollisionStart(RaycastHit2D other)
 		{
+			if (other.transform == null) return;
+
+			IDamageable damageable = other.transform.GetComponent<IDamageable>();
+			if (damageable != null) damageable.TakeDamage(1);
+
 			health.Die();
 		}
 	}

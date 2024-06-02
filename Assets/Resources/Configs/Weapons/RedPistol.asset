@@ -22,5 +22,5 @@ MonoBehaviour:
   projectileStats:
     count: 1
     interval: 0
-    speed: 5
+    speed: 2
   projectilePrefab: {fileID: 6441199460363662660, guid: 07426f19b54623a4484d18d6417c070d, type: 3}

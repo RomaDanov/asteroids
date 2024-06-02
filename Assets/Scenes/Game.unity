@@ -149,7 +149,7 @@ Transform:
   m_GameObject: {fileID: 177145013}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.6, z: 0}
+  m_LocalPosition: {x: 0, y: 6.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -167,10 +167,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c06efd8528776c243a8ddb78a25b4f0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: 0b02787dd1f79264da33fa283d269b2c, type: 2}
+  configs:
+  - {fileID: 11400000, guid: a1e77bc92a892b64cb35c92fc95d91da, type: 2}
+  - {fileID: 11400000, guid: 0b02787dd1f79264da33fa283d269b2c, type: 2}
   prewarmCount: 0
   maxCount: 1
   interval: 10
+  spawnRadius: 1.43
 --- !u!1 &227334197
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,10 +409,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ef5cd855fba5724e91b0eef3b806597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: 060108d4ab8d2164c95a51f641f2d9d7, type: 2}
+  configs:
+  - {fileID: 11400000, guid: 060108d4ab8d2164c95a51f641f2d9d7, type: 2}
+  - {fileID: 11400000, guid: 48b0b07626994c3478d09566908b5f33, type: 2}
+  - {fileID: 11400000, guid: 263c2d056d4ca81439a7ec609164430a, type: 2}
   prewarmCount: 0
   maxCount: 1
   interval: 5
+  spawnRadius: 1.1
   forceAngle: 45
 --- !u!4 &664052437
 Transform:
@@ -532,10 +539,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ef5cd855fba5724e91b0eef3b806597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: 060108d4ab8d2164c95a51f641f2d9d7, type: 2}
+  configs:
+  - {fileID: 11400000, guid: 060108d4ab8d2164c95a51f641f2d9d7, type: 2}
+  - {fileID: 11400000, guid: 1d15e27a889806a46aa9f3dbc4d9a241, type: 2}
+  - {fileID: 11400000, guid: f1bb9e51f700ecd47b0c8538402ff816, type: 2}
   prewarmCount: 0
   maxCount: 1
   interval: 5
+  spawnRadius: 1.1
   forceAngle: 45
 --- !u!1 &1206616815
 GameObject:
@@ -679,10 +690,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ef5cd855fba5724e91b0eef3b806597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: 060108d4ab8d2164c95a51f641f2d9d7, type: 2}
+  configs:
+  - {fileID: 11400000, guid: 060108d4ab8d2164c95a51f641f2d9d7, type: 2}
+  - {fileID: 11400000, guid: 48b0b07626994c3478d09566908b5f33, type: 2}
+  - {fileID: 11400000, guid: 263c2d056d4ca81439a7ec609164430a, type: 2}
   prewarmCount: 0
   maxCount: 1
   interval: 5
+  spawnRadius: 1.1
   forceAngle: 45
 --- !u!1 &1402333446
 GameObject:
@@ -763,10 +778,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ef5cd855fba5724e91b0eef3b806597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: 060108d4ab8d2164c95a51f641f2d9d7, type: 2}
+  configs:
+  - {fileID: 11400000, guid: 060108d4ab8d2164c95a51f641f2d9d7, type: 2}
+  - {fileID: 11400000, guid: 1d15e27a889806a46aa9f3dbc4d9a241, type: 2}
+  - {fileID: 11400000, guid: f1bb9e51f700ecd47b0c8538402ff816, type: 2}
   prewarmCount: 0
   maxCount: 1
   interval: 5
+  spawnRadius: 1.1
   forceAngle: 45
 --- !u!1 &1712424195
 GameObject:
@@ -798,8 +817,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundary:
-    Min: {x: -8.5, y: -6.8}
-    Max: {x: 8.5, y: 6.8}
+    Min: {x: -10, y: -8}
+    Max: {x: 10, y: 8}
   targetLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -889,7 +908,7 @@ Transform:
   m_GameObject: {fileID: 1962123142}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.41, y: 0, z: 0}
+  m_LocalPosition: {x: 8.31, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -907,10 +926,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c06efd8528776c243a8ddb78a25b4f0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: 0b02787dd1f79264da33fa283d269b2c, type: 2}
+  configs:
+  - {fileID: 11400000, guid: a1e77bc92a892b64cb35c92fc95d91da, type: 2}
+  - {fileID: 11400000, guid: 0b02787dd1f79264da33fa283d269b2c, type: 2}
   prewarmCount: 0
   maxCount: 1
   interval: 10
+  spawnRadius: 1.43
 --- !u!1 &2019537608
 GameObject:
   m_ObjectHideFlags: 0
@@ -937,7 +959,7 @@ Transform:
   m_GameObject: {fileID: 2019537608}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.41, y: 0, z: 0}
+  m_LocalPosition: {x: -8.31, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -955,10 +977,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c06efd8528776c243a8ddb78a25b4f0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: 0b02787dd1f79264da33fa283d269b2c, type: 2}
+  configs:
+  - {fileID: 11400000, guid: a1e77bc92a892b64cb35c92fc95d91da, type: 2}
+  - {fileID: 11400000, guid: 0b02787dd1f79264da33fa283d269b2c, type: 2}
   prewarmCount: 0
   maxCount: 1
   interval: 10
+  spawnRadius: 1.43
 --- !u!1 &2065976808
 GameObject:
   m_ObjectHideFlags: 0
@@ -985,7 +1010,7 @@ Transform:
   m_GameObject: {fileID: 2065976808}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -5.6, z: 0}
+  m_LocalPosition: {x: 0, y: -6.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1003,10 +1028,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c06efd8528776c243a8ddb78a25b4f0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: 0b02787dd1f79264da33fa283d269b2c, type: 2}
+  configs:
+  - {fileID: 11400000, guid: a1e77bc92a892b64cb35c92fc95d91da, type: 2}
+  - {fileID: 11400000, guid: 0b02787dd1f79264da33fa283d269b2c, type: 2}
   prewarmCount: 0
   maxCount: 1
   interval: 10
+  spawnRadius: 1.43
 --- !u!1001 &499609163625157364
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1018,6 +1046,14 @@ PrefabInstance:
     - target: {fileID: 124615983339657026, guid: fa48447811b68eb42a6db4081820ec1f, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 971702631997520153, guid: fa48447811b68eb42a6db4081820ec1f, type: 3}
+      propertyPath: m_Radius
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2056192445164564232, guid: fa48447811b68eb42a6db4081820ec1f, type: 3}
+      propertyPath: size
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7920559364970281596, guid: fa48447811b68eb42a6db4081820ec1f, type: 3}
       propertyPath: m_LocalPosition.x

@@ -14,4 +14,10 @@ public class ShipInstaller : MonoBehaviour
 		Ship = creator.Create(ship, root);
 		Ship.gameObject.layer = gameObject.layer;
 	}
+
+	public void Uninstall()
+	{
+		if (Ship == null) return;
+		Ship.Pool.Release(Ship);
+	}
 }

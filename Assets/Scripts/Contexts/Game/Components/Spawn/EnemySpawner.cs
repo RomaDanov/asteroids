@@ -9,8 +9,9 @@ namespace Contexts.Game.Components.Spawn
 		public override GameObject Spawn()
 		{
 			EnemiesCreator creator = new EnemiesCreator();
-			EnemyConfig enemyConfig = config as EnemyConfig;
+			EnemyConfig enemyConfig = GetRandomConfig() as EnemyConfig;
 			Enemy.Enemy enemy = creator.Create(enemyConfig, transform);
+			enemy.transform.position = GetRandomSpawnPosition();
 			return enemy.gameObject;
 		}
 	}

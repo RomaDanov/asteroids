@@ -7,10 +7,11 @@ namespace Contexts.Game.Components.Spawn
 	public abstract class Spawner : MonoBehaviour
 	{
 		[Header("Base")]
-		[SerializeField] protected Config config;
+		[SerializeField] protected Config[] configs;
 		[SerializeField] private int prewarmCount;
 		[SerializeField] private int maxCount;
 		[SerializeField] private float interval;
+		[SerializeField] protected float spawnRadius;
 
 		private List<GameObject> spawnedObjects = new();
 		private float currentTime;
@@ -64,5 +65,23 @@ namespace Contexts.Game.Components.Spawn
 			GameObject newGameObject = Spawn();
 			spawnedObjects.Add(newGameObject);
 		}
+
+		protected Vector2 GetRandomSpawnPosition()
+		{
+			return (Vector2)transform.position + Random.insideUnitCircle * spawnRadius;
+		}
+
+		protected Config GetRandomConfig()
+		{
+			return configs[Random.Range(0, configs.Length)];
+		}
+
+#if UNITY_EDITOR
+		private void OnDrawGizmos()
+		{
+			if (!enabled) return;
+			Gizmos.DrawWireSphere(transform.position, spawnRadius);
+		}
+#endif
 	}
 }

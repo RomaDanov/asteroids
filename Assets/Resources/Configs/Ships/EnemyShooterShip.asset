@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c89fcf6ac2eb6ba4084f64b4b5fdb665, type: 3}
-  m_Name: ShipBlue
+  m_Name: EnemyShooterShip
   m_EditorClassIdentifier: 
-  id: SHIP_PLAYER
+  id: SHIP_SHOOTER
   maxHealth: 1
-  prefab: {fileID: 1416179842748480489, guid: db2e99de15d80b548b7edaa5de784da5, type: 3}
+  prefab: {fileID: 1416179842748480489, guid: 82dce55c71fcc5c43b296671bda332b9, type: 3}
   movementSettings:
-    maxSpeed: 5
-    acceleration: 20
-    torq: 300
-    brakeForce: 2
+    maxSpeed: 1.5
+    acceleration: 3
+    torq: 150
+    brakeForce: 5
