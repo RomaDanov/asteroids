@@ -63,7 +63,7 @@ namespace Contexts.Game.Components.Spawn
 
 		private void SpawnToList()
 		{
-			GameObject newGameObject = Spawn(GetRandomConfig(), parent);
+			GameObject newGameObject = Spawn(GetRandomConfig(), parent != null ? parent : transform);
 			spawnedObjects.Add(newGameObject);
 		}
 
