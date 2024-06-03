@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: EnemyShooter
   m_EditorClassIdentifier: 
   id: ENEMY_SHOOTER
-  stoppingDistance: 3
-  attackRange: 3
+  stoppingDistance: 4
+  attackRange: 4
   shipConfig: {fileID: 11400000, guid: c53697f9a30a88b4d8d230f843c4a9f7, type: 2}
   weaponConfig: {fileID: 11400000, guid: 6974561d19d703747887d0e5f652b107, type: 2}
   prefab: {fileID: 667581369517322656, guid: ba7461de1d0a6094d9a24de1da4e8bf8, type: 3}

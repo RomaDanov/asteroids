@@ -7,16 +7,17 @@ namespace Contexts.Game.Components.Spawn
 	public abstract class Spawner : MonoBehaviour
 	{
 		[Header("Base")]
-		[SerializeField] protected Config[] configs;
+		[SerializeField] private Config[] configs;
+		[SerializeField] private Transform parent;
 		[SerializeField] private int prewarmCount;
 		[SerializeField] private int maxCount;
 		[SerializeField] private float interval;
-		[SerializeField] protected float spawnRadius;
+		[SerializeField] private float spawnRadius;
 
 		private List<GameObject> spawnedObjects = new();
 		private float currentTime;
 
-		public abstract GameObject Spawn();
+		public abstract GameObject Spawn(Config config, Transform parent);
 
 		private void Start()
 		{
@@ -62,7 +63,7 @@ namespace Contexts.Game.Components.Spawn
 
 		private void SpawnToList()
 		{
-			GameObject newGameObject = Spawn();
+			GameObject newGameObject = Spawn(GetRandomConfig(), parent);
 			spawnedObjects.Add(newGameObject);
 		}
 

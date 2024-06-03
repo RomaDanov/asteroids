@@ -18,5 +18,5 @@ MonoBehaviour:
   movementSettings:
     maxSpeed: 1.5
     acceleration: 3
-    torq: 150
+    torq: 10
     brakeForce: 5

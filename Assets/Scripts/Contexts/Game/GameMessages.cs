@@ -1,21 +1,14 @@
 using Messages;
 
-public class GameMessages
+namespace Contexts.Game
 {
-	public struct PauseGameMessage : IMessage { }
-	public struct GamePausedMessage : IMessage { }
-	public struct UnpauseGameMessage : IMessage { }
-	public struct GameUnpausedMessage : IMessage { }
-
-	public struct ExitGameMessage : IMessage { }
-
-	public struct AsteroidDestroyedMessage : IMessage 
+	public class GameMessages
 	{
-		public string Id;
+		public struct PauseGameMessage : IMessage { }
+		public struct GamePausedMessage : IMessage { }
+		public struct UnpauseGameMessage : IMessage { }
+		public struct GameUnpausedMessage : IMessage { }
 
-		public AsteroidDestroyedMessage(string id)
-		{
-			Id = id;
-		}
+		public struct ExitGameMessage : IMessage { }
 	}
 }

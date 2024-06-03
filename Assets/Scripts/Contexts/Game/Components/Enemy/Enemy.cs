@@ -1,10 +1,8 @@
 using Configs.Enemies;
 using Configs.Weapons;
-using Contexts.Game.Components.Collision;
 using Contexts.Game.Components.Fence;
 using ObjectPool;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Contexts.Game.Components.Enemy
@@ -19,7 +17,7 @@ namespace Contexts.Game.Components.Enemy
 		[SerializeField] private ShipInstaller shipInstaller;
 		[SerializeField] private Health health;
 		[SerializeField] private Equipments equipments;
-		[SerializeField] private CollisionHandler collisionHandler;
+		[SerializeField] private CollisionDamager collisionDamager;
 
 		public void Configure(EnemyConfig config)
 		{
@@ -33,18 +31,17 @@ namespace Contexts.Game.Components.Enemy
 			}
 
 			attack.Configure(config.AttackRange);
+			collisionDamager.Configure(1, targets);
 		}
 
 		private void OnEnable()
 		{
 			health.Died += OnDied;
-			collisionHandler.CollisionStart += OnCollisionStart;
 		}
 
 		private void OnDisable()
 		{
 			health.Died -= OnDied;
-			collisionHandler.CollisionStart -= OnCollisionStart;
 		}
 
 		public void Visit()
@@ -62,16 +59,6 @@ namespace Contexts.Game.Components.Enemy
 		private void OnDied()
 		{
 			Release();
-		}
-
-		private void OnCollisionStart(RaycastHit2D other)
-		{
-			if (other.transform == null) return;
-
-			IDamageable damageable = other.transform.GetComponent<IDamageable>();
-			if (damageable != null) damageable.TakeDamage(1);
-
-			health.Die();
 		}
 	}
 }

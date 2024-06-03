@@ -18,6 +18,7 @@ namespace Contexts.Game.Components.Collision
 #endif
 
 		private List<RaycastHit2D> currentCollisions = new();
+		private List<RaycastHit2D> newCollisions = new();
 		private float currentTime;
 
 		public abstract RaycastHit2D[] CastAll();
@@ -25,21 +26,21 @@ namespace Contexts.Game.Components.Collision
 		public void Configure(LayerMask layerMask)
 		{
 			this.layerMask = layerMask;
+			currentTime = checkingInterval;
 		}
 
 		public void FixedUpdate()
 		{
 			if (currentTime <= 0)
 			{
-				if (IsCollised(out List<RaycastHit2D> newCollisions))
-				{
-					UpdateCollisionEnter(newCollisions);
-					UpdateCollisionExit(newCollisions);
+				UpdateCollisionEnter(newCollisions);
+				UpdateCollisionExit(newCollisions);
 
-					UpdateCollision();
+				UpdateCollision();
 
-					currentTime = checkingInterval;
-				}
+				currentTime = checkingInterval;
+
+				IsCollised(out newCollisions);
 			}
 			else
 			{
@@ -58,6 +59,7 @@ namespace Contexts.Game.Components.Collision
 				{
 					RaycastHit2D other = hitInfo[i];
 
+					if (other.transform == null) continue;
 					if (other.transform.gameObject == gameObject) continue;
 					if (others.Find(x => x.transform == other.transform) != default) continue;
 

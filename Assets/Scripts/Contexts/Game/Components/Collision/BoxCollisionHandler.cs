@@ -8,7 +8,9 @@ namespace Contexts.Game.Components.Collision
 
 		public override RaycastHit2D[] CastAll()
 		{
-			return Physics2D.BoxCastAll(transform.position, size, 0, Vector2.zero, layerMask);
+			RaycastHit2D[] hits = new RaycastHit2D[10];
+			Physics2D.BoxCastNonAlloc(transform.position, size, 0, Vector2.zero, hits, 0, layerMask);
+			return hits;
 		}
 
 #if UNITY_EDITOR

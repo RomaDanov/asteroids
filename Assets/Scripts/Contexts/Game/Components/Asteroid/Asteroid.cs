@@ -1,7 +1,5 @@
 using Configs.Asteriods;
-using Contexts.Game.Components.Player;
 using Contexts.Game.Components.Fence;
-using Messages;
 using ObjectPool;
 using UnityEngine;
 
@@ -16,16 +14,14 @@ namespace Contexts.Game.Components.Asteroid
 		[SerializeField] private AsteroidFragmentsSpawner fragmentSpawner;
 		[SerializeField] private Health health;
 		[SerializeField] private AsteroidMovement movement;
-
-		private AsteroidConfig config;
+		[SerializeField] private CollisionDamager collisionDamager;
 
 		public void Configure(AsteroidConfig config)
 		{
-			this.config = config;
-
 			rotator.Configure(Random.Range(-config.RotateSpeed, config.RotateSpeed));
 			fragmentSpawner.Configure(config.DestructionFragments, config.FragmentsCount);
 			health.Configure(config.MaxHealth);
+			collisionDamager.Configure(1, targets);
 		}
 
 		private void OnEnable()
@@ -43,15 +39,14 @@ namespace Contexts.Game.Components.Asteroid
 			movement.ForceStop();
 			fragmentSpawner.TrySpawnFragments();
 			Pool.Release(this);
-			MessageRouter.Instance.Publish(new GameMessages.AsteroidDestroyedMessage(config.Id));
 		}
 
-		private void OnDied()
+		public void Visit()
 		{
 			Release();
 		}
 
-		public void Visit()
+		private void OnDied()
 		{
 			Release();
 		}

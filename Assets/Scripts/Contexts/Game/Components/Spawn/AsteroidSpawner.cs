@@ -1,3 +1,4 @@
+using Configs;
 using Configs.Asteriods;
 using Contexts.Game.Components.Movement;
 using Contexts.Game.Factories;
@@ -11,12 +12,12 @@ namespace Contexts.Game.Components.Spawn
 		[Header("Asteroid")]
 		[SerializeField] private float forceAngle;
 
-		public override GameObject Spawn()
+		public override GameObject Spawn(Config config, Transform parent)
 		{
 			AsteroidsCreator creator = new AsteroidsCreator();
-			AsteroidConfig asteroidConfig = GetRandomConfig() as AsteroidConfig;
+			AsteroidConfig asteroidConfig = config as AsteroidConfig;
 
-			Asteroid.Asteroid asteroid = creator.Create(asteroidConfig, transform);
+			Asteroid.Asteroid asteroid = creator.Create(asteroidConfig, parent);
 			asteroid.transform.position = GetRandomSpawnPosition();
 			IMovable asteroidMovable = asteroid.GetComponent<IMovable>();
 

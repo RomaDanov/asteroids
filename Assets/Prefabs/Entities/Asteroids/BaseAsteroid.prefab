@@ -13,11 +13,12 @@ GameObject:
   - component: {fileID: 1302934257479911845}
   - component: {fileID: 5048397055008345455}
   - component: {fileID: 286780369860817496}
+  - component: {fileID: 7325845669222887691}
   - component: {fileID: 564828631808826801}
   - component: {fileID: 1176534921390176790}
   - component: {fileID: 6790950475160900585}
   - component: {fileID: 5344205313869173901}
-  - component: {fileID: 672710036263331388}
+  - component: {fileID: 7398439837420095257}
   m_Layer: 7
   m_Name: BaseAsteroid
   m_TagString: Untagged
@@ -60,6 +61,7 @@ MonoBehaviour:
   fragmentSpawner: {fileID: 1302934257479911845}
   health: {fileID: 286780369860817496}
   movement: {fileID: 5048397055008345455}
+  collisionDamager: {fileID: 7325845669222887691}
 --- !u!114 &1302934257479911845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,6 +100,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dyingFX: {fileID: 0}
+--- !u!114 &7325845669222887691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2809073134475460918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b69cbb7c29c3a440bd226b357c0874e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets:
+    serializedVersion: 2
+    m_Bits: 0
+  health: {fileID: 286780369860817496}
+  collisionHandler: {fileID: 5344205313869173901}
 --- !u!114 &564828631808826801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,12 +170,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 4294967295
   checkingInterval: 0.01
   color: {r: 0.3764706, g: 1, b: 0, a: 1}
   size: 0.71
---- !u!60 &672710036263331388
-PolygonCollider2D:
+--- !u!58 &7398439837420095257
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -184,35 +203,12 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.61274743, y: 0.5468424}
-      - {x: 0.058862925, y: 0.7504072}
-      - {x: -0.47135687, y: 0.66377324}
-      - {x: -0.60320735, y: 0.53850996}
-      - {x: -0.700326, y: -0.2578524}
-      - {x: -0.3588571, y: -0.6345957}
-      - {x: -0.254138, y: -0.66637886}
-      - {x: 0.053116083, y: -0.65746367}
-      - {x: 0.20079637, y: -0.7309605}
-      - {x: 0.4007213, y: -0.73649645}
-      - {x: 0.58778536, y: -0.6200605}
-      - {x: 0.6986232, y: -0.456245}
-      - {x: 0.70395947, y: 0.39622778}
-  m_UseDelaunayMesh: 0
+  serializedVersion: 2
+  m_Radius: 0.71
 --- !u!1 &6410941428758053761
 GameObject:
   m_ObjectHideFlags: 0

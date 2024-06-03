@@ -1,17 +1,10 @@
-using Contexts.Game.Components.Asteroid;
-using Contexts.Game.Components.Movement;
 using Contexts.Game.Components.Player;
-using Contexts.Game.Factories;
 using Contexts.Game.States;
 using DataProviders;
 using Inputs;
-using Messages;
 using ServiceLocator;
 using StateMachine;
-using System.Security.Cryptography;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using static GameMessages;
 
 namespace Contexts.Game
 {
