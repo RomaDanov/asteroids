@@ -10,10 +10,12 @@ namespace Configs.Weapons
 		[SerializeField] private int clipCapacity;
 		[SerializeField] private float reloadTime;
 		[SerializeField] private float attackInterval;
+		[SerializeField] private float range;
 
 		public int Damage => damage;
 		public int ClipCapacity => clipCapacity;
 		public float ReloadTime => reloadTime;
 		public float ShotInterval => attackInterval;
+		public float Range => range;
 	}
 }

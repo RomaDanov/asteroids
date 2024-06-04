@@ -10,7 +10,7 @@ namespace Contexts.Game.Factories
 {
 	public class ProjectileCreator
 	{
-		public Projectile Create(string weaponId, DamageInfo damageInfo, Vector3 startedPosition, Vector2 pushDirection)
+		public Projectile Create(string weaponId, DamageInfo damageInfo, Vector3 position, Quaternion rotation)
 		{
 			WeaponsDataProvider weaponsDataProvider = ServicesManager.Instance.Get<WeaponsDataProvider>();
 			WeaponConfig config = weaponsDataProvider.GetWeaponConfig(weaponId);
@@ -26,10 +26,10 @@ namespace Contexts.Game.Factories
 				return null;
 			}
 
-			return Create(config as ProjectileWeaponConfig, damageInfo, startedPosition, pushDirection);
+			return Create(config as ProjectileWeaponConfig, damageInfo, position, rotation);
 		}
 
-		public Projectile Create(ProjectileWeaponConfig config, DamageInfo damageInfo, Vector3 startedPosition, Vector2 pushDirection)
+		public Projectile Create(ProjectileWeaponConfig config, DamageInfo damageInfo, Vector3 position, Quaternion rotation)
 		{
 			if (config == null)
 			{
@@ -42,10 +42,9 @@ namespace Contexts.Game.Factories
 			var pool = ObjectPoolService.Instance.GetOrCreatePool(prefabRef, 20);
 
 			Projectile projectile = pool.Get();
-			projectile.transform.position = startedPosition;
-			projectile.Configure(config.ProjectileStats, damageInfo, pushDirection);
-			projectile.gameObject.SetActive(true);
-
+			projectile.transform.position = position;
+			projectile.transform.rotation = rotation;
+			projectile.Configure(config.ProjectileStats, damageInfo);
 			return projectile;
 		}
 	}

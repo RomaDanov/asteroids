@@ -1,5 +1,4 @@
 using Configs.Ships;
-using Contexts.Game.Components.Movements;
 using DataProviders;
 using ObjectPool;
 using ServiceLocator;
@@ -9,7 +8,7 @@ namespace Contexts.Game.Factories
 {
 	public class ShipCreator
 	{
-		public ShipView Create(string id, Transform parent, IMovable movable)
+		public ShipView Create(string id, Transform parent)
 		{
 			ShipsDataProvider shipsDataProvider = ServicesManager.Instance.Get<ShipsDataProvider>();
 			ShipConfig config = shipsDataProvider.GetShipConfig(id);
@@ -19,10 +18,10 @@ namespace Contexts.Game.Factories
 				return null;
 			}
 
-			return Create(config, parent, movable);
+			return Create(config, parent);
 		}
 
-		public ShipView Create(ShipConfig config, Transform parent, IMovable movable)
+		public ShipView Create(ShipConfig config, Transform parent)
 		{
 			if (config == null)
 			{

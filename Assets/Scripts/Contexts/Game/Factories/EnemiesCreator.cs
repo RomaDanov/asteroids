@@ -37,8 +37,17 @@ namespace Contexts.Game.Factories
 
 		public Enemy Create(EnemyConfig config, Vector3 worldPosition)
 		{
-			Enemy enemy = Create(config, null);
+			if (config == null)
+			{
+				Debug.LogError($"Enemy with id {config} doesn't exist");
+				return null;
+			}
+
+			Enemy prefabRef = config.Prefab;
+			var pool = ObjectPoolService.Instance.GetOrCreatePool(prefabRef, 5);
+			Enemy enemy = pool.Get();
 			enemy.transform.position = worldPosition;
+			enemy.Configure(config);
 			return enemy;
 		}
 
@@ -54,7 +63,6 @@ namespace Contexts.Game.Factories
 			var pool = ObjectPoolService.Instance.GetOrCreatePool(prefabRef, 5);
 			Enemy enemy = pool.Get(parent);
 			enemy.Configure(config);
-			enemy.gameObject.SetActive(true);
 			return enemy;
 		}
 	}

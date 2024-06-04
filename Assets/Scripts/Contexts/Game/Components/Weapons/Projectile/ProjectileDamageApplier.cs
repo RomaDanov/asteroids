@@ -63,7 +63,6 @@ public class ProjectileDamageApplier : MonoBehaviour
 
 		if (damaged.Count > 0)
 		{
-			Debug.Log($"Lifetime: {lifetime} | Position: {transform.position} | Targets: {damaged[0]}");
 			DamageApplied?.Invoke(damaged);
 		}
 	}

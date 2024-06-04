@@ -77,8 +77,8 @@ namespace Contexts.Game.Components.Weapons
 			for (int i = 0; i < config.ProjectileStats.Count; i++)
 			{
 				Transform pivot = GetPivot(i);
-				DamageInfo damageInfo = new DamageInfo(config.WeaponStats.Damage, 0, targetLayers);
-				projectileCreator.Create(config, damageInfo, pivot.position, pivot.up);
+				DamageInfo damageInfo = new DamageInfo(config.WeaponStats.Damage, config.WeaponStats.Range, targetLayers);
+				projectileCreator.Create(config, damageInfo, pivot.position, pivot.rotation);
 				yield return new WaitForSeconds(config.ProjectileStats.Interval);
 			}
 			attackProccesingCoroutine = null;

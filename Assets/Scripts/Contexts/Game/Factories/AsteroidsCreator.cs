@@ -37,8 +37,17 @@ namespace Contexts.Game.Factories
 
 		public Asteroid Create(AsteroidConfig config, Vector3 worldPosition)
 		{
-			Asteroid asteroid = Create(config, null);
+			if (config == null)
+			{
+				Debug.LogError($"Asteroid with id {config} doesn't exist");
+				return null;
+			}
+
+			Asteroid prefabRef = config.Prefab;
+			var pool = ObjectPoolService.Instance.GetOrCreatePool(prefabRef, 5);
+			Asteroid asteroid = pool.Get();
 			asteroid.transform.position = worldPosition;
+			asteroid.Configure(config);
 			return asteroid;
 		}
 

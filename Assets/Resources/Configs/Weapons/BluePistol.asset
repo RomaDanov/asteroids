@@ -18,9 +18,11 @@ MonoBehaviour:
     clipCapacity: 1
     reloadTime: 0
     attackInterval: 0.3
+    range: 0
   prefab: {fileID: 2427590773265081060, guid: 9a80df37d13dece4c857009111e30753, type: 3}
   projectileStats:
     count: 1
     interval: 0
     speed: 10
+    destroyOnCollision: 1
   projectilePrefab: {fileID: 6441199460363662660, guid: aee279ee10cb5854b9515da4cddbc67d, type: 3}
