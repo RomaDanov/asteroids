@@ -27,6 +27,7 @@ namespace Contexts.Game.Components.Collision
 		{
 			this.layerMask = layerMask;
 			currentTime = checkingInterval;
+			newCollisions = new();
 		}
 
 		public void FixedUpdate()

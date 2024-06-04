@@ -21,6 +21,12 @@ namespace Contexts.Game.Components.Enemy
 		[SerializeField] private CollisionDamager collisionDamager;
 		[SerializeField] private CollisionHandler collisionHandler;
 
+		public override void Init(IObjectPool<Enemy> pool)
+		{
+			base.Init(pool);
+			collisionHandler.enabled = false;
+		}
+
 		public void Configure(EnemyConfig config)
 		{
 			shipInstaller.Install(config.ShipConfig);
@@ -44,13 +50,14 @@ namespace Contexts.Game.Components.Enemy
 
 		private void Release()
 		{
+			gameObject.SetActive(false);
+
 			health.Died -= OnDied;
 			movement.MoveProccessing -= shipInstaller.Ship.SetActiveEngineFX;
 
 			collisionHandler.enabled = false;
 			shipInstaller.Uninstall();
 			movement.ForceStop();
-			gameObject.SetActive(false);
 			Pool.Release(this);
 		}
 

@@ -22,9 +22,9 @@ namespace Contexts.Game.Components.Weapons.Projectile
 
 		public override void Release()
 		{
-			damageApplier.DamageApplied -= OnDamaged;
-
 			base.Release();
+
+			damageApplier.DamageApplied -= OnDamaged;
 		}
 
 		private void OnDamaged(List<IDamageable> targets)

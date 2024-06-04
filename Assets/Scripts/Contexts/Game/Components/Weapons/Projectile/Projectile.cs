@@ -13,18 +13,26 @@ namespace Contexts.Game.Components.Weapons.Projectile
 
 		protected ProjectileStats stats;
 
+		public override void Init(IObjectPool<Projectile> pool)
+		{
+			base.Init(pool);
+			collisionHandler.enabled = false;
+		}
+
 		public virtual void Configure(ProjectileStats stats, DamageInfo damageInfo)
 		{
 			this.stats = stats;
 			collisionHandler.Configure(damageInfo.TargetLayers);
 			collisionHandler.enabled = true;
+
 			gameObject.SetActive(true);
 		}
 
 		public virtual void Release()
 		{
-			collisionHandler.enabled = false;
 			gameObject.SetActive(false);
+
+			collisionHandler.enabled = false;
 			Pool.Release(this);
 		}
 

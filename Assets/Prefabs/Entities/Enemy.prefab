@@ -27,7 +27,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 110291029841555465}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -167,7 +167,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   root: {fileID: 2473706238720883094}
-  movable: {fileID: 6548315022245996571}
 --- !u!114 &2813913501550772719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,7 +253,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   checkingInterval: 0.01
   color: {r: 1, g: 0.9238702, b: 0, a: 1}
-  size: 0.2
+  size: 0.32
 --- !u!58 &-2509206005035877031
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -289,4 +288,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.32

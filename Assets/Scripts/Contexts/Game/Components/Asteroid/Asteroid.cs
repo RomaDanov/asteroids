@@ -18,6 +18,12 @@ namespace Contexts.Game.Components.Asteroid
 		[SerializeField] private CollisionDamager collisionDamager;
 		[SerializeField] private CollisionHandler collisionHandler;
 
+		public override void Init(IObjectPool<Asteroid> pool)
+		{
+			base.Init(pool);
+			collisionHandler.enabled = false;
+		}
+
 		public void Configure(AsteroidConfig config)
 		{
 			rotator.Configure(Random.Range(-config.RotateSpeed, config.RotateSpeed));
@@ -33,12 +39,14 @@ namespace Contexts.Game.Components.Asteroid
 
 		private void Release()
 		{
+			gameObject.SetActive(false);
+
 			health.Died -= OnDied;
 
 			collisionHandler.enabled = false;
 			movement.ForceStop();
 			fragmentSpawner.TrySpawnFragments();
-			gameObject.SetActive(false);
+
 			Pool.Release(this);
 		}
 
