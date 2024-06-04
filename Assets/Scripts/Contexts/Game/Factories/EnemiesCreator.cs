@@ -54,6 +54,7 @@ namespace Contexts.Game.Factories
 			var pool = ObjectPoolService.Instance.GetOrCreatePool(prefabRef, 5);
 			Enemy enemy = pool.Get(parent);
 			enemy.Configure(config);
+			enemy.gameObject.SetActive(true);
 			return enemy;
 		}
 	}

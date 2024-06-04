@@ -24,46 +24,39 @@ namespace Contexts.Game.Components.Enemy
 		public void Configure(EnemyConfig config)
 		{
 			shipInstaller.Install(config.ShipConfig);
-
 			movement.ApplySettings(config.ShipConfig.MovementSettings);
 			movement.Configure(config.StoppingDistance);
-			movement.MoveProccessing += shipInstaller.Ship.SetActiveEngineFX;
-
 			health.Configure(config.ShipConfig.MaxHealth);
-
 			if (config.WeaponConfig != null)
 			{
 				equipments.Configure(new List<WeaponConfig> { config.WeaponConfig }, targets);
 			}
-
 			attack.Configure(config.AttackRange);
 			collisionDamager.Configure(1, targets);
-		}
 
-
-		public override void OnGet()
-		{
 			collisionHandler.enabled = true;
+
 			health.Died += OnDied;
+			movement.MoveProccessing += shipInstaller.Ship.SetActiveEngineFX;
+
+			gameObject.SetActive(true);
 		}
 
-		public override void OnRelease()
+		private void Release()
 		{
-			collisionHandler.enabled = false;
 			health.Died -= OnDied;
 			movement.MoveProccessing -= shipInstaller.Ship.SetActiveEngineFX;
+
+			collisionHandler.enabled = false;
+			shipInstaller.Uninstall();
+			movement.ForceStop();
+			gameObject.SetActive(false);
+			Pool.Release(this);
 		}
 
 		public void Visit()
 		{
 			Release();
-		}
-
-		private void Release()
-		{
-			shipInstaller.Uninstall();
-			movement.ForceStop();
-			Pool.Release(this);
 		}
 
 		private void OnDied()

@@ -18,32 +18,29 @@ namespace Contexts.Game.Components.Weapons.Projectile
 			movement?.Configure(stats, pushDirection);
 			damageApplier?.Configure(damageInfo);
 			collisionHandler?.Configure(damageInfo.TargetLayers);
-		}
 
-		public override void OnGet()
-		{
 			collisionHandler.enabled = true;
 			damageApplier.DamageApplied += OnDamaged;
-		}
 
-		public override void OnRelease()
-		{
-			collisionHandler.enabled = false;
-			damageApplier.DamageApplied -= OnDamaged;
+			gameObject.SetActive(true);
 		}
 
 		private void Release()
 		{
+			damageApplier.DamageApplied -= OnDamaged;
+
+			collisionHandler.enabled = false;
 			movement.ForceStop();
+			gameObject.SetActive(false);
 			Pool.Release(this);
 		}
 
-		private void OnDamaged(List<IDamageable> targets)
+		public void Visit()
 		{
 			Release();
 		}
 
-		public void Visit()
+		private void OnDamaged(List<IDamageable> targets)
 		{
 			Release();
 		}

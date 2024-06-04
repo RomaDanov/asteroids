@@ -24,24 +24,21 @@ namespace Contexts.Game.Components.Asteroid
 			fragmentSpawner.Configure(config.DestructionFragments, config.FragmentsCount);
 			health.Configure(config.MaxHealth);
 			collisionDamager.Configure(1, targets);
-		}
-
-		public override void OnGet()
-		{
 			collisionHandler.enabled = true;
-			health.Died += OnDied;
-		}
 
-		public override void OnRelease()
-		{
-			collisionHandler.enabled = false;
-			health.Died -= OnDied;
+			health.Died += OnDied;
+
+			gameObject.SetActive(true);
 		}
 
 		private void Release()
 		{
+			health.Died -= OnDied;
+
+			collisionHandler.enabled = false;
 			movement.ForceStop();
 			fragmentSpawner.TrySpawnFragments();
+			gameObject.SetActive(false);
 			Pool.Release(this);
 		}
 

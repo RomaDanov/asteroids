@@ -11,16 +11,25 @@ public class ProjectileDamageApplier : MonoBehaviour
 	[SerializeField] private CollisionHandler collisionHandler;
 
 	private DamageInfo damageInfo;
+	private float lifetime;
 
 	public void Configure(DamageInfo damageInfo)
 	{
 		this.damageInfo = damageInfo;
+		lifetime = 0;
 	}
 
 	private void OnEnable()
 	{
 		collisionHandler.CollisionStart += OnCollisionStart;
 	}
+
+	//TEST
+	private void Update()
+	{
+		lifetime += Time.deltaTime;
+	}
+	//
 
 	private void OnDisable()
 	{
@@ -54,6 +63,7 @@ public class ProjectileDamageApplier : MonoBehaviour
 
 		if (damaged.Count > 0)
 		{
+			Debug.Log($"Lifetime: {lifetime} | Position: {transform.position} | Targets: {damaged[0]}");
 			DamageApplied?.Invoke(damaged);
 		}
 	}

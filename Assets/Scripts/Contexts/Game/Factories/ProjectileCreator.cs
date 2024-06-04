@@ -44,6 +44,7 @@ namespace Contexts.Game.Factories
 			Projectile projectile = pool.Get();
 			projectile.transform.position = startedPosition;
 			projectile.Configure(config.ProjectileStats, damageInfo, pushDirection);
+			projectile.gameObject.SetActive(true);
 
 			return projectile;
 		}
