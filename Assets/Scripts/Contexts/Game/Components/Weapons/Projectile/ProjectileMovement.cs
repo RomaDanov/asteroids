@@ -12,7 +12,7 @@ namespace Contexts.Game.Components.Weapons
 		public void Configure(ProjectileStats stats, Vector2 pushDirection)
 		{
 			LookAt(pushDirection);
-			Push(transform.up * stats.Speed);
+			Push(pushDirection * stats.Speed);
 		}
 
 		public void ForceStop()
