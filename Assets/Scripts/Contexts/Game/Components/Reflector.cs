@@ -23,7 +23,7 @@ namespace Contexts.Game.Components
 
 		private void OnCollisionStart(RaycastHit2D other)
 		{
-			if (other.collider.isTrigger) return;
+			if (other.collider != null && other.collider.isTrigger) return;
 
 			Vector2 newVelocity = Vector2.Reflect(movable.Velocity, other.normal) / 2f;
 			movable.Velocity = newVelocity;
