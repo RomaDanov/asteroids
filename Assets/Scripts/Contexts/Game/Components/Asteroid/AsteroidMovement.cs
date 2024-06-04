@@ -1,4 +1,4 @@
-using Contexts.Game.Components.Movement;
+using Contexts.Game.Components.Movements;
 using UnityEngine;
 
 namespace Contexts.Game.Components.Asteroid

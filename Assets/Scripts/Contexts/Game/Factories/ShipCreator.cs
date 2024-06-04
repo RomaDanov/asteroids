@@ -1,5 +1,5 @@
 using Configs.Ships;
-using Contexts.Game.Components.Movement;
+using Contexts.Game.Components.Movements;
 using DataProviders;
 using ObjectPool;
 using ServiceLocator;
@@ -33,7 +33,6 @@ namespace Contexts.Game.Factories
 			ShipView prefabRef = config.Prefab;
 			var pool = ObjectPoolService.Instance.GetOrCreatePool(prefabRef, 5);
 			ShipView ship = pool.Get(parent);
-			ship.Configure(movable);
 			return ship;
 		}
 	}

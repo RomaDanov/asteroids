@@ -39,12 +39,12 @@ namespace ObjectPool
 			available.transform.SetParent(insertParent, false);
 			ResetTransform(available);
 
-			available.OnGet();
-
 			if (insertParent == null)
 			{
 				SceneManager.MoveGameObjectToScene(available.gameObject, SceneManager.GetActiveScene());
 			}
+
+			available.OnGet();
 
 			return available;
 		}

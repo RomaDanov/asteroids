@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5227929897950659112}
   - component: {fileID: 5179458725534821775}
   m_Layer: 0
-  m_Name: EngineFX
+  m_Name: BlueEngineFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1309,10 +1309,10 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 0.9783717, b: 0, a: 1}
-        key2: {r: 1, g: 0.4738788, b: 0, a: 0}
-        key3: {r: 1, g: 0.4745098, b: 0, a: 0}
-        key4: {r: 1, g: 0, b: 0, a: 0}
+        key1: {r: 0, g: 1, b: 0.99010324, a: 1}
+        key2: {r: 0, g: 0.44379663, b: 1, a: 0}
+        key3: {r: 0, g: 0.2024517, b: 1, a: 0}
+        key4: {r: 0.39869928, g: 0, b: 1, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}

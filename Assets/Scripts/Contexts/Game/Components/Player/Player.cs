@@ -1,5 +1,6 @@
 using Configs.Ships;
 using Configs.Weapons;
+using Contexts.Game.Components.Movements;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +12,7 @@ namespace Contexts.Game.Components.Player
 		[Space]
 		[Header("Components")]
 		[SerializeField] private ShipInstaller shipInstaller;
-		[SerializeField] private PlayerMovement movement;
+		[SerializeField] private Movement movement;
 		[SerializeField] private Health health;
 		[SerializeField] private Equipments equipments;
 		[SerializeField] private CollisionDamager collisionDamager;
@@ -19,7 +20,7 @@ namespace Contexts.Game.Components.Player
 		public void Configure(ShipConfig shipConfig, IReadOnlyCollection<WeaponConfig> weapons)
 		{
 			shipInstaller.Install(shipConfig);
-			movement.Configure(shipConfig.MovementSettings);
+			movement.ApplySettings(shipConfig.MovementSettings);
 			health.Configure(shipConfig.MaxHealth);
 			equipments.Configure(weapons, targets);
 			collisionDamager.Configure(1, targets);
@@ -28,11 +29,13 @@ namespace Contexts.Game.Components.Player
 		private void OnEnable()
 		{
 			health.Died += OnDied;
+			movement.MoveProccessing += shipInstaller.Ship.SetActiveEngineFX;
 		}
 
 		private void OnDisable()
 		{
 			health.Died -= OnDied;
+			movement.MoveProccessing -= shipInstaller.Ship.SetActiveEngineFX;
 		}
 
 		private void OnDied()

@@ -1,22 +1,15 @@
-using Configs.Ships;
-using Contexts.Game.Components.Movement;
+using Contexts.Game.Components.Movements;
 using Inputs;
 using UnityEngine;
 
 namespace Contexts.Game.Components.Player
 {
 	[RequireComponent(typeof(IMovable))]
-	public class PlayerMovement : MonoBehaviour
+	public class PlayerMovement : Movement
 	{
 		[SerializeField] private TransformMovement movable;
-		private MovementSettings movementSettings;
 
 		private Vector3 inputAxis;
-
-		public void Configure(MovementSettings movementSettings)
-		{
-			this.movementSettings = movementSettings;
-		}
 
 		private void Update()
 		{
@@ -28,40 +21,44 @@ namespace Contexts.Game.Components.Player
 
 		private void FixedUpdate()
 		{
-			Slowdown();
-			Move();
+			if (!Mathf.Approximately(inputAxis.y, 0))
+			{
+				Move();
+			}
+			else
+			{
+				Slowdown();
+			}
+
 			Rotate();
 			ClampVelocity();
 		}
 
-		private void ForceBreak()
-		{
-			movable.ApplyForce(-movable.Velocity);
-		}
-
 		private void Slowdown()
 		{
-			if (inputAxis.y > 0) return;
-
-			Vector2 brakeForce = -movable.Velocity * movementSettings.BrakeForce * Time.fixedDeltaTime;
+			Vector2 brakeForce = -movable.Velocity * settings.BrakeForce * Time.fixedDeltaTime;
 			movable.ApplyForce(brakeForce);
+
+			MoveProccessing?.Invoke(false);
 		}
 
 		private void Move()
 		{
 			float clampedDirection = Mathf.Clamp(inputAxis.y, 0f, 1f);
-			Vector2 moveForce = transform.up * clampedDirection * movementSettings.Acceleration * Time.fixedDeltaTime;
+			Vector2 moveForce = transform.up * clampedDirection * settings.Acceleration * Time.fixedDeltaTime;
 			movable.ApplyForce(moveForce);
+
+			MoveProccessing?.Invoke(true);
 		}
 
 		private void Rotate()
 		{
-			transform.rotation = Quaternion.AngleAxis(-inputAxis.x * movementSettings.Torq * Time.fixedDeltaTime, Vector3.forward) * transform.rotation;
+			transform.rotation = Quaternion.AngleAxis(-inputAxis.x * settings.Torq * Time.fixedDeltaTime, Vector3.forward) * transform.rotation;
 		}
 
 		private void ClampVelocity()
 		{
-			Vector2 clampedVelocity = Vector2.ClampMagnitude(movable.Velocity, movementSettings.MaxSpeed);
+			Vector2 clampedVelocity = Vector2.ClampMagnitude(movable.Velocity, settings.MaxSpeed);
 			movable.Velocity = clampedVelocity;
 		}
 	}

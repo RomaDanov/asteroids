@@ -1,5 +1,5 @@
 using Configs.Ships;
-using Contexts.Game.Components.Movement;
+using Contexts.Game.Components.Movements;
 using Contexts.Game.Factories;
 using UnityEngine;
 

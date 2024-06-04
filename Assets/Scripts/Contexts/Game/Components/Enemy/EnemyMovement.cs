@@ -1,21 +1,18 @@
-using Configs.Ships;
-using Contexts.Game.Components.Movement;
+using Contexts.Game.Components.Movements;
 using UnityEngine;
 
 namespace Contexts.Game.Components.Enemy
 {
 	[RequireComponent(typeof(IMovable))]
-	public class EnemyMovement : MonoBehaviour
+	public class EnemyMovement : Movement
 	{
 		[SerializeField] private TransformMovement movable;
 
-		private MovementSettings movementSettings;
 		private Transform target;
 		private float stoppingDistance;
 
-		public void Configure(MovementSettings movementSettings, float stoppingDistance)
+		public void Configure(float stoppingDistance)
 		{
-			this.movementSettings = movementSettings;
 			this.stoppingDistance = stoppingDistance;
 
 			if (target == null)
@@ -59,14 +56,18 @@ namespace Contexts.Game.Components.Enemy
 
 		private void Slowdown()
 		{
-			Vector2 brakeForce = -movable.Velocity * movementSettings.BrakeForce * Time.fixedDeltaTime;
+			Vector2 brakeForce = -movable.Velocity * settings.BrakeForce * Time.fixedDeltaTime;
 			movable.ApplyForce(brakeForce);
+
+			MoveProccessing?.Invoke(false);
 		}
 
 		private void Move()
 		{
-			Vector2 moveForce = transform.up * movementSettings.Acceleration * Time.fixedDeltaTime;
+			Vector2 moveForce = transform.up * settings.Acceleration * Time.fixedDeltaTime;
 			movable.ApplyForce(moveForce);
+
+			MoveProccessing?.Invoke(true);
 		}
 
 		private void LookAt(Vector3 lookPosition)
@@ -77,7 +78,7 @@ namespace Contexts.Game.Components.Enemy
 
 		private void ClampVelocity()
 		{
-			Vector2 clampedVelocity = Vector2.ClampMagnitude(movable.Velocity, movementSettings.MaxSpeed);
+			Vector2 clampedVelocity = Vector2.ClampMagnitude(movable.Velocity, settings.MaxSpeed);
 			movable.Velocity = clampedVelocity;
 		}
 	}

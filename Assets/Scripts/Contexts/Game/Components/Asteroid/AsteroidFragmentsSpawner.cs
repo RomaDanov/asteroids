@@ -1,5 +1,5 @@
 using Configs.Asteriods;
-using Contexts.Game.Components.Movement;
+using Contexts.Game.Components.Movements;
 using Contexts.Game.Factories;
 using System.Collections.Generic;
 using System.Linq;

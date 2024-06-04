@@ -24,7 +24,11 @@ namespace Contexts.Game.Components.Enemy
 		public void Configure(EnemyConfig config)
 		{
 			shipInstaller.Install(config.ShipConfig);
-			movement.Configure(config.ShipConfig.MovementSettings, config.StoppingDistance);
+
+			movement.ApplySettings(config.ShipConfig.MovementSettings);
+			movement.Configure(config.StoppingDistance);
+			movement.MoveProccessing += shipInstaller.Ship.SetActiveEngineFX;
+
 			health.Configure(config.ShipConfig.MaxHealth);
 
 			if (config.WeaponConfig != null)
@@ -47,6 +51,7 @@ namespace Contexts.Game.Components.Enemy
 		{
 			collisionHandler.enabled = false;
 			health.Died -= OnDied;
+			movement.MoveProccessing -= shipInstaller.Ship.SetActiveEngineFX;
 		}
 
 		public void Visit()
