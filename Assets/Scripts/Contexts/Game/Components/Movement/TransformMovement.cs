@@ -6,9 +6,26 @@ namespace Contexts.Game.Components.Movement
 	{
 		public Vector2 Velocity { get; set; }
 		public Vector2 Acceleration { get; private set; }
+		public IMovable.AccelerationState State { get; private set; }
+
+
+		private Vector2 prevAcceleration;
 
 		private void FixedUpdate()
 		{
+			float current = Acceleration.magnitude;
+			float previous = prevAcceleration.magnitude;
+
+			if (current > previous && !Mathf.Approximately(current, previous))
+			{
+				State = IMovable.AccelerationState.INCREASE;
+			}
+			else if (current < previous && !Mathf.Approximately(current, previous))
+			{
+				State = IMovable.AccelerationState.DECREASE;
+			}
+
+			prevAcceleration = Acceleration;
 			UpdateMovement();
 		}
 

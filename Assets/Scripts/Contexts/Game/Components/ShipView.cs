@@ -7,7 +7,6 @@ public class ShipView : PoolableObject<ShipView>
 	[SerializeField] private ParticleSystem[] engineFXs;
 
 	private IMovable movable;
-	private Vector2 prevAcceleration;
 
 	public void Configure(IMovable movable)
 	{
@@ -17,19 +16,14 @@ public class ShipView : PoolableObject<ShipView>
 
 	private void FixedUpdate()
 	{
-		float current = movable.Acceleration.magnitude;
-		float previous = prevAcceleration.magnitude;
-
-		if (current > previous && !Mathf.Approximately(current, previous))
+		if (movable.State == IMovable.AccelerationState.INCREASE)
 		{
 			PlayEngineFX();
 		}
-		else if(current < previous && !Mathf.Approximately(current, previous))
+		else if(movable.State == IMovable.AccelerationState.DECREASE)
 		{
 			StopEngineFX();
 		}
-
-		prevAcceleration = movable.Acceleration;
 	}
 
 	private void PlayEngineFX()
