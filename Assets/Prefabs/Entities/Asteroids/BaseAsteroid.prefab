@@ -62,6 +62,7 @@ MonoBehaviour:
   health: {fileID: 286780369860817496}
   movement: {fileID: 5048397055008345455}
   collisionDamager: {fileID: 7325845669222887691}
+  collisionHandler: {fileID: 5344205313869173901}
 --- !u!114 &1302934257479911845
 MonoBehaviour:
   m_ObjectHideFlags: 0

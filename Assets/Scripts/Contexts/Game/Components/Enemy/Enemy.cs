@@ -1,5 +1,6 @@
 using Configs.Enemies;
 using Configs.Weapons;
+using Contexts.Game.Components.Collision;
 using Contexts.Game.Components.Fence;
 using ObjectPool;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ namespace Contexts.Game.Components.Enemy
 		[SerializeField] private Health health;
 		[SerializeField] private Equipments equipments;
 		[SerializeField] private CollisionDamager collisionDamager;
+		[SerializeField] private CollisionHandler collisionHandler;
 
 		public void Configure(EnemyConfig config)
 		{
@@ -34,13 +36,16 @@ namespace Contexts.Game.Components.Enemy
 			collisionDamager.Configure(1, targets);
 		}
 
-		private void OnEnable()
+
+		public override void OnGet()
 		{
+			collisionHandler.enabled = true;
 			health.Died += OnDied;
 		}
 
-		private void OnDisable()
+		public override void OnRelease()
 		{
+			collisionHandler.enabled = false;
 			health.Died -= OnDied;
 		}
 

@@ -4,9 +4,8 @@ namespace Contexts.Game.Components.Movement
 {
 	public class TransformMovement : MonoBehaviour, IMovable
 	{
-		private Vector2 acceleration;
-
 		public Vector2 Velocity { get; set; }
+		public Vector2 Acceleration { get; private set; }
 
 		private void FixedUpdate()
 		{
@@ -15,15 +14,14 @@ namespace Contexts.Game.Components.Movement
 
 		public void ApplyForce(Vector2 force)
 		{
-			acceleration += force;
+			Acceleration += force;
 		}
 
 		private void UpdateMovement()
 		{
-			Velocity += acceleration;
+			Velocity += Acceleration;
 			transform.position += (Vector3)Velocity * Time.fixedDeltaTime;
-			acceleration *= 0;
+			Acceleration = Vector2.zero;
 		}
-
 	}
 }

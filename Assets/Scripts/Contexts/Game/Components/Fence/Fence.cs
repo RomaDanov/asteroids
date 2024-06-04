@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -11,6 +10,7 @@ namespace Contexts.Game.Components.Fence
 	{
 		[SerializeField] protected Boundary boundary;
 		[SerializeField] protected LayerMask targetLayers;
+		[SerializeField] protected float fenceWidth = 0.1f;
 		[Space]
 		[Header("Editor")]
 		[SerializeField] private Color color;
@@ -42,13 +42,37 @@ namespace Contexts.Game.Components.Fence
 			}
 		}
 
-		protected bool CastRay(Vector3 worldPosition, Vector3 direction, float distance, ref List<T> visitors)
+		protected bool CastRay(Vector3 worldPosition, Vector2 direction, float lenght, ref List<T> visitors)
 		{
 			bool success = false;
-			RaycastHit2D[] hitInfo = Physics2D.RaycastAll(worldPosition, direction, distance, targetLayers);
+
+			float halfWidth = fenceWidth * 0.5f;
+			Vector2 leftRayPosition = new Vector2(worldPosition.x, worldPosition.y);
+			Vector2 rightRayPosition = new Vector2(worldPosition.x, worldPosition.y);
+
+			if (lenght > 0)
+			{
+				if (direction == Vector2.right || direction == Vector2.left)
+				{
+					leftRayPosition.y += halfWidth;
+					rightRayPosition.y -= halfWidth;
+				}
+				else
+				{
+					leftRayPosition.x += halfWidth;
+					rightRayPosition.x -= halfWidth;
+				}
+			}
+
+			RaycastHit2D[] leftInfo = Physics2D.RaycastAll(leftRayPosition, direction, lenght, targetLayers);
+			RaycastHit2D[] rightInfo = Physics2D.RaycastAll(rightRayPosition, direction, lenght, targetLayers);
+
+			List<RaycastHit2D> hitInfo = leftInfo.ToList();
+			hitInfo.AddRange(rightInfo);
+
 			if (hitInfo != null)
 			{
-				for (int i = 0; i < hitInfo.Length; i++)
+				for (int i = 0; i < hitInfo.Count; i++)
 				{
 					RaycastHit2D hit = hitInfo[i];
 					GameObject target = hit.transform.gameObject;

@@ -20,13 +20,15 @@ namespace Contexts.Game.Components.Weapons.Projectile
 			collisionHandler?.Configure(damageInfo.TargetLayers);
 		}
 
-		private void OnEnable()
+		public override void OnGet()
 		{
+			collisionHandler.enabled = true;
 			damageApplier.DamageApplied += OnDamaged;
 		}
 
-		private void OnDisable()
+		public override void OnRelease()
 		{
+			collisionHandler.enabled = false;
 			damageApplier.DamageApplied -= OnDamaged;
 		}
 

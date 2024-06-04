@@ -116,6 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   root: {fileID: 5887093513305224538}
+  movable: {fileID: 53360105563808634}
 --- !u!114 &156287112452194710
 MonoBehaviour:
   m_ObjectHideFlags: 0

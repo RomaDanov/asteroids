@@ -1,11 +1,54 @@
+using Contexts.Game.Components.Movement;
 using ObjectPool;
+using UnityEngine;
 
 public class ShipView : PoolableObject<ShipView>
 {
-	public string Id { get; private set; }
+	[SerializeField] private ParticleSystem[] engineFXs;
 
-	public void Configure(string id)
+	private IMovable movable;
+	private Vector2 prevAcceleration;
+
+	public void Configure(IMovable movable)
 	{
-		Id = id;
+		this.movable = movable;
+		StopEngineFX();
+	}
+
+	private void FixedUpdate()
+	{
+		float current = movable.Acceleration.magnitude;
+		float previous = prevAcceleration.magnitude;
+
+		if (current > previous && !Mathf.Approximately(current, previous))
+		{
+			PlayEngineFX();
+		}
+		else if(current < previous && !Mathf.Approximately(current, previous))
+		{
+			StopEngineFX();
+		}
+
+		prevAcceleration = movable.Acceleration;
+	}
+
+	private void PlayEngineFX()
+	{
+		for (int i = 0; i < engineFXs.Length; i++)
+		{
+			if (engineFXs[i].isPlaying) continue;
+
+			engineFXs[i].Play();
+		}
+	}
+
+	private void StopEngineFX()
+	{
+		for (int i = 0; i < engineFXs.Length; i++)
+		{
+			if (!engineFXs[i].isPlaying) continue;
+
+			engineFXs[i].Stop();
+		}
 	}
 }

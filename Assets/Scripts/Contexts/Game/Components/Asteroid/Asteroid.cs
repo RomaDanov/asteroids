@@ -1,4 +1,5 @@
 using Configs.Asteriods;
+using Contexts.Game.Components.Collision;
 using Contexts.Game.Components.Fence;
 using ObjectPool;
 using UnityEngine;
@@ -15,6 +16,7 @@ namespace Contexts.Game.Components.Asteroid
 		[SerializeField] private Health health;
 		[SerializeField] private AsteroidMovement movement;
 		[SerializeField] private CollisionDamager collisionDamager;
+		[SerializeField] private CollisionHandler collisionHandler;
 
 		public void Configure(AsteroidConfig config)
 		{
@@ -24,13 +26,15 @@ namespace Contexts.Game.Components.Asteroid
 			collisionDamager.Configure(1, targets);
 		}
 
-		private void OnEnable()
+		public override void OnGet()
 		{
+			collisionHandler.enabled = true;
 			health.Died += OnDied;
 		}
 
-		private void OnDisable()
+		public override void OnRelease()
 		{
+			collisionHandler.enabled = false;
 			health.Died -= OnDied;
 		}
 

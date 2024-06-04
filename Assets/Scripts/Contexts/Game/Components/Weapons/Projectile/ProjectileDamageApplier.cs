@@ -38,6 +38,7 @@ public class ProjectileDamageApplier : MonoBehaviour
 		}
 
 		if (target == null) return;
+		if (!target.IsAlive) return;
 
 		List<IDamageable> damaged = new();
 		if (damageInfo.Range <= 0)

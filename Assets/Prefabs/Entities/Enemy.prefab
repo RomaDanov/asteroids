@@ -127,6 +127,7 @@ MonoBehaviour:
   health: {fileID: 2813913501550772719}
   equipments: {fileID: 2200112141793043030}
   collisionDamager: {fileID: 5498436615578354434}
+  collisionHandler: {fileID: -3090498813167562350}
 --- !u!114 &5417704053074813493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,6 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   root: {fileID: 2473706238720883094}
+  movable: {fileID: 6548315022245996571}
 --- !u!114 &2813913501550772719
 MonoBehaviour:
   m_ObjectHideFlags: 0
