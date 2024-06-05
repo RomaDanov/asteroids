@@ -116,7 +116,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   root: {fileID: 5887093513305224538}
-  movable: {fileID: 53360105563808634}
 --- !u!114 &156287112452194710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,7 +205,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.25
 --- !u!114 &2056192445164564232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,7 +223,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   checkingInterval: 0.01
   color: {r: 0.51476586, g: 1, b: 0, a: 1}
-  size: 0.2
+  size: 0.25
 --- !u!1 &5373399667046052363
 GameObject:
   m_ObjectHideFlags: 0

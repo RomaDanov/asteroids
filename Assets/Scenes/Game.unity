@@ -173,7 +173,7 @@ MonoBehaviour:
   parent: {fileID: 0}
   prewarmCount: 0
   maxCount: 1
-  interval: 10
+  interval: 20
   spawnRadius: 1.43
 --- !u!1 &227334197
 GameObject:
@@ -209,6 +209,110 @@ Transform:
   - {fileID: 1206616817}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &320557932
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 320557933}
+  - component: {fileID: 320557934}
+  m_Layer: 0
+  m_Name: EnemySpawner (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &320557933
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320557932}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -8.31, y: 6.34, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 567143207}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &320557934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320557932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c06efd8528776c243a8ddb78a25b4f0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  configs:
+  - {fileID: 11400000, guid: a1e77bc92a892b64cb35c92fc95d91da, type: 2}
+  - {fileID: 11400000, guid: 0b02787dd1f79264da33fa283d269b2c, type: 2}
+  parent: {fileID: 0}
+  prewarmCount: 0
+  maxCount: 1
+  interval: 20
+  spawnRadius: 1.43
+--- !u!1 &414025014
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 414025015}
+  - component: {fileID: 414025016}
+  m_Layer: 0
+  m_Name: EnemySpawner (7)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &414025015
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414025014}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 8.31, y: -6.34, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 567143207}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &414025016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414025014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c06efd8528776c243a8ddb78a25b4f0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  configs:
+  - {fileID: 11400000, guid: a1e77bc92a892b64cb35c92fc95d91da, type: 2}
+  - {fileID: 11400000, guid: 0b02787dd1f79264da33fa283d269b2c, type: 2}
+  parent: {fileID: 0}
+  prewarmCount: 0
+  maxCount: 1
+  interval: 20
+  spawnRadius: 1.43
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,6 +499,10 @@ Transform:
   - {fileID: 1962123143}
   - {fileID: 177145014}
   - {fileID: 2065976809}
+  - {fileID: 1214836713}
+  - {fileID: 320557933}
+  - {fileID: 1884722852}
+  - {fileID: 414025015}
   m_Father: {fileID: 1886113117}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &664052435
@@ -433,7 +541,7 @@ MonoBehaviour:
   parent: {fileID: 0}
   prewarmCount: 0
   maxCount: 1
-  interval: 5
+  interval: 20
   spawnRadius: 1.1
   forceAngle: 45
 --- !u!4 &664052437
@@ -451,6 +559,60 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1402333447}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -129.676}
+--- !u!1 &805059980
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 805059981}
+  - component: {fileID: 805059982}
+  m_Layer: 0
+  m_Name: AsteroidSpawner (7)
+  m_TagString: Untagged
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &805059981
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805059980}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalPosition: {x: 0, y: 6.55, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1402333447}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!114 &805059982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805059980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ef5cd855fba5724e91b0eef3b806597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  configs:
+  - {fileID: 11400000, guid: 060108d4ab8d2164c95a51f641f2d9d7, type: 2}
+  - {fileID: 11400000, guid: 1d15e27a889806a46aa9f3dbc4d9a241, type: 2}
+  - {fileID: 11400000, guid: f1bb9e51f700ecd47b0c8538402ff816, type: 2}
+  parent: {fileID: 0}
+  prewarmCount: 0
+  maxCount: 1
+  interval: 20
+  spawnRadius: 1.1
+  forceAngle: 90
 --- !u!1001 &819825281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -513,6 +675,114 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6845783867415438354, guid: fabdb645eb7c2a54984bca63cfbbc78f, type: 3}
   m_PrefabInstance: {fileID: 819825281}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &829849856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 829849857}
+  - component: {fileID: 829849858}
+  m_Layer: 0
+  m_Name: AsteroidSpawner (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &829849857
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829849856}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -8.31, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1402333447}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+--- !u!114 &829849858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829849856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ef5cd855fba5724e91b0eef3b806597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  configs:
+  - {fileID: 11400000, guid: 060108d4ab8d2164c95a51f641f2d9d7, type: 2}
+  - {fileID: 11400000, guid: 48b0b07626994c3478d09566908b5f33, type: 2}
+  - {fileID: 11400000, guid: 263c2d056d4ca81439a7ec609164430a, type: 2}
+  parent: {fileID: 0}
+  prewarmCount: 0
+  maxCount: 1
+  interval: 20
+  spawnRadius: 1.1
+  forceAngle: 90
+--- !u!1 &1016616934
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1016616935}
+  - component: {fileID: 1016616936}
+  m_Layer: 0
+  m_Name: AsteroidSpawner (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1016616935
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016616934}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 8.31, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1402333447}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &1016616936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016616934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ef5cd855fba5724e91b0eef3b806597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  configs:
+  - {fileID: 11400000, guid: 060108d4ab8d2164c95a51f641f2d9d7, type: 2}
+  - {fileID: 11400000, guid: 1d15e27a889806a46aa9f3dbc4d9a241, type: 2}
+  - {fileID: 11400000, guid: f1bb9e51f700ecd47b0c8538402ff816, type: 2}
+  parent: {fileID: 0}
+  prewarmCount: 0
+  maxCount: 1
+  interval: 20
+  spawnRadius: 1.1
+  forceAngle: 90
 --- !u!1 &1061453010
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,7 +834,7 @@ MonoBehaviour:
   parent: {fileID: 0}
   prewarmCount: 0
   maxCount: 1
-  interval: 5
+  interval: 20
   spawnRadius: 1.1
   forceAngle: 45
 --- !u!1001 &1199161899
@@ -739,6 +1009,58 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 1
+--- !u!1 &1214836712
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1214836713}
+  - component: {fileID: 1214836714}
+  m_Layer: 0
+  m_Name: EnemySpawner (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1214836713
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214836712}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -8.31, y: -6.55, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 567143207}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1214836714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214836712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c06efd8528776c243a8ddb78a25b4f0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  configs:
+  - {fileID: 11400000, guid: a1e77bc92a892b64cb35c92fc95d91da, type: 2}
+  - {fileID: 11400000, guid: 0b02787dd1f79264da33fa283d269b2c, type: 2}
+  parent: {fileID: 0}
+  prewarmCount: 0
+  maxCount: 1
+  interval: 20
+  spawnRadius: 1.43
 --- !u!1 &1239048944
 GameObject:
   m_ObjectHideFlags: 0
@@ -790,7 +1112,7 @@ MonoBehaviour:
   parent: {fileID: 0}
   prewarmCount: 0
   maxCount: 1
-  interval: 5
+  interval: 20
   spawnRadius: 1.1
   forceAngle: 45
 --- !u!1001 &1275759282
@@ -955,9 +1277,13 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 664052437}
+  - {fileID: 829849857}
   - {fileID: 1061453011}
+  - {fileID: 2017410393}
   - {fileID: 1239048945}
   - {fileID: 1519777313}
+  - {fileID: 1016616935}
+  - {fileID: 805059981}
   m_Father: {fileID: 1886113117}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1519777312
@@ -1011,7 +1337,7 @@ MonoBehaviour:
   parent: {fileID: 0}
   prewarmCount: 0
   maxCount: 1
-  interval: 5
+  interval: 20
   spawnRadius: 1.1
   forceAngle: 45
 --- !u!1001 &1597938788
@@ -1148,6 +1474,58 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7920559364970281596, guid: fa48447811b68eb42a6db4081820ec1f, type: 3}
   m_PrefabInstance: {fileID: 499609163625157364}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1884722851
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1884722852}
+  - component: {fileID: 1884722853}
+  m_Layer: 0
+  m_Name: EnemySpawner (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1884722852
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884722851}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 8.31, y: 6.34, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 567143207}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1884722853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884722851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c06efd8528776c243a8ddb78a25b4f0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  configs:
+  - {fileID: 11400000, guid: a1e77bc92a892b64cb35c92fc95d91da, type: 2}
+  - {fileID: 11400000, guid: 0b02787dd1f79264da33fa283d269b2c, type: 2}
+  parent: {fileID: 0}
+  prewarmCount: 0
+  maxCount: 1
+  interval: 20
+  spawnRadius: 1.43
 --- !u!1 &1886113116
 GameObject:
   m_ObjectHideFlags: 0
@@ -1297,7 +1675,7 @@ MonoBehaviour:
   parent: {fileID: 0}
   prewarmCount: 0
   maxCount: 1
-  interval: 10
+  interval: 20
   spawnRadius: 1.43
 --- !u!1001 &1985974076
 PrefabInstance:
@@ -1365,6 +1743,60 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2695626447639056438, guid: ded758c4c37680b45bae8e6cc69589b1, type: 3}
   m_PrefabInstance: {fileID: 1985974076}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2017410392
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2017410393}
+  - component: {fileID: 2017410394}
+  m_Layer: 0
+  m_Name: AsteroidSpawner (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2017410393
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017410392}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -6.55, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1402333447}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2017410394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017410392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ef5cd855fba5724e91b0eef3b806597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  configs:
+  - {fileID: 11400000, guid: 060108d4ab8d2164c95a51f641f2d9d7, type: 2}
+  - {fileID: 11400000, guid: 1d15e27a889806a46aa9f3dbc4d9a241, type: 2}
+  - {fileID: 11400000, guid: f1bb9e51f700ecd47b0c8538402ff816, type: 2}
+  parent: {fileID: 0}
+  prewarmCount: 0
+  maxCount: 1
+  interval: 20
+  spawnRadius: 1.1
+  forceAngle: 90
 --- !u!1 &2019537608
 GameObject:
   m_ObjectHideFlags: 0
@@ -1415,7 +1847,7 @@ MonoBehaviour:
   parent: {fileID: 0}
   prewarmCount: 0
   maxCount: 1
-  interval: 10
+  interval: 20
   spawnRadius: 1.43
 --- !u!1001 &2032622327
 PrefabInstance:
@@ -1533,7 +1965,7 @@ MonoBehaviour:
   parent: {fileID: 0}
   prewarmCount: 0
   maxCount: 1
-  interval: 10
+  interval: 20
   spawnRadius: 1.43
 --- !u!1001 &499609163625157364
 PrefabInstance:
@@ -1546,10 +1978,6 @@ PrefabInstance:
     - target: {fileID: 124615983339657026, guid: fa48447811b68eb42a6db4081820ec1f, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 124615983339657026, guid: fa48447811b68eb42a6db4081820ec1f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7920559364970281596, guid: fa48447811b68eb42a6db4081820ec1f, type: 3}
       propertyPath: m_LocalPosition.x

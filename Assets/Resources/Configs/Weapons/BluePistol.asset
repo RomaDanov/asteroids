@@ -17,7 +17,7 @@ MonoBehaviour:
     damage: 1
     clipCapacity: 1
     reloadTime: 0
-    attackInterval: 0.3
+    attackInterval: 0.15
     range: 0
   prefab: {fileID: 2427590773265081060, guid: 9a80df37d13dece4c857009111e30753, type: 3}
   projectileStats:
