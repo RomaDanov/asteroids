@@ -1,8 +1,8 @@
+using Architecture.ObjectPool;
+using Architecture.ServiceLocator;
 using Configs.Asteriods;
 using Contexts.Game.Components.Asteroid;
 using DataProviders;
-using ObjectPool;
-using ServiceLocator;
 using UnityEngine;
 
 namespace Contexts.Game.Factories

@@ -1,7 +1,7 @@
+using Architecture.ObjectPool;
 using Configs.Asteriods;
 using Contexts.Game.Components.Collision;
 using Contexts.Game.Components.Fence;
-using ObjectPool;
 using UnityEngine;
 
 namespace Contexts.Game.Components.Asteroid

@@ -1,9 +1,9 @@
+using Architecture.ObjectPool;
+using Architecture.ServiceLocator;
 using Configs.Weapons;
 using Contexts.Game.Components.Weapons;
 using Contexts.Game.Components.Weapons.Projectile;
 using DataProviders;
-using ObjectPool;
-using ServiceLocator;
 using UnityEngine;
 
 namespace Contexts.Game.Factories

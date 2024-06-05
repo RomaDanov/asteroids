@@ -1,16 +1,20 @@
-using Inputs;
-using Messages;
-using StateMachine;
+using Architecture.Inputs;
+using Architecture.Messages;
+using Architecture.StateMachine;
+using Architecture.WindowManagment;
+using UI.Windows;
 using UnityEngine;
 
 namespace Contexts.Game.States
 {
 	public class GamePauseState : State
 	{
+		private PauseWindow pauseWindow;
 		private float originTimeScale;
 
 		internal override void Awake()
 		{
+			pauseWindow = WindowManager.Instance.GetWindow<PauseWindow>();
 			originTimeScale = Time.timeScale;
 		}
 
@@ -19,10 +23,11 @@ namespace Contexts.Game.States
 			MessageRouter.Instance.Subscribe<GameMessages.UnpauseGameMessage>(OnUnpausedGame);
 			MessageRouter.Instance.Subscribe<GameMessages.ExitGameMessage>(OnExitGame);
 
-			Time.timeScale = 0;
+			pauseWindow?.Open();
+
 			MessageRouter.Instance.Publish(new GameMessages.GamePausedMessage());
 
-			Debug.Log("Enter: PauseState");
+			Time.timeScale = 0;
 		}
 
 		internal override void Update()
@@ -36,6 +41,8 @@ namespace Contexts.Game.States
 		internal override void Exit()
 		{
 			MessageRouter.Instance.Unsubscribe<GameMessages.UnpauseGameMessage>(OnUnpausedGame);
+
+			pauseWindow?.Close();
 
 			Time.timeScale = originTimeScale;
 			MessageRouter.Instance.Publish(new GameMessages.GameUnpausedMessage());

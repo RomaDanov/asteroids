@@ -1,7 +1,7 @@
+using Architecture.ServiceLocator;
 using Configs;
 using Configs.Ships;
 using Configs.Weapons;
-using ServiceLocator;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;

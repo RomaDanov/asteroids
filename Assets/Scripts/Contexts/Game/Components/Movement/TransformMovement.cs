@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace Contexts.Game.Components.Movements
 {
+	[DisallowMultipleComponent]
 	public class TransformMovement : MonoBehaviour, IMovable
 	{
 		public Vector2 Velocity { get; set; }

@@ -1,8 +1,8 @@
+using Architecture.ObjectPool;
 using Configs.Enemies;
 using Configs.Weapons;
 using Contexts.Game.Components.Collision;
 using Contexts.Game.Components.Fence;
-using ObjectPool;
 using System.Collections.Generic;
 using UnityEngine;
 

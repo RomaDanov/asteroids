@@ -1,4 +1,4 @@
-using ObjectPool;
+using Architecture.ObjectPool;
 using UnityEngine;
 
 public class ShipView : PoolableObject<ShipView>
@@ -11,7 +11,7 @@ public class ShipView : PoolableObject<ShipView>
 		{
 			if ((isActive && engineFXs[i].isPlaying) || (!isActive && !engineFXs[i].isPlaying)) continue;
 
-			if(isActive) engineFXs[i].Play();
+			if (isActive) engineFXs[i].Play();
 			else engineFXs[i].Stop();
 		}
 	}

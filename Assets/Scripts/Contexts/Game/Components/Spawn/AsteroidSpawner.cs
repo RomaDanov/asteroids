@@ -14,6 +14,12 @@ namespace Contexts.Game.Components.Spawn
 
 		public override GameObject Spawn(Config config, Transform parent)
 		{
+			if (config is not AsteroidConfig)
+			{
+				Debug.LogError($"Config wich you want to spawn is not AsteroidConfig. Config: {config.GetType().Name}");
+				return null;
+			}
+
 			AsteroidsCreator creator = new AsteroidsCreator();
 			AsteroidConfig asteroidConfig = config as AsteroidConfig;
 

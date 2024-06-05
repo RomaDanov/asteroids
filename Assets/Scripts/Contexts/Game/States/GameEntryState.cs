@@ -1,7 +1,7 @@
+using Architecture.ServiceLocator;
+using Architecture.StateMachine;
 using Contexts.Game.Components.Player;
 using DataProviders;
-using ServiceLocator;
-using StateMachine;
 
 namespace Contexts.Game.States
 {

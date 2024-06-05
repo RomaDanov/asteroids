@@ -9,6 +9,12 @@ namespace Contexts.Game.Components.Spawn
 	{
 		public override GameObject Spawn(Config config, Transform parent)
 		{
+			if (config is not EnemyConfig)
+			{
+				Debug.LogError($"Config wich you want to spawn is not EnemyConfig. Config: {config.GetType().Name}");
+				return null;
+			}
+
 			EnemiesCreator creator = new EnemiesCreator();
 			EnemyConfig enemyConfig = config as EnemyConfig;
 			Enemy.Enemy enemy = creator.Create(enemyConfig, parent);

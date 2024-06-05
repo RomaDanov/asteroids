@@ -1,4 +1,4 @@
-using ServiceLocator;
+using Architecture.ServiceLocator;
 using System.IO;
 using UnityEditor;
 using UnityEngine;

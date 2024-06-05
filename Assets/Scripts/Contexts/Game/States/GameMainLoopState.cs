@@ -1,17 +1,26 @@
-using Inputs;
-using Messages;
-using StateMachine;
-using UnityEngine;
+using Architecture.Inputs;
+using Architecture.Messages;
+using Architecture.StateMachine;
+using Architecture.WindowManagment;
+using UI.Windows;
 
 namespace Contexts.Game.States
 {
 	public class GameMainLoopState : State
 	{
+		private GameHUD gameHUDWindow;
+
+		internal override void Awake()
+		{
+			gameHUDWindow = WindowManager.Instance.GetWindow<GameHUD>();
+		}
+
 		internal override void Enter()
 		{
-			MessageRouter.Instance.Subscribe<GameMessages.PauseGameMessage>(OnPauseGame);
+			gameHUDWindow?.Open();
 
-			Debug.Log("Enter: MainLoopState");
+			MessageRouter.Instance.Subscribe<GameMessages.PauseGameMessage>(OnPauseGame);
+			MessageRouter.Instance.Subscribe<GameMessages.PlayerDiedMessage>(OnPlayerDied);
 		}
 
 		internal override void Update()
@@ -24,12 +33,20 @@ namespace Contexts.Game.States
 
 		internal override void Exit()
 		{
+			gameHUDWindow?.Close();
+
 			MessageRouter.Instance.Unsubscribe<GameMessages.PauseGameMessage>(OnPauseGame);
+			MessageRouter.Instance.Unsubscribe<GameMessages.PlayerDiedMessage>(OnPlayerDied);
 		}
 
 		private void OnPauseGame(GameMessages.PauseGameMessage message)
 		{
 			Finish<GamePauseState>();
+		}
+
+		private void OnPlayerDied(GameMessages.PlayerDiedMessage message)
+		{
+			Finish<GameOverState>();
 		}
 	}
 }

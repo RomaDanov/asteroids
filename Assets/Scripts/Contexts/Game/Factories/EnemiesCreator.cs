@@ -1,8 +1,8 @@
+using Architecture.ObjectPool;
+using Architecture.ServiceLocator;
 using Configs.Enemies;
 using Contexts.Game.Components.Enemy;
 using DataProviders;
-using ObjectPool;
-using ServiceLocator;
 using UnityEngine;
 
 namespace Contexts.Game.Factories

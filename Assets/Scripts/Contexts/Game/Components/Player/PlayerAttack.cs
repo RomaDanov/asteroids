@@ -1,4 +1,4 @@
-using Inputs;
+using Architecture.Inputs;
 using UnityEngine;
 
 namespace Contexts.Game.Components.Player

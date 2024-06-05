@@ -1,7 +1,7 @@
+using Architecture.ObjectPool;
+using Architecture.ServiceLocator;
 using Configs.Ships;
 using DataProviders;
-using ObjectPool;
-using ServiceLocator;
 using UnityEngine;
 
 namespace Contexts.Game.Factories

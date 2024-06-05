@@ -1,9 +1,9 @@
+using Architecture.Inputs;
+using Architecture.ServiceLocator;
+using Architecture.StateMachine;
 using Contexts.Game.Components.Player;
 using Contexts.Game.States;
 using DataProviders;
-using Inputs;
-using ServiceLocator;
-using StateMachine;
 using UnityEngine;
 
 namespace Contexts.Game
@@ -12,13 +12,15 @@ namespace Contexts.Game
 	{
 		[SerializeField] private Player player;
 
-		private StateMachine.StateMachineBehaviour stateMachine;
+		private Architecture.StateMachine.StateMachineBehaviour stateMachine;
 
 		#region Unity Methods
 		private void Awake()
 		{
 			InitializeServices();
-			InitializeStateMachine();
+
+			SceneLoader uiLoader = new SceneLoader("UI", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+			uiLoader.Loaded += OnUILoaded;
 		}
 
 		private void Update()
@@ -36,6 +38,8 @@ namespace Contexts.Game
 		#region Initialize
 		private void InitializeServices()
 		{
+			InputManager.Instance.Initialize();
+
 			ServicesManager.Instance.Register<CommonDataProvider>();
 			ServicesManager.Instance.Register<ShipsDataProvider>();
 			ServicesManager.Instance.Register<EnemiesDataProvider>();
@@ -49,6 +53,7 @@ namespace Contexts.Game
 			stateMachine = new StateMachineBuilder("GameStateMachine")
 				.State(new GameEntryState(player))
 				.State<GameMainLoopState>()
+				.State<GameOverState>()
 				.State<GamePauseState>()
 				.State<GameExitState>()
 				.Build();
@@ -70,5 +75,10 @@ namespace Contexts.Game
 			stateMachine?.Dispose();
 		}
 		#endregion
+
+		private void OnUILoaded(string sceneName)
+		{
+			InitializeStateMachine();
+		}
 	}
 }

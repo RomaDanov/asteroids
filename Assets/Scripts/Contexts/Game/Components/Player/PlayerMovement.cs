@@ -1,5 +1,5 @@
+using Architecture.Inputs;
 using Contexts.Game.Components.Movements;
-using Inputs;
 using UnityEngine;
 
 namespace Contexts.Game.Components.Player

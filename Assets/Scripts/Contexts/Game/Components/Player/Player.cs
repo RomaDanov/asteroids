@@ -1,3 +1,4 @@
+using Architecture.Messages;
 using Configs.Ships;
 using Configs.Weapons;
 using Contexts.Game.Components.Movements;
@@ -24,24 +25,20 @@ namespace Contexts.Game.Components.Player
 			health.Configure(shipConfig.MaxHealth);
 			equipments.Configure(weapons, targets);
 			collisionDamager.Configure(1, targets);
-		}
 
-		private void OnEnable()
-		{
 			health.Died += OnDied;
 			movement.MoveProccessing += shipInstaller.Ship.SetActiveEngineFX;
 		}
 
-		private void OnDisable()
+		private void OnDied()
 		{
 			health.Died -= OnDied;
 			movement.MoveProccessing -= shipInstaller.Ship.SetActiveEngineFX;
-		}
 
-		private void OnDied()
-		{
 			shipInstaller.Uninstall();
 			Destroy(gameObject);
+
+			MessageRouter.Instance.Publish<GameMessages.PlayerDiedMessage>();
 		}
 	}
 }

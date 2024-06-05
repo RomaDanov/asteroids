@@ -1,4 +1,4 @@
-using StateMachine;
+using Architecture.StateMachine;
 using UnityEditor;
 
 namespace Contexts.Game.States
