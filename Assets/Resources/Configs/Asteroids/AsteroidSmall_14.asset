@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f882f441ad9eaa948be61f0285f05060, type: 3}
   m_Name: AsteroidSmall_14
   m_EditorClassIdentifier: 
-  id: ASTEROID_SMALL
+  id: ASTEROID_SMALL_14
   maxHealth: 1
   moveSpeed: 3
   rotateSpeed: 60
