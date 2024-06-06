@@ -16,3 +16,10 @@ MonoBehaviour:
   defaultPlayerWeapons:
   - {fileID: 11400000, guid: eab95b838b4528e4f90b74387985a8da, type: 2}
   - {fileID: 11400000, guid: 148736717c432dc44be5b15b3d3b5c84, type: 2}
+  gamepadIconLinks:
+  - button: 0
+    icon: {fileID: 21300000, guid: 9472b5f74a8c46e4bb9f1655289a66e9, type: 3}
+  - button: 1
+    icon: {fileID: 21300000, guid: 06679684cdf9ae04dbc69ce401b8ac2d, type: 3}
+  - button: 2
+    icon: {fileID: 21300000, guid: 0dd13248a3dacda4d913186e262766fd, type: 3}

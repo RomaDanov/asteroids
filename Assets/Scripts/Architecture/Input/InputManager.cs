@@ -5,6 +5,8 @@ namespace Architecture.Inputs
 {
 	public class InputManager : SingletonInstance<InputManager>, IDisposable
 	{
+		public event Action<InputType> InputChanged;
+
 		private InputObserver observer;
 
 		public IInput Input { get; private set; }
@@ -36,6 +38,7 @@ namespace Architecture.Inputs
 					Input = new GamepadInput();
 					break;
 			}
+			InputChanged?.Invoke(inputType);
 		}
 	}
 }
