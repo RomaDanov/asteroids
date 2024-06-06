@@ -89,7 +89,7 @@ namespace Contexts.Game.Components.Weapons
 			{
 				DamageInfo damageInfo = new DamageInfo(config.WeaponStats.Damage, config.WeaponStats.Range, targetLayers);
 				projectileCreator.Create(config, damageInfo, pivotTransforms[i].position, pivotTransforms[i].rotation);
-				yield return new WaitForSeconds(config.ProjectileStats.Interval);
+				 if(config.ProjectileStats.Interval > 0) yield return new WaitForSeconds(config.ProjectileStats.Interval);
 			}
 
 			attackProccesingCoroutine = null;
