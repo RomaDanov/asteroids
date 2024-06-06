@@ -1,6 +1,7 @@
 using Configs.Weapons;
 using Contexts.Game.Factories;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Contexts.Game.Components.Weapons
@@ -25,6 +26,7 @@ namespace Contexts.Game.Components.Weapons
 			projectileCreator = new ProjectileCreator();
 			this.config = config as ProjectileWeaponConfig;
 			this.targetLayers = targetLayers;
+			RestoreClip();
 		}
 
 		private void Update()
@@ -74,13 +76,22 @@ namespace Contexts.Game.Components.Weapons
 		private IEnumerator SpawnProjectilesCoroutine()
 		{
 			yield return null;
+
+			List<(Vector3 position, Quaternion rotation)> pivotTransforms = new();
+
 			for (int i = 0; i < config.ProjectileStats.Count; i++)
 			{
 				Transform pivot = GetPivot(i);
+				pivotTransforms.Add((pivot.position, pivot.rotation));
+			}
+
+			for (int i = 0; i < config.ProjectileStats.Count; i++)
+			{
 				DamageInfo damageInfo = new DamageInfo(config.WeaponStats.Damage, config.WeaponStats.Range, targetLayers);
-				projectileCreator.Create(config, damageInfo, pivot.position, pivot.rotation);
+				projectileCreator.Create(config, damageInfo, pivotTransforms[i].position, pivotTransforms[i].rotation);
 				yield return new WaitForSeconds(config.ProjectileStats.Interval);
 			}
+
 			attackProccesingCoroutine = null;
 		}
 

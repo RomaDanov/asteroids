@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b83e26036d45edd41bbac22fb5205c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dyingFX: {fileID: 0}
+  explosionFX: {fileID: 7825394995435195326, guid: 20a118e35224a3245b9765eb09c41f2b, type: 3}
 --- !u!114 &7325845669222887691
 MonoBehaviour:
   m_ObjectHideFlags: 0

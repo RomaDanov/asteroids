@@ -1,3 +1,4 @@
+using Architecture.ObjectPool;
 using System;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ namespace Contexts.Game.Components
 		public event Action<float> DamageTaken;
 		public event Action Died;
 
-		[SerializeField] private GameObject dyingFX;
+		[SerializeField] private Explosion explosionFX;
 
 		private float maxHealth;
 		private float currentHealth;
@@ -46,13 +47,17 @@ namespace Contexts.Game.Components
 
 		public void Die()
 		{
-			SpawnDyingFX();
+			Explode();
 			Died?.Invoke();
 		}
 
-		private void SpawnDyingFX()
+		private void Explode()
 		{
-			//TODO:
+			if (explosionFX == null) return;
+
+			var explosionPool = ObjectPoolService.Instance.GetOrCreatePool(explosionFX, 10);
+			Explosion explosion = explosionPool.Get();
+			explosion.transform.position = transform.position;
 		}
 	}
 }
