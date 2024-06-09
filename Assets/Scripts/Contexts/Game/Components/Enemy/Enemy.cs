@@ -1,11 +1,9 @@
 using Architecture.ObjectPool;
-using Architecture.WindowManagment;
 using Configs.Enemies;
 using Configs.Weapons;
 using Contexts.Game.Components.Collision;
 using Contexts.Game.Components.Fence;
 using System.Collections.Generic;
-using UI.Windows;
 using UnityEngine;
 
 namespace Contexts.Game.Components.Enemy
@@ -22,7 +20,7 @@ namespace Contexts.Game.Components.Enemy
 		[SerializeField] private HealthView healthView;
 		[SerializeField] private Equipments equipments;
 		[SerializeField] private CollisionDamager collisionDamager;
-		[SerializeField] private CollisionHandler collisionHandler; 
+		[SerializeField] private CollisionHandler collisionHandler;
 
 		public override void Init(IObjectPool<Enemy> pool)
 		{
