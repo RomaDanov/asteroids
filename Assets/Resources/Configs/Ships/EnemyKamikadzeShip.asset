@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnemyKamikadzeShip
   m_EditorClassIdentifier: 
   id: SHIP_KAMIKADZE
-  maxHealth: 1
+  maxHealth: 5
   prefab: {fileID: 1416179842748480489, guid: 968f136f0c88c0d489256f1903148e3a, type: 3}
   movementSettings:
     maxSpeed: 1

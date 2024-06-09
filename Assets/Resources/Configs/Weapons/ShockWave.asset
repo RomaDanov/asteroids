@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: WEAPON_SHOCK_WAVE
   weaponStats:
-    damage: 1
+    damage: 4
     clipCapacity: 1
     reloadTime: 10
     attackInterval: 0.1

@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 6461948812680690705}
   - component: {fileID: 7487011897258267940}
   - component: {fileID: 2813913501550772719}
+  - component: {fileID: -653003667583392615}
   - component: {fileID: 2200112141793043030}
   - component: {fileID: 5498436615578354434}
   - component: {fileID: 6548315022245996571}
@@ -125,6 +126,7 @@ MonoBehaviour:
   attack: {fileID: 6461948812680690705}
   shipInstaller: {fileID: 7487011897258267940}
   health: {fileID: 2813913501550772719}
+  healthView: {fileID: -653003667583392615}
   equipments: {fileID: 2200112141793043030}
   collisionDamager: {fileID: 5498436615578354434}
   collisionHandler: {fileID: -3090498813167562350}
@@ -179,7 +181,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b83e26036d45edd41bbac22fb5205c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-653003667583392615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6432526654748532903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b19c982d559f1a4cb61b1b301c5cff6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBarPrefab: {fileID: 3156846926424154856, guid: a87cfacc83805af4080def391492c4d1, type: 3}
   explosionFX: {fileID: 7825394995435195326, guid: 332df7a6051397b4abcb45b0e109b26a, type: 3}
+  health: {fileID: 2813913501550772719}
 --- !u!114 &2200112141793043030
 MonoBehaviour:
   m_ObjectHideFlags: 0

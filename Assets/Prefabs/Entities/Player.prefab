@@ -13,8 +13,10 @@ GameObject:
   - component: {fileID: 3163917168040559485}
   - component: {fileID: 7870828200062010634}
   - component: {fileID: 392592145855776435}
+  - component: {fileID: 3149972231656921458}
   - component: {fileID: 5992813869308370579}
   - component: {fileID: 156287112452194710}
+  - component: {fileID: -856949579283130117}
   - component: {fileID: 5647972371907264652}
   - component: {fileID: 7723257875705787550}
   - component: {fileID: 53360105563808634}
@@ -62,6 +64,7 @@ MonoBehaviour:
   shipInstaller: {fileID: 5992813869308370579}
   movement: {fileID: 7870828200062010634}
   health: {fileID: 156287112452194710}
+  healthView: {fileID: -856949579283130117}
   equipments: {fileID: 5647972371907264652}
   collisionDamager: {fileID: 7723257875705787550}
 --- !u!114 &3163917168040559485
@@ -103,6 +106,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipments: {fileID: 5647972371907264652}
+--- !u!114 &3149972231656921458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124615983339657026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b54ed01cadfb874b924c9398f2fd8cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 156287112452194710}
 --- !u!114 &5992813869308370579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,7 +144,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b83e26036d45edd41bbac22fb5205c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-856949579283130117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124615983339657026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b19c982d559f1a4cb61b1b301c5cff6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBarPrefab: {fileID: 3156846926424154856, guid: 358a934d965712f47a2a880fe989cd71, type: 3}
   explosionFX: {fileID: 7825394995435195326, guid: ad4f2af2b4a5b63408af60456bb19235, type: 3}
+  health: {fileID: 156287112452194710}
 --- !u!114 &5647972371907264652
 MonoBehaviour:
   m_ObjectHideFlags: 0

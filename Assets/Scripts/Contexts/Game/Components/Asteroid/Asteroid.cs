@@ -14,6 +14,7 @@ namespace Contexts.Game.Components.Asteroid
 		[SerializeField] private Rotator rotator;
 		[SerializeField] private AsteroidFragmentsSpawner fragmentSpawner;
 		[SerializeField] private Health health;
+		[SerializeField] private HealthView healthView;
 		[SerializeField] private AsteroidMovement movement;
 		[SerializeField] private CollisionDamager collisionDamager;
 		[SerializeField] private CollisionHandler collisionHandler;
@@ -26,14 +27,16 @@ namespace Contexts.Game.Components.Asteroid
 
 		public void Configure(AsteroidConfig config)
 		{
-			rotator.Configure(Random.Range(-config.RotateSpeed, config.RotateSpeed));
-			fragmentSpawner.Configure(config.DestructionFragments, config.FragmentsCount);
-			health.Configure(config.MaxHealth);
-			collisionDamager.Configure(1, targets);
-			collisionHandler.enabled = true;
-
 			health.Died += OnDied;
 
+			rotator.Configure(Random.Range(-config.RotateSpeed, config.RotateSpeed));
+			fragmentSpawner.Configure(config.DestructionFragments, config.FragmentsCount);
+			collisionDamager.Configure(1, targets);
+
+			health.Configure(config.MaxHealth);
+			healthView.Configure();
+
+			collisionHandler.enabled = true;
 			gameObject.SetActive(true);
 		}
 
@@ -55,7 +58,7 @@ namespace Contexts.Game.Components.Asteroid
 			Release();
 		}
 
-		private void OnDied()
+		private void OnDied(Vector3 position)
 		{
 			Release();
 		}

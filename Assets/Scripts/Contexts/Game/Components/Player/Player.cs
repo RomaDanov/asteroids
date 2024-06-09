@@ -15,6 +15,7 @@ namespace Contexts.Game.Components.Player
 		[SerializeField] private ShipInstaller shipInstaller;
 		[SerializeField] private Movement movement;
 		[SerializeField] private Health health;
+		[SerializeField] private HealthView healthView;
 		[SerializeField] private Equipments equipments;
 		[SerializeField] private CollisionDamager collisionDamager;
 
@@ -22,15 +23,17 @@ namespace Contexts.Game.Components.Player
 		{
 			shipInstaller.Install(shipConfig);
 			movement.ApplySettings(shipConfig.MovementSettings);
-			health.Configure(shipConfig.MaxHealth);
 			equipments.Configure(weapons, targets);
 			collisionDamager.Configure(1, targets);
+
+			health.Configure(shipConfig.MaxHealth);
+			healthView.Configure();
 
 			health.Died += OnDied;
 			movement.MoveProccessing += shipInstaller.Ship.SetActiveEngineFX;
 		}
 
-		private void OnDied()
+		private void OnDied(Vector3 position)
 		{
 			health.Died -= OnDied;
 			movement.MoveProccessing -= shipInstaller.Ship.SetActiveEngineFX;

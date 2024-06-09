@@ -9,7 +9,7 @@ namespace Contexts.Game.Components.Collision
 		public override RaycastHit2D[] CastAll()
 		{
 			RaycastHit2D[] hits = new RaycastHit2D[10];
-			Physics2D.BoxCastNonAlloc(transform.position, size, 0, Vector2.zero, hits, 0, layerMask);
+			Physics2D.BoxCastNonAlloc(transform.position, size, transform.rotation.z, Vector2.zero, hits, 0, layerMask);
 			return hits;
 		}
 

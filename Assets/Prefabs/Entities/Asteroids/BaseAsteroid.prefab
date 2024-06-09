@@ -13,10 +13,11 @@ GameObject:
   - component: {fileID: 1302934257479911845}
   - component: {fileID: 5048397055008345455}
   - component: {fileID: 286780369860817496}
-  - component: {fileID: 7325845669222887691}
+  - component: {fileID: 1715460679686232734}
   - component: {fileID: 564828631808826801}
   - component: {fileID: 1176534921390176790}
   - component: {fileID: 6790950475160900585}
+  - component: {fileID: 7325845669222887691}
   - component: {fileID: 5344205313869173901}
   - component: {fileID: 7398439837420095257}
   m_Layer: 7
@@ -60,6 +61,7 @@ MonoBehaviour:
   rotator: {fileID: 1176534921390176790}
   fragmentSpawner: {fileID: 1302934257479911845}
   health: {fileID: 286780369860817496}
+  healthView: {fileID: 1715460679686232734}
   movement: {fileID: 5048397055008345455}
   collisionDamager: {fileID: 7325845669222887691}
   collisionHandler: {fileID: 5344205313869173901}
@@ -100,8 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b83e26036d45edd41bbac22fb5205c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionFX: {fileID: 7825394995435195326, guid: 20a118e35224a3245b9765eb09c41f2b, type: 3}
---- !u!114 &7325845669222887691
+--- !u!114 &1715460679686232734
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,14 +111,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2809073134475460918}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b69cbb7c29c3a440bd226b357c0874e, type: 3}
+  m_Script: {fileID: 11500000, guid: 8b19c982d559f1a4cb61b1b301c5cff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targets:
-    serializedVersion: 2
-    m_Bits: 0
+  healthBarPrefab: {fileID: 0}
+  explosionFX: {fileID: 7825394995435195326, guid: 20a118e35224a3245b9765eb09c41f2b, type: 3}
   health: {fileID: 286780369860817496}
-  collisionHandler: {fileID: 5344205313869173901}
 --- !u!114 &564828631808826801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,6 +155,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movable: {fileID: 564828631808826801}
+  collisionHandler: {fileID: 5344205313869173901}
+--- !u!114 &7325845669222887691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2809073134475460918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b69cbb7c29c3a440bd226b357c0874e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets:
+    serializedVersion: 2
+    m_Bits: 0
+  health: {fileID: 286780369860817496}
   collisionHandler: {fileID: 5344205313869173901}
 --- !u!114 &5344205313869173901
 MonoBehaviour:

@@ -1,9 +1,11 @@
 using Architecture.ObjectPool;
+using Architecture.WindowManagment;
 using Configs.Enemies;
 using Configs.Weapons;
 using Contexts.Game.Components.Collision;
 using Contexts.Game.Components.Fence;
 using System.Collections.Generic;
+using UI.Windows;
 using UnityEngine;
 
 namespace Contexts.Game.Components.Enemy
@@ -17,9 +19,10 @@ namespace Contexts.Game.Components.Enemy
 		[SerializeField] private EnemyAttack attack;
 		[SerializeField] private ShipInstaller shipInstaller;
 		[SerializeField] private Health health;
+		[SerializeField] private HealthView healthView;
 		[SerializeField] private Equipments equipments;
 		[SerializeField] private CollisionDamager collisionDamager;
-		[SerializeField] private CollisionHandler collisionHandler;
+		[SerializeField] private CollisionHandler collisionHandler; 
 
 		public override void Init(IObjectPool<Enemy> pool)
 		{
@@ -29,20 +32,25 @@ namespace Contexts.Game.Components.Enemy
 
 		public void Configure(EnemyConfig config)
 		{
+			health.Died += OnDied;
+
 			shipInstaller.Install(config.ShipConfig);
 			movement.ApplySettings(config.ShipConfig.MovementSettings);
 			movement.Configure(config.StoppingDistance);
+
 			health.Configure(config.ShipConfig.MaxHealth);
+			healthView.Configure();
+
 			if (config.WeaponConfig != null)
 			{
 				equipments.Configure(new List<WeaponConfig> { config.WeaponConfig }, targets);
 			}
+
 			attack.Configure(config.AttackRange);
 			collisionDamager.Configure(1, targets);
 
 			collisionHandler.enabled = true;
 
-			health.Died += OnDied;
 			movement.MoveProccessing += shipInstaller.Ship.SetActiveEngineFX;
 
 			gameObject.SetActive(true);
@@ -66,7 +74,7 @@ namespace Contexts.Game.Components.Enemy
 			Release();
 		}
 
-		private void OnDied()
+		private void OnDied(Vector3 position)
 		{
 			Release();
 		}

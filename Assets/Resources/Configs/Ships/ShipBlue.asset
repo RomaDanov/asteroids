@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ShipBlue
   m_EditorClassIdentifier: 
   id: SHIP_PLAYER
-  maxHealth: 1
+  maxHealth: 10
   prefab: {fileID: 1416179842748480489, guid: db2e99de15d80b548b7edaa5de784da5, type: 3}
   movementSettings:
     maxSpeed: 5
