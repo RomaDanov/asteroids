@@ -7,4 +7,6 @@ This is a sample project that includes simple variant architectural things like:
 - State Machine
 - Factory Method
 - Scriptable Object
+- Custom Collision
+- Custom Physics
 - etc.
