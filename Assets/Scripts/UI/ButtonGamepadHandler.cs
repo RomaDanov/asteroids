@@ -27,6 +27,8 @@ public class ButtonGamepadHandler : MonoBehaviour
 
 	private void Update()
 	{
+		if (InputManager.Instance.CurrentType != InputType.GAMEPAD) return;
+
 		if ((Gamepad.current.aButton.wasPressedThisFrame && gamepadButton == GamepadButtonType.A) ||
 			(Gamepad.current.bButton.wasPressedThisFrame && gamepadButton == GamepadButtonType.B) ||
 			(Gamepad.current.startButton.wasPressedThisFrame && gamepadButton == GamepadButtonType.START))

@@ -17,7 +17,15 @@ namespace Contexts.Game.Components.Player
 		private void OnDestroy()
 		{
 			health.DamageTaken -= OnDamageTaken;
-			Gamepad.current.SetMotorSpeeds(0, 0);
+			Dispose();
+		}
+
+		private void Dispose()
+		{
+			if (InputManager.Instance.CurrentType == InputType.GAMEPAD)
+			{
+				Gamepad.current.SetMotorSpeeds(0, 0);
+			}
 		}
 
 		private void OnDamageTaken(float amount)
